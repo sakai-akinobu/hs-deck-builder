@@ -5,11 +5,11 @@ export type DeckBuildAction =
   | InitAction
   ;
 
-type Card = {|
+export type Card = {|
   cid: string,
 |};
 
-type DeckCard = {|
+export type DeckCard = {|
   cid: string,
   count: number,
 |};

@@ -8,10 +8,12 @@ import createStore from './createStore';
 const store = createStore();
 const route = getRoute();
 
+const RootComponent = route.component;
+
 route.loader({store}).then(() => {
   render(
     <Provider store={store}>
-      <div>index.jsx</div>
+      <RootComponent />
     </Provider>,
     document.getElementById('root'),
   );
