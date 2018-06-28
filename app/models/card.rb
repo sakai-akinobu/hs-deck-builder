@@ -1,5 +1,8 @@
 class Card < ApplicationRecord
 
+  paginates_per 8
+  max_paginates_per 100
+
   def self.build_by_json(json)
     card = Card.new
 
@@ -18,7 +21,7 @@ class Card < ApplicationRecord
     card.health = json["health"]
     card.rarity = json["rarity"]
     card.set = json["set"]
-    card.card_type = json["card_type"]
+    card.card_type = json["type"]
 
     card
   end

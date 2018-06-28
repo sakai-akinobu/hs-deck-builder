@@ -4,7 +4,7 @@ namespace :card_json do
 
   desc "import card.json from hearthstonejson.com"
   task import: :environment do
-    open "https://api.hearthstonejson.com/v1/latest/jaJP/cards.json" do |file|
+    open "https://api.hearthstonejson.com/v1/latest/jaJP/cards.collectible.json" do |file|
       Card.delete_all
 
       cards = JSON.parse!(file.read)
