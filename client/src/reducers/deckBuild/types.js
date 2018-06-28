@@ -6,11 +6,11 @@ export type DeckBuildAction =
   ;
 
 type Card = {|
-  id: string,
+  cid: string,
 |};
 
 type DeckCard = {|
-  id: string,
+  cid: string,
   count: number,
 |};
 
@@ -19,7 +19,12 @@ export type DeckBuildState = {|
   hero: string,
   query: string,
   mana: ?number,
-  page: number,
-  card: Card[],
+  page: {|
+    prev: ?number,
+    current: number,
+    next: ?number,
+    last: number,
+  |},
+  cards: Card[],
   deck: DeckCard[],
 |};

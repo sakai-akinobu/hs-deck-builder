@@ -1,7 +1,9 @@
 // @flow
-import {createAction, handleActions} from 'redux-actions';
+import {createAction, handleActions} from '../../utils/redux';
+import axios from 'axios';
 
 import type {DeckBuildState as State} from './types';
+import type {ActionCreatorResult} from '../../types';
 
 export const INIT = 'hs-deck-builder/deckBuild/INIT';
 
@@ -11,18 +13,28 @@ function createInitialState(): State {
     hero: '',
     query: '',
     mana: null,
-    page: 1,
-    card: [],
+    page: {
+      prev: 1,
+      current: 1,
+      next: 1,
+      last: 1,
+    },
+    cards: [],
     deck: [],
   };
 }
 
-export async function init() {
-  return createAction(INIT)();
+export async function init(): Promise<ActionCreatorResult> {
+  const {data} = await axios.get('/api/v1/cards');
+  return createAction(INIT)(data);
 }
 
 export default handleActions({
-  [INIT]: (state) => {
-    return state;
+  [INIT]: (state, {payload}): State => {
+    return {
+      ...state,
+      page: payload.page,
+      cards: payload.cards,
+    };
   },
 }, createInitialState());

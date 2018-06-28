@@ -26,7 +26,7 @@ module Api::V1
         .page(params[:page])
 
       render json: {
-        cards: cards.to_json,
+        cards: cards,
         page: {
           prev: cards.prev_page,
           current: cards.current_page,

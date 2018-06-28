@@ -6,10 +6,9 @@ import {getRoute} from '../routes';
 import createStore from './createStore';
 
 const store = createStore();
-
 const route = getRoute();
 
-route.loader().then(() => {
+route.loader({store}).then(() => {
   render(
     <Provider store={store}>
       <div>index.jsx</div>
