@@ -12,6 +12,7 @@ import {
   syncHero,
   syncQuery,
   searchCard,
+  changePage,
 } from '../../reducers/deckBuild';
 
 function loader({store}: LoaderProps) {
@@ -27,6 +28,7 @@ const connector: Connector<{}, IndexProps> = connect(
       syncHero: (...args) => dispatch(syncHero(...args)),
       syncQuery: (...args) => dispatch(syncQuery(...args)),
       searchCard: (...args) => dispatch(searchCard(...args)),
+      changePage: (...args) => dispatch(changePage(...args)),
     },
   })
 );

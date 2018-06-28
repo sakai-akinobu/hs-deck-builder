@@ -9,6 +9,7 @@ export const INIT = 'hs-deck-builder/deckBuild/INIT';
 export const SYNC_HERO = 'hs-deck-builder/deckBuild/SYNC_HERO';
 export const SYNC_QUERY = 'hs-deck-builder/deckBuild/SYNC_QUERY';
 export const SEARCH_CARD = 'hs-deck-builder/deckBuild/SEARCH_CARD';
+export const CHANGE_PAGE = 'hs-deck-builder/deckBuild/CHANGE_PAGE';
 
 function createInitialState(): State {
   return {
@@ -52,6 +53,16 @@ export async function searchCard(query: string): ActionCreatorResult {
   return createAction(SEARCH_CARD)(data);
 }
 
+export async function changePage(hero: string, query: string, page: number): ActionCreatorResult {
+  const params = {
+    'class': hero,
+    query,
+    page,
+  };
+  const {data} = await axios.get('/api/v1/cards', {params});
+  return createAction(CHANGE_PAGE)(data);
+}
+
 export default handleActions({
   [INIT]: (state, {payload}): State => {
     return {
@@ -75,6 +86,13 @@ export default handleActions({
     };
   },
   [SEARCH_CARD]: (state, {payload}): State => {
+    return {
+      ...state,
+      page: payload.page,
+      cards: payload.cards,
+    };
+  },
+  [CHANGE_PAGE]: (state, {payload}): State => {
     return {
       ...state,
       page: payload.page,
