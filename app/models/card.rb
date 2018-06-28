@@ -1,5 +1,8 @@
 class Card < ApplicationRecord
 
+  paginates_per 8
+  max_paginates_per 100
+
   def self.build_by_json(json)
     card = Card.new
 
