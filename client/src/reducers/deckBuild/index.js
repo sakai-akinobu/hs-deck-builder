@@ -29,7 +29,10 @@ function createInitialState(): State {
 }
 
 export async function init(): Promise<ActionCreatorResult> {
-  const {data} = await axios.get('/api/v1/cards');
+  const params = {
+    'class': 'DRUID',
+  };
+  const {data} = await axios.get('/api/v1/cards', {params});
   return createAction(INIT)(data);
 }
 

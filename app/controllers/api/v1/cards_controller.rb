@@ -24,6 +24,14 @@ module Api::V1
       conditions << "card_type != ?"
       condition_params << "HERO"
 
+      conditions << "`set` IN (?, ?, ?, ?, ?, ?)"
+      condition_params << "GILNEAS"
+      condition_params << "LOOTAPALOOZA"
+      condition_params << "ICECROWN"
+      condition_params << "UNGORO"
+      condition_params << "CORE"
+      condition_params << "EXPERT1"
+
       cards = Card
         .where(conditions.join(' AND '), *condition_params)
         .order("replace(card_class, 'NEUTRAL', '') desc, cost") # TODO
