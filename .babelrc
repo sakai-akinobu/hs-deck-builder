@@ -1,0 +1,28 @@
+{
+  "presets": [
+    ["env", {
+      "targets": {
+        "browsers": [
+          "chrome 57",
+          "chrome 58",
+          "edge 14",
+          "edge 15",
+          "firefox 52",
+          "firefox 53",
+          "ie 11",
+          "safari 9",
+          "safari 10"
+        ]
+      }
+    }],
+    "react",
+    "babel-preset-power-assert"
+  ],
+  "plugins": [
+    "syntax-jsx",
+    "transform-runtime",
+    "transform-react-jsx",
+    "transform-class-properties",
+    "transform-object-rest-spread"
+  ]
+}
