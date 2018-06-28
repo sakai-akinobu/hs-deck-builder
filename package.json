@@ -7,7 +7,9 @@
     "dev": "$(npm bin)/babel-node $(npm bin)/webpack-dev-server --config ./client/webpack/dev.config.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "$(npm bin)/eslint 'client/src/**/*.js'",
-    "lint:fix": "$(npm bin)/eslint 'client/src/**/*.js' --fix"
+    "lint:fix": "$(npm bin)/eslint 'client/src/**/*.js' --fix",
+    "stylelint": "$(npm bin)/stylelint 'client/src/**/*.scss'",
+    "stylefmt": "$(npm bin)/stylefmt -r 'client/src/**/*.scss'"
   },
   "repository": {
     "type": "git",
@@ -47,6 +49,7 @@
     "postcss-loader": "^2.1.5",
     "sass-loader": "^7.0.3",
     "style-loader": "^0.21.0",
+    "stylefmt": "^6.0.0",
     "webpack": "^4.12.2",
     "webpack-cli": "^3.0.8",
     "webpack-dev-server": "^3.1.4",
