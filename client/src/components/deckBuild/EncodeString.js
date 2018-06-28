@@ -5,6 +5,7 @@ import {encode} from 'deckstrings';
 import type {DeckCard as DeckCardType} from '../../reducers/deckBuild/types';
 
 type DeckProps = {
+  hero: string,
   deck: DeckCardType[],
 };
 
