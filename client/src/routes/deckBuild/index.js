@@ -8,6 +8,11 @@ import {init} from '../../reducers/deckBuild';
 import Index from '../../components/deckBuild';
 import type {IndexProps} from '../../components/deckBuild';
 
+import {
+  syncQuery,
+  searchCard,
+} from '../../reducers/deckBuild';
+
 function loader({store}: LoaderProps) {
   return init().then(store.dispatch);
 }
@@ -16,8 +21,11 @@ const connector: Connector<{}, IndexProps> = connect(
   (state: State): $Shape<IndexProps> => ({
     deckBuild: state.deckBuild,
   }),
-  (): $Shape<IndexProps> => ({
-    actions: {},
+  (dispatch: Dispatch): $Shape<IndexProps> => ({
+    actions: {
+      syncQuery: (...args) => dispatch(syncQuery(...args)),
+      searchCard: (...args) => dispatch(searchCard(...args)),
+    },
   })
 );
 

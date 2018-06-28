@@ -1,8 +1,12 @@
 // @flow
 type InitAction = { type: 'hs-deck-builder/deckBuild/INIT', payload: any };
+type SyncQueryAction = { type: 'hs-deck-builder/deckBuild/SYNC_QUERY', payload: any };
+type SearchCardAction = { type: 'hs-deck-builder/deckBuild/SEARCH_CARD', payload: any };
 
 export type DeckBuildAction =
   | InitAction
+  | SyncQueryAction
+  | SearchCardAction
   ;
 
 export type Card = {|
