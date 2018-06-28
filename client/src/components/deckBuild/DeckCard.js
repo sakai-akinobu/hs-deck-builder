@@ -2,6 +2,7 @@
 import React from 'react';
 
 import type {DeckCard as DeckCardType} from '../../reducers/deckBuild/types';
+import styles from './styles/DeckCard.scss';
 
 type DeckCardProps = {
   deckCard: DeckCardType,
@@ -10,10 +11,10 @@ type DeckCardProps = {
 
 export default function DeckCard({deckCard, onClick}: DeckCardProps) {
   return (
-    <div onClick={onClick}>
-      <img src={`https://art.hearthstonejson.com/v1/tiles/${deckCard.card.cid}.png`} />
-      <span>{deckCard.card.name}</span>
-      <span>{deckCard.count}</span>
+    <div onClick={onClick} className={styles.container}>
+      <img src={`https://art.hearthstonejson.com/v1/tiles/${deckCard.card.cid}.png`} className={styles.tile} />
+      <span className={styles.name}>{deckCard.card.name}</span>
+      <span className={styles.count}>{deckCard.count}</span>
     </div>
   );
 }
