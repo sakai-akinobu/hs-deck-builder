@@ -1,0 +1,265 @@
+{
+    "env": {
+        "browser": true,
+        "commonjs": true,
+        "es6": true,
+        "node": true,
+        "mocha": true
+    },
+    "extends": [
+        "eslint:recommended",
+        "plugin:react/recommended",
+        "plugin:flowtype/recommended"
+    ],
+    "globals": {
+        "__DEVELOPMENT__": false,
+        "__ASSETS_PATH__": false,
+        "__TEST__": false,
+        "Turbolinks": false,
+        "Rollbar": false,
+        "ga": false // Google Analytics
+    },
+    "parser": "babel-eslint",
+    "parserOptions": {
+        "ecmaFeatures": {
+            "experimentalObjectRestSpread": true,
+            "jsx": true
+        },
+        "sourceType": "module"
+    },
+    "plugins": [
+        "react",
+        "flowtype",
+        "import"
+    ],
+    "rules": {
+        "indent": "off",
+        "indent-legacy": [
+            "error",
+            2
+        ],
+        "linebreak-style": [
+            "error",
+            "unix"
+        ],
+        "quotes": [
+            "error",
+            "single"
+        ],
+        "semi": [
+            "error",
+            "always"
+        ],
+        // foo.hasOwnProperty()等を禁止。Object.prototype.hasOwnProperty.call(foo, "bar")に。
+        // Object.create(null)で作ったfooは typeof === 'object' だがhasOwnPropertyを持たずerrorになる。
+        "no-prototype-builtins": "error",
+        // if(){} の {}省略を禁止する。(fixable)
+        "curly": [
+            "error",
+            "all"
+        ],
+        // 意味のないelseでのreturnをerrorにしてコードを統一する。(fixable)
+        "no-else-return": "error",
+        // foo  = 0; などspaceが2つ以上ある場合にerrorにする。(fixable)
+        "no-multi-spaces": "error",
+        // parseIntの第二引数を強制する。parseInt("071");で57が返ったりするため。
+        "radix": [
+            "error",
+            "always"
+        ],
+        // 配列の余分なspaceをerrorにする。(fixable)
+        "array-bracket-spacing": [
+            "error",
+            "never"
+        ],
+        // 改行時ケツカンマ必須。git差分が見づらくなったり、不要なコンフリクトを生むため。(fixable)
+        "comma-dangle": [
+            "error",
+            "always-multiline"
+        ],
+        // カンマの後にスペース1つ。(fixable)
+        "comma-spacing": "error",
+        // カンマは行頭ではなく行末につける。(fixable)
+        "comma-style": [
+            "error",
+            "last"
+        ],
+        // ファイルの最後に改行入れる。不要なgit差分を生まないため。(fixable)
+        "eol-last": "error",
+        // ifなどの後にspaceをいれる。(fixable)
+        "keyword-spacing": "error",
+        // 関数call時の()の前にspaceいれない。(fixable)
+        "func-call-spacing": ["error", "never"],
+        // jsxはeslintのdefault設定で統一する。(fixable)
+        "jsx-quotes": [
+            "error",
+            "prefer-double"
+        ],
+        // オブジェクトの : の後にspace1つ入れる。前にはspaceを入れない。(fixable)
+        "key-spacing": [
+            "error",
+            {
+                "beforeColon": false ,
+                "afterColon": true
+            }
+        ],
+        // 4つ以上ネストしたらerrorにする。
+        "max-depth": [
+            "error",
+            4
+        ],
+        // 3つ以上callbackがネストしたらerrorにする。
+        "max-nested-callbacks": [
+            "error",
+            3
+        ],
+        // ifの無駄なネストをエラーにする。(fixable)
+        "no-lonely-if": "error",
+        // 有効な空行数。3行以上空行いれるケースはないのでerrorにする。
+        // ファイルの最後の空行はgit差分を生まないようerrorにする。(fixable)
+        "no-multiple-empty-lines": [
+            "error",
+            {
+                "max": 2,
+                "maxEOF": 0
+            }
+        ],
+        // 文中のtab文字はgithub等で表示が変わるためerrorにする。
+        "no-tabs": "error",
+        // 行末にspaceがあるとerror。
+        "no-trailing-spaces": [
+            "error",
+            {
+                "skipBlankLines": true
+            }
+        ],
+        // .チェインの前後にspaceがあるとerror。(fixable)
+        "no-whitespace-before-property": "error",
+        // objectの {} 内にspaceをいれる。配列は数が多くなるので入れない。(fixable)
+        "object-curly-spacing": [
+            "error",
+            "never"
+        ],
+        // ;の手前にspaceがあるとerror。(fixable)
+        "semi-spacing": "error",
+        // {} の前にspace入れる。(fixable)
+        "space-before-blocks": "error",
+        // function foo () {} の()の前にspaceがあるとerror。(fixable)
+        "space-before-function-paren": [
+            "error",
+            "never"
+        ],
+        // 関数定義の()内側にspaceいれない。(fixable)
+        "space-in-parens": [
+            "error",
+            "never"
+        ],
+        // +とか||とか&&の前後にspace入れる。(fixable)
+        "space-infix-ops": "error",
+        // arrow関数の=>の前後にspaceを入れる。(fixable)
+        "arrow-spacing": "error",
+        // constでいいのにletを使っている場合はerrorにする。(fixable)
+        "prefer-const": "error",
+        // 暗黙のargumentsは禁止。...argsなどで対応する。
+        "prefer-rest-params": "error",
+        // applyではなく...argsなどで対応する。(fixable)
+        "prefer-spread": "error",
+        // templateリテラル内、${}の内側にスペースを入れる。(fixable)
+        "template-curly-spacing": [
+            "error",
+            "never"
+        ],
+        // returnが必要なarray関数のreturnをチェック
+        "array-callback-return": "error",
+        // flowtype使うのでpropTypesなくてもerrorにしなくてよいが、
+        // react/recommendedに含まれているのでoffにする。
+        "react/prop-types": "off",
+        // dangerouslySetInnerHTMLはXSSの脆弱性になるのでerrorにする。
+        "react/no-danger": "error",
+        // 予期せぬ描画を引き起こすcomponentDidMountでのsetStateをerrorにしてくれる。
+        "react/no-did-mount-set-state": "error",
+        // 予期せぬ描画を引き起こすcomponentDidUpdateでのsetStateをerrorにしてくれる。
+        "react/no-did-update-set-state": "error",
+        // 1ファイル内で複数classを作っているとerrorにしてくれる。functionalコンポーネントは可。
+        "react/no-multi-comp": [
+            "error",
+            { "ignoreStateless": true }
+        ],
+        // 予期せぬ描画を引き起こすcomponentWillUpdateでのsetStateをerrorにしてくれる。componentWillReceivePropsで行う。
+        "react/no-will-update-set-state": "error",
+        // createReactClassは使用しない。ES6のclass構文で統一する。
+        "react/prefer-es6-class": [
+            "error",
+            "always"
+        ],
+        // 中身がない要素は<div></div>と書かず<div/>と書く。(fixable)
+        "react/self-closing-comp": ["error", {
+            "component": true,
+            "html": true
+        }],
+        // styleを必ずobjectで渡す
+        "react/style-prop-object": "error",
+        // brやimgタグは中身持たないため、childrenがある場合はerrorにする。
+        "react/void-dom-elements-no-children": "error",
+        // <Foo bar />ではなく<Foo bar={true} />を強制する。(fixable)
+        "react/jsx-boolean-value": [
+            "error",
+            "always"
+        ],
+        // className={ hoge } の{}内のspaceをerrorにする。(fixable)
+        "react/jsx-curly-spacing": [
+            "error",
+            "never"
+        ],
+        // className = {}のような、=の前後のspaceをerrorにする。(fixable)
+        "react/jsx-equals-spacing": [
+            "error",
+            "never"
+        ],
+        // jsxでもindentを2スペにする。(fixable)
+        "react/jsx-indent": [
+            "error",
+            2
+        ],
+        // jsxの属性の改行時に2スペにする。(fixable)
+        "react/jsx-indent-props": [
+            "error",
+            2
+        ],
+        //キャメルケースでないコンポーネント(<Test_component />等)をエラーにする。
+        "react/jsx-pascal-case": "error",
+        // jsxのタグ内のspace設定。(fixable)
+        "react/jsx-tag-spacing": [
+            "error",
+            {
+                "closingSlash": "never", // <div/ >みたいなspaceをerrorにする。
+                "beforeSelfClosing": "always", // <div />の/前にspaceを入れる。
+                "afterOpening": "never" // < div/>みたいなspaceをerrorにする。
+            }
+        ],
+        // ()を使わずに改行した場合、errorにする。(fixable)
+        // const foo = <div>\n<div>;
+        "react/jsx-wrap-multilines": [
+            "error",
+            {
+                "declaration": true,
+                "assignment": true,
+                "return": true,
+                "arrow": true
+            }
+        ],
+        // importの後に1行改行入れる。
+        "import/newline-after-import": "error",
+        // import最初にないと見辛いので必ず最初に。
+        "import/imports-first": "error",
+        // .jsは省略で統一する。
+        "import/extensions": "error",
+        // type定義の末尾にセミコロンを付ける (fixable)
+        "flowtype/semi": "error",
+        // 改行時ケツカンマ必須 (fixable)
+        "flowtype/delimiter-dangle": [
+          "error",
+          "always-multiline"
+        ]
+    }
+}

@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "dev": "$(npm bin)/babel-node $(npm bin)/webpack-dev-server --config ./client/webpack/dev.config.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "$(npm bin)/eslint 'client/src/**/*.js'",
+    "lint:fix": "$(npm bin)/eslint 'client/src/**/*.js' --fix"
   },
   "repository": {
     "type": "git",
@@ -37,6 +39,10 @@
     "babel-preset-react": "^6.24.1",
     "babel-register": "^6.26.0",
     "css-loader": "^0.28.11",
+    "eslint": "^5.0.1",
+    "eslint-plugin-flowtype": "^2.49.3",
+    "eslint-plugin-import": "^2.13.0",
+    "eslint-plugin-react": "^7.10.0",
     "extract-text-webpack-plugin": "^4.0.0-beta.0",
     "postcss-loader": "^2.1.5",
     "sass-loader": "^7.0.3",
