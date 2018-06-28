@@ -122,13 +122,19 @@ export default handleActions({
     const pickedCard: CardType = payload.card;
     const pickedDeckCard: ?DeckCardType = state.deck.find((deckCard) => deckCard.card.cid === pickedCard.cid);
 
+    const MAX_CARD_COUNT_IN_DECK = 30;
     const MAX_CARD_COUNT = 2;
-    if (pickedDeckCard) {
-      if (pickedDeckCard.count < MAX_CARD_COUNT && pickedDeckCard.card.rarity !== 'LEGENDARY') {
-        pickedDeckCard.count++;
+
+    const maxCount = state.deck.reduce((cnt, deckCard) => cnt + deckCard.count, 0);
+
+    if (maxCount + 1 < MAX_CARD_COUNT_IN_DECK) {
+      if (pickedDeckCard) {
+        if (pickedDeckCard.count < MAX_CARD_COUNT && pickedDeckCard.card.rarity !== 'LEGENDARY') {
+          pickedDeckCard.count++;
+        }
+      } else {
+        state.deck.push({card: pickedCard, count: 1});
       }
-    } else {
-      state.deck.push({card: pickedCard, count: 1});
     }
 
     return {
