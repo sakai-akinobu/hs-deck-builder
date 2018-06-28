@@ -19,6 +19,7 @@ export type DeckBuildAction =
 
 export type Card = {|
   cid: string,
+  dbf_id: string,
   name: string,
   cost: string,
   rarity: string,

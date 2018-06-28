@@ -13,6 +13,7 @@ import CardList from './CardList';
 import PrevPageLink from './PrevPageLink';
 import NextPageLink from './NextPageLink';
 import Deck from './Deck';
+import EncodeString from './EncodeString';
 
 export type IndexProps = {
   deckBuild: State,
@@ -65,6 +66,7 @@ export default class Index extends Component<IndexProps> {
         }
         <CardList cards={cards} pickCard={pickCard} />
         <Deck deck={deck} unpickCard={unpickCard} />
+        <EncodeString hero={hero} deck={deck} />
       </div>
     );
   }

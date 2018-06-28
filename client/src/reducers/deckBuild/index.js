@@ -127,7 +127,7 @@ export default handleActions({
 
     const maxCount = state.deck.reduce((cnt, deckCard) => cnt + deckCard.count, 0);
 
-    if (maxCount + 1 < MAX_CARD_COUNT_IN_DECK) {
+    if (maxCount < MAX_CARD_COUNT_IN_DECK) {
       if (pickedDeckCard) {
         if (pickedDeckCard.count < MAX_CARD_COUNT && pickedDeckCard.card.rarity !== 'LEGENDARY') {
           pickedDeckCard.count++;
