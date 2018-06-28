@@ -3,13 +3,18 @@ import {createAction, handleActions} from '../../utils/redux';
 import axios from 'axios';
 
 import type {ActionCreatorResult} from '../../types';
-import type {DeckBuildState as State} from './types';
+import type {
+  Card as CardType,
+  DeckBuildState as State,
+  DeckCard,
+} from './types';
 
 export const INIT = 'hs-deck-builder/deckBuild/INIT';
 export const CHANGE_HERO = 'hs-deck-builder/deckBuild/CHANGE_HERO';
 export const SYNC_QUERY = 'hs-deck-builder/deckBuild/SYNC_QUERY';
 export const SEARCH_CARD = 'hs-deck-builder/deckBuild/SEARCH_CARD';
 export const CHANGE_PAGE = 'hs-deck-builder/deckBuild/CHANGE_PAGE';
+export const PICK_CARD = 'hs-deck-builder/deckBuild/PICK_CARD';
 
 function createInitialState(): State {
   return {
@@ -68,6 +73,10 @@ export async function changePage(hero: string, query: string, page: number): Act
   return createAction(CHANGE_PAGE)(data);
 }
 
+export function pickCard(card: CardType): ActionCreatorResult {
+  return createAction(PICK_CARD)({card});
+}
+
 export default handleActions({
   [INIT]: (state, {payload}): State => {
     return {
@@ -102,6 +111,23 @@ export default handleActions({
       ...state,
       page: payload.page,
       cards: payload.cards,
+    };
+  },
+  [PICK_CARD]: (state, {payload}): State => {
+    const pickedCard: CardType = payload.card;
+    const pickedDeckCard: ?DeckCard = state.deck.find((deckCard) => deckCard.card.cid === pickedCard.cid);
+
+    const MAX_CARD_COUNT = 2;
+    if (pickedDeckCard) {
+      if (pickedDeckCard.count < MAX_CARD_COUNT && pickedDeckCard.card.rarity !== 'LEGENDARY') {
+        pickedDeckCard.count++;
+      }
+    } else {
+      state.deck.push({card: pickedCard, count: 1});
+    }
+
+    return {
+      ...state,
     };
   },
 }, createInitialState());

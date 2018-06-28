@@ -2,12 +2,16 @@
 import React from 'react';
 import {Component} from 'react';
 
-import type {DeckBuildState as State} from '../../reducers/deckBuild/types';
+import type {
+  Card as CardType,
+  DeckBuildState as State,
+} from '../../reducers/deckBuild/types';
 import HeroFilter from './HeroFilter';
 import SearchForm from './SearchForm';
 import CardList from './CardList';
 import PrevPageLink from './PrevPageLink';
 import NextPageLink from './NextPageLink';
+import Deck from './Deck';
 
 export type IndexProps = {
   deckBuild: State,
@@ -16,6 +20,7 @@ export type IndexProps = {
     syncQuery: (string) => any,
     searchCard: (string, string) => any,
     changePage: (string, string, number) => any,
+    pickCard: (CardType) => any,
   },
 };
 
@@ -27,12 +32,14 @@ export default class Index extends Component<IndexProps> {
         query,
         cards,
         page,
+        deck,
       },
       actions: {
         changeHero,
         syncQuery,
         searchCard,
         changePage,
+        pickCard,
       },
     } = this.props;
 
@@ -53,7 +60,8 @@ export default class Index extends Component<IndexProps> {
         {page.next &&
           <NextPageLink onClick={() => changePage(hero, query, page.next || 0)} />
         }
-        <CardList cards={cards} />
+        <CardList cards={cards} pickCard={pickCard} />
+        <Deck deck={deck} />
       </div>
     );
   }

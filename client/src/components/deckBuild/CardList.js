@@ -6,14 +6,15 @@ import Card from './Card';
 
 type CardListProps = {
   cards: CardType[],
+  pickCard: (CardType) => any,
 };
 
-export default function CardList({cards}: CardListProps) {
+export default function CardList({cards, pickCard}: CardListProps) {
   return (
     <ul>
       {cards.map((card, index) => (
         <li key={index}>
-          <Card card={card} />
+          <Card card={card} onClick={() => pickCard(card)} />
         </li>
       ))}
     </ul>

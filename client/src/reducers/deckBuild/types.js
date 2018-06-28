@@ -4,6 +4,7 @@ type ChangeHeroAction = { type: 'hs-deck-builder/deckBuild/CHANGE_HERO', payload
 type SyncQueryAction = { type: 'hs-deck-builder/deckBuild/SYNC_QUERY', payload: any };
 type SearchCardAction = { type: 'hs-deck-builder/deckBuild/SEARCH_CARD', payload: any };
 type ChangePageAction = { type: 'hs-deck-builder/deckBuild/CHANGE_PAGE', payload: any };
+type PickCardAction = { type: 'hs-deck-builder/deckBuild/PICK_CARD', payload: any };
 
 export type DeckBuildAction =
   | InitAction
@@ -11,14 +12,18 @@ export type DeckBuildAction =
   | SyncQueryAction
   | SearchCardAction
   | ChangePageAction
+  | PickCardAction
   ;
 
 export type Card = {|
   cid: string,
+  name: string,
+  cost: string,
+  rarity: string,
 |};
 
 export type DeckCard = {|
-  cid: string,
+  card: Card,
   count: number,
 |};
 
