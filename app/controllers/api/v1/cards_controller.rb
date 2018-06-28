@@ -20,9 +20,13 @@ module Api::V1
         condition_params << "%#{params[:query]}%"
       end
 
+      # TODO
+      conditions << "card_type != ?"
+      condition_params << "HERO"
+
       cards = Card
         .where(conditions.join(' AND '), *condition_params)
-        .order("card_class, cost")
+        .order("replace(card_class, 'NEUTRAL', '') desc, cost") # TODO
         .page(params[:page])
 
       render json: {
