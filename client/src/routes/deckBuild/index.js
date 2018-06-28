@@ -9,6 +9,7 @@ import Index from '../../components/deckBuild';
 import type {IndexProps} from '../../components/deckBuild';
 
 import {
+  syncHero,
   syncQuery,
   searchCard,
 } from '../../reducers/deckBuild';
@@ -23,6 +24,7 @@ const connector: Connector<{}, IndexProps> = connect(
   }),
   (dispatch: Dispatch): $Shape<IndexProps> => ({
     actions: {
+      syncHero: (...args) => dispatch(syncHero(...args)),
       syncQuery: (...args) => dispatch(syncQuery(...args)),
       searchCard: (...args) => dispatch(searchCard(...args)),
     },

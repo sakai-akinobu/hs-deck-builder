@@ -6,13 +6,14 @@ import type {ActionCreatorResult} from '../../types';
 import type {DeckBuildState as State} from './types';
 
 export const INIT = 'hs-deck-builder/deckBuild/INIT';
+export const SYNC_HERO = 'hs-deck-builder/deckBuild/SYNC_HERO';
 export const SYNC_QUERY = 'hs-deck-builder/deckBuild/SYNC_QUERY';
 export const SEARCH_CARD = 'hs-deck-builder/deckBuild/SEARCH_CARD';
 
 function createInitialState(): State {
   return {
     format: 'standard',
-    hero: '',
+    hero: 'DRUID',
     query: '',
     mana: null,
     page: {
@@ -31,6 +32,14 @@ export async function init(): Promise<ActionCreatorResult> {
   return createAction(INIT)(data);
 }
 
+export async function syncHero(hero: string): ActionCreatorResult {
+  const params = {
+    'class': hero,
+  };
+  const {data} = await axios.get('/api/v1/cards', {params});
+  return createAction(SYNC_HERO)({hero, ...data});
+}
+
 export function syncQuery(query: string): ActionCreatorResult {
   return createAction(SYNC_QUERY)({query});
 }
@@ -47,6 +56,14 @@ export default handleActions({
   [INIT]: (state, {payload}): State => {
     return {
       ...state,
+      page: payload.page,
+      cards: payload.cards,
+    };
+  },
+  [SYNC_HERO]: (state, {payload}): State => {
+    return {
+      ...state,
+      hero: payload.hero,
       page: payload.page,
       cards: payload.cards,
     };
