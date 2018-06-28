@@ -5,6 +5,7 @@ type SyncQueryAction = { type: 'hs-deck-builder/deckBuild/SYNC_QUERY', payload: 
 type SearchCardAction = { type: 'hs-deck-builder/deckBuild/SEARCH_CARD', payload: any };
 type ChangePageAction = { type: 'hs-deck-builder/deckBuild/CHANGE_PAGE', payload: any };
 type PickCardAction = { type: 'hs-deck-builder/deckBuild/PICK_CARD', payload: any };
+type UnpickCardAction = { type: 'hs-deck-builder/deckBuild/UNPICK_CARD', payload: any };
 
 export type DeckBuildAction =
   | InitAction
@@ -13,6 +14,7 @@ export type DeckBuildAction =
   | SearchCardAction
   | ChangePageAction
   | PickCardAction
+  | UnpickCardAction
   ;
 
 export type Card = {|

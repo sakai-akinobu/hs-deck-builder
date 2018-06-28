@@ -6,7 +6,7 @@ import type {ActionCreatorResult} from '../../types';
 import type {
   Card as CardType,
   DeckBuildState as State,
-  DeckCard,
+  DeckCard as DeckCardType,
 } from './types';
 
 export const INIT = 'hs-deck-builder/deckBuild/INIT';
@@ -15,6 +15,7 @@ export const SYNC_QUERY = 'hs-deck-builder/deckBuild/SYNC_QUERY';
 export const SEARCH_CARD = 'hs-deck-builder/deckBuild/SEARCH_CARD';
 export const CHANGE_PAGE = 'hs-deck-builder/deckBuild/CHANGE_PAGE';
 export const PICK_CARD = 'hs-deck-builder/deckBuild/PICK_CARD';
+export const UNPICK_CARD = 'hs-deck-builder/deckBuild/UNPICK_CARD';
 
 function createInitialState(): State {
   return {
@@ -77,6 +78,10 @@ export function pickCard(card: CardType): ActionCreatorResult {
   return createAction(PICK_CARD)({card});
 }
 
+export function unpickCard(deckCard: DeckCardType): ActionCreatorResult {
+  return createAction(UNPICK_CARD)({deckCard});
+}
+
 export default handleActions({
   [INIT]: (state, {payload}): State => {
     return {
@@ -115,7 +120,7 @@ export default handleActions({
   },
   [PICK_CARD]: (state, {payload}): State => {
     const pickedCard: CardType = payload.card;
-    const pickedDeckCard: ?DeckCard = state.deck.find((deckCard) => deckCard.card.cid === pickedCard.cid);
+    const pickedDeckCard: ?DeckCardType = state.deck.find((deckCard) => deckCard.card.cid === pickedCard.cid);
 
     const MAX_CARD_COUNT = 2;
     if (pickedDeckCard) {
@@ -126,6 +131,16 @@ export default handleActions({
       state.deck.push({card: pickedCard, count: 1});
     }
 
+    return {
+      ...state,
+    };
+  },
+  [UNPICK_CARD]: (state, {payload}): State => {
+    const pickedDeckCard: DeckCardType = state.deck.find((deckCard) => deckCard.card.cid === payload.deckCard.card.cid);
+    pickedDeckCard.count--;
+    if (pickedDeckCard.count === 0) {
+      state.deck = state.deck.filter((deckCard) => deckCard.card.cid !== payload.deckCard.card.cid);
+    }
     return {
       ...state,
     };

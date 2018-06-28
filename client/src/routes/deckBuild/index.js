@@ -14,6 +14,7 @@ import {
   searchCard,
   changePage,
   pickCard,
+  unpickCard,
 } from '../../reducers/deckBuild';
 
 function loader({store}: LoaderProps) {
@@ -31,6 +32,7 @@ const connector: Connector<{}, IndexProps> = connect(
       searchCard: (...args) => dispatch(searchCard(...args)),
       changePage: (...args) => dispatch(changePage(...args)),
       pickCard: (...args) => dispatch(pickCard(...args)),
+      unpickCard: (...args) => dispatch(unpickCard(...args)),
     },
   })
 );

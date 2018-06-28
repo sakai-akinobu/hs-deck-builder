@@ -4,6 +4,7 @@ import {Component} from 'react';
 
 import type {
   Card as CardType,
+  DeckCard as DeckCardType,
   DeckBuildState as State,
 } from '../../reducers/deckBuild/types';
 import HeroFilter from './HeroFilter';
@@ -21,6 +22,7 @@ export type IndexProps = {
     searchCard: (string, string) => any,
     changePage: (string, string, number) => any,
     pickCard: (CardType) => any,
+    unpickCard: (DeckCardType) => any,
   },
 };
 
@@ -40,6 +42,7 @@ export default class Index extends Component<IndexProps> {
         searchCard,
         changePage,
         pickCard,
+        unpickCard,
       },
     } = this.props;
 
@@ -61,7 +64,7 @@ export default class Index extends Component<IndexProps> {
           <NextPageLink onClick={() => changePage(hero, query, page.next || 0)} />
         }
         <CardList cards={cards} pickCard={pickCard} />
-        <Deck deck={deck} />
+        <Deck deck={deck} unpickCard={unpickCard} />
       </div>
     );
   }
