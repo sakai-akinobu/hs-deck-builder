@@ -12,9 +12,9 @@ import NextPageLink from './NextPageLink';
 export type IndexProps = {
   deckBuild: State,
   actions: {
-    syncHero: (string) => any,
+    changeHero: (string, string) => any,
     syncQuery: (string) => any,
-    searchCard: (string) => any,
+    searchCard: (string, string) => any,
     changePage: (string, string, number) => any,
   },
 };
@@ -29,7 +29,7 @@ export default class Index extends Component<IndexProps> {
         page,
       },
       actions: {
-        syncHero,
+        changeHero,
         syncQuery,
         searchCard,
         changePage,
@@ -40,12 +40,12 @@ export default class Index extends Component<IndexProps> {
       <div>
         <HeroFilter
           hero={hero}
-          onChange={syncHero}
+          onChange={(hero) => changeHero(hero, query)}
         />
         <SearchForm
           query={query}
           onChange={syncQuery}
-          searchCard={searchCard.bind(null, query)}
+          searchCard={searchCard.bind(null, hero, query)}
         />
         {page.prev &&
           <PrevPageLink onClick={() => changePage(hero, query, page.prev || 0)} />
