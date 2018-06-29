@@ -96,6 +96,7 @@ export default handleActions({
       hero: payload.hero,
       page: payload.page,
       cards: payload.cards,
+      deck: [],
     };
   },
   [SYNC_QUERY]: (state, {payload}): State => {

@@ -59,14 +59,14 @@ export default class Index extends Component<IndexProps> {
           onChange={syncQuery}
           searchCard={searchCard.bind(null, hero, query)}
         />
-        {page.prev &&
-          <PrevPageLink onClick={() => changePage(hero, query, page.prev || 0)} />
-        }
-        {page.next &&
-          <NextPageLink onClick={() => changePage(hero, query, page.next || 0)} />
-        }
         <div className={styles.cardDeckContainer}>
+          {page.prev &&
+            <PrevPageLink onClick={() => changePage(hero, query, page.prev || 0)} />
+          }
           <CardList cards={cards} pickCard={pickCard} />
+          {page.next &&
+            <NextPageLink onClick={() => changePage(hero, query, page.next || 0)} />
+          }
           <Deck deck={deck} unpickCard={unpickCard} />
         </div>
         <EncodeString hero={hero} deck={deck} />
