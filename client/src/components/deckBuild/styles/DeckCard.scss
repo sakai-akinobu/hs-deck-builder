@@ -2,22 +2,26 @@
   position: relative;
   display: flex;
   align-items: center;
-  padding: 8px;
+  padding-left: 8px;
   width: 200px;
-  height: 40px;
+  height: 36px;
   font-size: 12px;
   background-size: 100%;
   background-position: center;
   background-repeat: no-repeat;
   color: white;
+  cursor: pointer;
 }
 
 .name {
-  flex: 0 0 auto;
+  flex: 1 1 auto;
   text-shadow: 1px 1px 2px #333, -1px -1px 2px #333;
 }
 
 .count {
-  flex: 1 1 auto;
+  flex: 0 0 10px;
   text-align: right;
+  background: #000;
+  color: yellow;
+  padding: 0 2px;
 }

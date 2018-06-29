@@ -17,7 +17,9 @@ export default function DeckCard({deckCard, onClick}: DeckCardProps) {
       style={{backgroundImage: `url(https://art.hearthstonejson.com/v1/tiles/${deckCard.card.cid}.png)`}}
     >
       <div className={styles.name}>{deckCard.card.name}</div>
-      <div className={styles.count}><span>{deckCard.count}</span></div>
+      {deckCard.count > 1 &&
+        <div className={styles.count}><span>{deckCard.count}</span></div>
+      }
     </div>
   );
 }
