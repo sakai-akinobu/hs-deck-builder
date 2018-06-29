@@ -4,6 +4,7 @@ import {Provider} from 'react-redux';
 
 import {getRoute} from '../routes';
 import createStore from './createStore';
+import '../utils/styles/index.scss';
 
 const store = createStore();
 const route = getRoute();

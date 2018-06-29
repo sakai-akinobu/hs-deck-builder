@@ -1,0 +1,23 @@
+.container {
+  position: relative;
+  font-size: 12px;
+}
+
+.tile {
+  width: 160px;
+}
+
+.name {
+  position: absolute;
+  top: 12px;
+  left: 4px;
+  color: white;
+  text-shadow: 1px 1px 2px #333, -1px -1px 2px #333;
+}
+
+.count {
+  position: absolute;
+  top: 12px;
+  right: 8px;
+  color: white;
+}

@@ -14,6 +14,7 @@ import PrevPageLink from './PrevPageLink';
 import NextPageLink from './NextPageLink';
 import Deck from './Deck';
 import EncodeString from './EncodeString';
+import styles from './styles/index.scss';
 
 export type IndexProps = {
   deckBuild: State,
@@ -58,14 +59,16 @@ export default class Index extends Component<IndexProps> {
           onChange={syncQuery}
           searchCard={searchCard.bind(null, hero, query)}
         />
-        {page.prev &&
-          <PrevPageLink onClick={() => changePage(hero, query, page.prev || 0)} />
-        }
-        {page.next &&
-          <NextPageLink onClick={() => changePage(hero, query, page.next || 0)} />
-        }
-        <CardList cards={cards} pickCard={pickCard} />
-        <Deck deck={deck} unpickCard={unpickCard} />
+        <div className={styles.cardDeckContainer}>
+          {page.prev &&
+            <PrevPageLink onClick={() => changePage(hero, query, page.prev || 0)} />
+          }
+          <CardList cards={cards} pickCard={pickCard} />
+          {page.next &&
+            <NextPageLink onClick={() => changePage(hero, query, page.next || 0)} />
+          }
+          <Deck deck={deck} unpickCard={unpickCard} />
+        </div>
         <EncodeString hero={hero} deck={deck} />
       </div>
     );

@@ -1,5 +1,8 @@
 // @flow
 import React from 'react';
+import FaArrowRight from 'react-icons/lib/fa/arrow-right';
+
+import styles from './styles/NextPageLink.scss';
 
 type NextPageLinkProps = {
   onClick: () => any,
@@ -7,6 +10,8 @@ type NextPageLinkProps = {
 
 export default function NextPageLink({onClick}: NextPageLinkProps) {
   return (
-    <span onClick={onClick}>next</span>
+    <div onClick={onClick} className={styles.container}>
+      <FaArrowRight className={styles.arrow} />
+    </div>
   );
 }
