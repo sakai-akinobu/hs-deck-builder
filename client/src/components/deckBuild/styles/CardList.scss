@@ -1,5 +1,6 @@
 .container {
   display: flex;
   flex-wrap: wrap;
-  max-width: 800px;
+  width: 800px;
+  flex: 0 0 800px;
 }

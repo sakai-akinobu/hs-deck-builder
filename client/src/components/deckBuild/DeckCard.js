@@ -11,10 +11,13 @@ type DeckCardProps = {
 
 export default function DeckCard({deckCard, onClick}: DeckCardProps) {
   return (
-    <div onClick={onClick} className={styles.container}>
-      <img src={`https://art.hearthstonejson.com/v1/tiles/${deckCard.card.cid}.png`} className={styles.tile} />
-      <span className={styles.name}>{deckCard.card.name}</span>
-      <span className={styles.count}>{deckCard.count}</span>
+    <div
+      onClick={onClick}
+      className={styles.container}
+      style={{backgroundImage: `url(https://art.hearthstonejson.com/v1/tiles/${deckCard.card.cid}.png)`}}
+    >
+      <div className={styles.name}>{deckCard.card.name}</div>
+      <div className={styles.count}><span>{deckCard.count}</span></div>
     </div>
   );
 }
