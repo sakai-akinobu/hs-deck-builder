@@ -1,0 +1,92 @@
+.backdrop {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.5);
+
+  .modal {
+    position: relative;
+    width: auto;
+    max-width: 500px;
+    margin: 30px auto;
+
+    > .content {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      border: solid 1px #3b3c3e;
+      background: #fff;
+      border-radius: 4px;
+      box-shadow: rgba(0, 0, 0, 0.25) 0 14px 45px, rgba(0, 0, 0, 0.25) 0 10px 18px;
+    }
+  }
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px;
+  background: #3b3c3e;
+
+  > .title {
+    font-size: 19px;
+    font-weight: bold;
+  }
+
+  > .closeButton {
+    cursor: pointer;
+  }
+}
+
+.body {
+  position: relative;
+  flex: 1 1 auto;
+  padding: 15px;
+  color: #575757;
+}
+
+.footer {
+  > .separator {
+    margin: 0 12px;
+  }
+
+  > .content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 15px;
+  }
+}
+
+.encodeString {
+  display: block;
+  width: 100%;
+  margin: 0 auto;
+  border: 1px solid #ced4da;
+  border-radius: .25rem;
+}
+
+.copyButton {
+  display: inline-block;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  user-select: none;
+  border: 1px solid transparent;
+  padding: .375rem .75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  border-radius: .25rem;
+
+  color: #fff;
+  background-color: #6c757d;
+  border-color: #6c757d;
+}
+
+.copyIcon {
+  font-size: 28px;
+}

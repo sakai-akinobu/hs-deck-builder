@@ -13,8 +13,6 @@ import CardList from './CardList';
 import PrevPageLink from './PrevPageLink';
 import NextPageLink from './NextPageLink';
 import Deck from './Deck';
-import EncodeString from './EncodeString';
-import ManaCurve from './ManaCurve';
 import styles from './styles/index.scss';
 
 export type IndexProps = {
@@ -72,9 +70,8 @@ export default class Index extends Component<IndexProps> {
               <NextPageLink onClick={() => changePage(hero, query, page.next || 0)} />
             }
           </div>
-          <Deck deck={deck} unpickCard={unpickCard} />
+          <Deck hero={hero} deck={deck} unpickCard={unpickCard} />
         </div>
-        <EncodeString hero={hero} deck={deck} />
       </div>
     );
   }
