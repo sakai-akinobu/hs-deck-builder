@@ -48,16 +48,18 @@ export default class Index extends Component<IndexProps> {
     } = this.props;
 
     return (
-      <div>
-        <HeroFilter
-          hero={hero}
-          onChange={(hero) => changeHero(hero, query)}
-        />
-        <SearchForm
-          query={query}
-          onChange={syncQuery}
-          searchCard={searchCard.bind(null, hero, query)}
-        />
+      <div className={styles.pageContainer}>
+        <div className={styles.filterContainer}>
+          <HeroFilter
+            hero={hero}
+            onChange={(hero) => changeHero(hero, query)}
+          />
+          <SearchForm
+            query={query}
+            onChange={syncQuery}
+            searchCard={searchCard.bind(null, hero, query)}
+          />
+        </div>
         <div className={styles.cardDeckContainer}>
           <div className={styles.pageLinkContainer}>
             {page.prev &&
