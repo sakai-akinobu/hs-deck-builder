@@ -34,7 +34,9 @@ export default function ManaCurve({deck}: ManaCurveProps) {
         scaleY = Math.min(scaleY, 1.0);
         return (
           <div key={index} className={styles.column}>
-            <div className={styles.bar} style={{transform: `scaleY(${scaleY})`}} />
+            <div className={styles.barContainer}>
+              <div className={styles.bar} style={{transform: `scaleY(${scaleY})`}} />
+            </div>
             <div>{manaCurve.count}</div>
             <div>{manaCurve.label}</div>
           </div>

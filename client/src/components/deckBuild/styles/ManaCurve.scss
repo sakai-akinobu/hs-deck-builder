@@ -12,11 +12,17 @@
   padding-right: 2px;
 }
 
-.bar {
+.barContainer {
   width: 20px;
   height: 80px;
-  background-color: #fff;
-  transform: scaleY(0);
-  transform-origin: bottom;
-  transition: transform .25s;
+  background: #333;
+
+  .bar {
+    width: 20px;
+    height: 80px;
+    background: #fff;
+    transform: scaleY(0);
+    transform-origin: bottom;
+    transition: transform .25s;
+  }
 }
