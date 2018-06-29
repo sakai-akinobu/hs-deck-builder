@@ -2,6 +2,7 @@
 import React from 'react';
 
 import DeckCard from './DeckCard';
+import ManaCurve from './ManaCurve';
 import CardCounter from './CardCounter';
 import type {DeckCard as DeckCardType} from '../../reducers/deckBuild/types';
 
@@ -14,6 +15,7 @@ export default function Deck({deck, unpickCard}: DeckProps) {
   const cardCount = deck.reduce((cnt, deckCard) => cnt + deckCard.count, 0);
   return (
     <div>
+      <ManaCurve deck={deck} />
       <CardCounter count={cardCount} />
       {deck.map((deckCard, index) => (
         <DeckCard key={index} deckCard={deckCard} onClick={() => unpickCard(deckCard)} />

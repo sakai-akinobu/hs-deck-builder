@@ -14,6 +14,7 @@ import PrevPageLink from './PrevPageLink';
 import NextPageLink from './NextPageLink';
 import Deck from './Deck';
 import EncodeString from './EncodeString';
+import ManaCurve from './ManaCurve';
 import styles from './styles/index.scss';
 
 export type IndexProps = {

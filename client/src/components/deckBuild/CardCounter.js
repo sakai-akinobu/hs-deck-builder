@@ -7,6 +7,6 @@ type CardCounterProps = {
 
 export default function CardCounter({count}: CardCounterProps) {
   return (
-    <div>{count}/30</div>
+    <div>{count}/30枚</div>
   );
 }
