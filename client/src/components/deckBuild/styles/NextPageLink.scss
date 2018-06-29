@@ -1,8 +1,15 @@
 .container {
   display: flex;
-  align-items: center;
 }
 
 .arrow {
+  position: absolute;
+  top: 320px;
   font-size: 50px;
+  transition: color .25s;
+  cursor: pointer;
+
+  &:hover {
+    color: #ffcc80;
+  }
 }

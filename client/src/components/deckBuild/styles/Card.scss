@@ -1,3 +1,9 @@
 .card {
   max-width: 200px;
+  transition: transform .25s;
+  cursor: pointer;
+
+  &:hover {
+    transform: scale(1.05);
+  }
 }
