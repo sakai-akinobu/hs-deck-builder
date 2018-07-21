@@ -18,8 +18,8 @@ export type DeckBuildAction =
   ;
 
 export type Card = {|
-  cid: string,
-  dbf_id: string,
+  id: string,
+  dbfId: string,
   name: string,
   cost: string,
   rarity: string,

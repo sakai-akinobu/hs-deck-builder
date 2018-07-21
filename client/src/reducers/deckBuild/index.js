@@ -17,6 +17,10 @@ export const CHANGE_PAGE = 'hs-deck-builder/deckBuild/CHANGE_PAGE';
 export const PICK_CARD = 'hs-deck-builder/deckBuild/PICK_CARD';
 export const UNPICK_CARD = 'hs-deck-builder/deckBuild/UNPICK_CARD';
 
+const api = axios.create({
+  baseURL: 'http://localhost:3000',
+});
+
 function createInitialState(): State {
   return {
     format: 'standard',
@@ -38,7 +42,7 @@ export async function init(): Promise<ActionCreatorResult> {
   const params = {
     'class': 'DRUID',
   };
-  const {data} = await axios.get('/api/v1/cards', {params});
+  const {data} = await api.get('/api/v1/cards', {params});
   return createAction(INIT)(data);
 }
 
@@ -47,7 +51,7 @@ export async function changeHero(hero: string, query: string): ActionCreatorResu
     'class': hero,
     query,
   };
-  const {data} = await axios.get('/api/v1/cards', {params});
+  const {data} = await api.get('/api/v1/cards', {params});
   return createAction(CHANGE_HERO)({hero, ...data});
 }
 
@@ -60,7 +64,7 @@ export async function searchCard(hero: string, query: string): ActionCreatorResu
     'class': hero,
     query,
   };
-  const {data} = await axios.get('/api/v1/cards', {params});
+  const {data} = await api.get('/api/v1/cards', {params});
   return createAction(SEARCH_CARD)(data);
 }
 
@@ -70,7 +74,7 @@ export async function changePage(hero: string, query: string, page: number): Act
     query,
     page,
   };
-  const {data} = await axios.get('/api/v1/cards', {params});
+  const {data} = await api.get('/api/v1/cards', {params});
   return createAction(CHANGE_PAGE)(data);
 }
 
@@ -121,7 +125,7 @@ export default handleActions({
   },
   [PICK_CARD]: (state, {payload}): State => {
     const pickedCard: CardType = payload.card;
-    const pickedDeckCard: ?DeckCardType = state.deck.find((deckCard) => deckCard.card.cid === pickedCard.cid);
+    const pickedDeckCard: ?DeckCardType = state.deck.find((deckCard) => deckCard.card.id === pickedCard.id);
 
     const MAX_CARD_COUNT_IN_DECK = 30;
     const MAX_CARD_COUNT = 2;

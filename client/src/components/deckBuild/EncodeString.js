@@ -62,7 +62,7 @@ export default class EncodeString extends React.Component<EncodeStringProps, Enc
   render() {
     const {hero, deck} = this.props;
     const encodeString: string = encode({
-      cards: deck.map((deckCard) => [deckCard.card.dbf_id, deckCard.count]),
+      cards: deck.map((deckCard) => [deckCard.card.dbfId, deckCard.count]),
       heroes: [HERO_TO_DBF_ID_MAP[hero]],
       format: 2,
     });

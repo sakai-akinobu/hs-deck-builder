@@ -12,7 +12,7 @@ type CardProps = {
 export default function Card({card, onClick}: CardProps) {
   return (
     <img
-      src={`https://art.hearthstonejson.com/v1/render/latest/jaJP/256x/${card.cid}.png`}
+      src={`https://art.hearthstonejson.com/v1/render/latest/jaJP/256x/${card.id}.png`}
       onClick={onClick}
       className={styles.card}
     />

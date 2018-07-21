@@ -2,6 +2,8 @@ const express = require('express');
 const request = require('request');
 const url = require('url');
 
+const NEUTRAL_CARD_CLASS = 'NEUTRAL';
+
 const CARD_JSON_URL = 'https://api.hearthstonejson.com/v1/latest/jaJP/cards.collectible.json';
 request(CARD_JSON_URL, (error, response, body) => {
   const cards = JSON.parse(body);
@@ -9,7 +11,14 @@ request(CARD_JSON_URL, (error, response, body) => {
   const app = express();
   app.listen(3000);
 
-  app.get('/api/card', (req, res) => {
+  app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+    res.header('Content-Type', 'application/json');
+    next();
+  });
+
+  app.get('/api/v1/cards', (req, res) => {
     const {query} = url.parse(req.url, true);
 
     let filteredCards = cards;
@@ -32,7 +41,7 @@ request(CARD_JSON_URL, (error, response, body) => {
     // class
     if (query.class) {
       filteredCards = filteredCards.filter((card) => {
-        return card.cardClass === 'NEUTRAL' || card.cardClass === query.class;
+        return card.cardClass === NEUTRAL_CARD_CLASS || card.cardClass === query.class;
       });
     }
     // cost
@@ -50,16 +59,16 @@ request(CARD_JSON_URL, (error, response, body) => {
 
     // order
     filteredCards = filteredCards.sort((a, b) => {
-      if (a.cardClass === 'NEUTRAL' && b.cardClass === 'NEUTRAL') {
-        return a.cost > b.cost;
+      if (a.cardClass === NEUTRAL_CARD_CLASS && b.cardClass === NEUTRAL_CARD_CLASS) {
+        return a.cost < b.cost ? -1 : 1;
       }
-      if (a.cardClass === 'NEUTRAL') {
+      if (a.cardClass === NEUTRAL_CARD_CLASS) {
         return 1;
       }
-      if (b.cardClass === 'NEUTRAL') {
+      if (b.cardClass === NEUTRAL_CARD_CLASS) {
         return -1;
       }
-      return a.cost > b.cost;
+      return a.cost < b.cost ? -1 : 1;
     });
 
     // paging
