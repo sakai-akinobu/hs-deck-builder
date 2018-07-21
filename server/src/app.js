@@ -1,12 +1,12 @@
 const express = require('express');
-const request = require('request');
+const axios = require('axios');
 const url = require('url');
 
 const NEUTRAL_CARD_CLASS = 'NEUTRAL';
 
 const CARD_JSON_URL = 'https://api.hearthstonejson.com/v1/latest/jaJP/cards.collectible.json';
-request(CARD_JSON_URL, (error, response, body) => {
-  const cards = JSON.parse(body);
+axios.get(CARD_JSON_URL).then(({data}) => {
+  const cards = data;
 
   const app = express();
   app.listen(3000);

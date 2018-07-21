@@ -74,7 +74,6 @@
     "redux-devtools": "^3.4.1",
     "redux-devtools-extension": "^2.13.5",
     "redux-promise": "^0.6.0",
-    "redux-thunk": "^2.3.0",
-    "request": "^2.87.0"
+    "redux-thunk": "^2.3.0"
   }
 }
