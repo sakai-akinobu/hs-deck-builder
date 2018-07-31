@@ -147,10 +147,10 @@ export default handleActions({
     };
   },
   [UNPICK_CARD]: (state, {payload}): State => {
-    const pickedDeckCard: DeckCardType = state.deck.find((deckCard) => deckCard.card.cid === payload.deckCard.card.cid);
+    const pickedDeckCard: DeckCardType = state.deck.find((deckCard) => deckCard.card.id === payload.deckCard.card.id);
     pickedDeckCard.count--;
     if (pickedDeckCard.count === 0) {
-      state.deck = state.deck.filter((deckCard) => deckCard.card.cid !== payload.deckCard.card.cid);
+      state.deck = state.deck.filter((deckCard) => deckCard.card.id !== payload.deckCard.card.id);
     }
     return {
       ...state,
