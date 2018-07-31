@@ -6,9 +6,9 @@
 
 .column {
   display: flex;
+  flex: 0 0 26px;
   flex-direction: column;
   align-items: center;
-  flex: 0 0 26px;
   padding-right: 2px;
 }
 
@@ -23,6 +23,6 @@
     background: #fff;
     transform: scaleY(0);
     transform-origin: bottom;
-    transition: transform .25s;
+    transition: transform 0.25s;
   }
 }

@@ -1,17 +1,17 @@
 .container {
   position: relative;
   display: flex;
+  width: 200px;
+  height: 36px;
   align-items: center;
   padding-left: 8px;
   margin: 4px 0;
-  width: 200px;
-  height: 36px;
-  font-size: 12px;
-  background-size: 100%;
   background-position: center;
   background-repeat: no-repeat;
+  background-size: 100%;
   color: white;
   cursor: pointer;
+  font-size: 12px;
 }
 
 .name {
@@ -21,8 +21,8 @@
 
 .count {
   flex: 0 0 10px;
-  text-align: center;
+  padding: 0 2px;
   background: #000;
   color: yellow;
-  padding: 0 2px;
+  text-align: center;
 }
