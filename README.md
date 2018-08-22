@@ -5,7 +5,7 @@ hs-deck-builder is a deck builder for Hearthstone.
 
 ## Requirements
 
-- node 6.8.0
+- Node.js >= 8.0
 
 ## How to use
 
