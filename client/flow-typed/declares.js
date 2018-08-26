@@ -13,3 +13,7 @@ declare module CSSModule {
 declare module 'deckstrings' {
   declare module.exports: any;
 }
+
+declare module 'immer' {
+  declare module.exports: any;
+}

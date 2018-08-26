@@ -1,6 +1,7 @@
 // @flow
 import {createAction, handleActions} from '../../utils/redux';
 import axios from 'axios';
+import immer from 'immer';
 
 import type {ActionCreatorResult} from '../../types';
 import type {
@@ -124,36 +125,33 @@ export default handleActions({
     };
   },
   [PICK_CARD]: (state, {payload}): State => {
-    const pickedCard: CardType = payload.card;
-    const pickedDeckCard: ?DeckCardType = state.deck.find((deckCard) => deckCard.card.id === pickedCard.id);
-
     const MAX_CARD_COUNT_IN_DECK = 30;
     const MAX_CARD_COUNT = 2;
 
-    const maxCount = state.deck.reduce((cnt, deckCard) => cnt + deckCard.count, 0);
+    return immer(state, state => {
+      const pickedCard: CardType = payload.card;
+      const pickedDeckCard: ?DeckCardType = state.deck.find((deckCard) => deckCard.card.id === pickedCard.id);
 
-    if (maxCount < MAX_CARD_COUNT_IN_DECK) {
-      if (pickedDeckCard) {
-        if (pickedDeckCard.count < MAX_CARD_COUNT && pickedDeckCard.card.rarity !== 'LEGENDARY') {
-          pickedDeckCard.count++;
+      const maxCount = state.deck.reduce((cnt, deckCard) => cnt + deckCard.count, 0);
+
+      if (maxCount < MAX_CARD_COUNT_IN_DECK) {
+        if (pickedDeckCard) {
+          if (pickedDeckCard.count < MAX_CARD_COUNT && pickedDeckCard.card.rarity !== 'LEGENDARY') {
+            pickedDeckCard.count++;
+          }
+        } else {
+          state.deck.push({card: pickedCard, count: 1});
         }
-      } else {
-        state.deck.push({card: pickedCard, count: 1});
       }
-    }
-
-    return {
-      ...state,
-    };
+    });
   },
   [UNPICK_CARD]: (state, {payload}): State => {
-    const pickedDeckCard: DeckCardType = state.deck.find((deckCard) => deckCard.card.id === payload.deckCard.card.id);
-    pickedDeckCard.count--;
-    if (pickedDeckCard.count === 0) {
-      state.deck = state.deck.filter((deckCard) => deckCard.card.id !== payload.deckCard.card.id);
-    }
-    return {
-      ...state,
-    };
+    return immer(state, state => {
+      const pickedDeckCard: DeckCardType = state.deck.find((deckCard) => deckCard.card.id === payload.deckCard.card.id);
+      pickedDeckCard.count--;
+      if (pickedDeckCard.count === 0) {
+        state.deck = state.deck.filter((deckCard) => deckCard.card.id !== payload.deckCard.card.id);
+      }
+    });
   },
 }, createInitialState());
