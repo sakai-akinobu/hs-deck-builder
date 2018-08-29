@@ -23,6 +23,7 @@ router.get('/cards', (req, res) => {
   // exclude Wild cards
   filteredCards = filteredCards.filter((card) => {
     return [
+      'BOOMSDAY',
       'GILNEAS',
       'LOOTAPALOOZA',
       'ICECROWN',
