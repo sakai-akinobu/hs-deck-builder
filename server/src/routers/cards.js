@@ -1,6 +1,7 @@
 const express = require('express');
 const url = require('url');
 const axios = require('axios');
+const sets = require('hs-standard-sets').sets;
 
 const CARD_JSON_URL = 'https://api.hearthstonejson.com/v1/latest/jaJP/cards.collectible.json';
 
@@ -21,16 +22,9 @@ router.get('/cards', (req, res) => {
   filteredCards = filteredCards.filter((card) => card.type !== 'HERO');
 
   // exclude Wild cards
+  const standardSets = sets();
   filteredCards = filteredCards.filter((card) => {
-    return [
-      'BOOMSDAY',
-      'GILNEAS',
-      'LOOTAPALOOZA',
-      'ICECROWN',
-      'UNGORO',
-      'CORE',
-      'EXPERT1',
-    ].some((set) => card.set === set);
+    return standardSets.includes(card.set);
   });
 
   // class
