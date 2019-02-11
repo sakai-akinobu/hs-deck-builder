@@ -9,10 +9,20 @@ export const createBaseConfig = () => ({
     app: ['./client/src/app/index.js'],
   },
   resolve: {
-    extensions: ['.js', '.scss'],
+    extensions: [
+      '.ts',
+      '.tsx',
+      '.js',
+      '.scss',
+    ],
   },
   module: {
     rules: [
+      {
+        test: /\.tsx?$/,
+        exclude: /node_modules/,
+        loader: 'ts-loader',
+      },
       {
         test: /\.js$/,
         exclude: /node_modules/,
