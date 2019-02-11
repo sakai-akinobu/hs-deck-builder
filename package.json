@@ -85,7 +85,7 @@
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
     "react-icons": "^2.2.7",
-    "react-redux": "^5.0.7",
+    "react-redux": "^6.0.0",
     "redux": "^4.0.0",
     "redux-actions": "^2.4.0",
     "redux-devtools": "^3.4.1",
