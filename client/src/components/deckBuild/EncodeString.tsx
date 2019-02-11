@@ -1,19 +1,17 @@
-// @flow
-import React from 'react';
-import ReactDOM from 'react-dom';
+import * as React from 'react';
+import * as ReactDOM from 'react-dom';
 import {encode} from 'deckstrings';
-import FaClose from 'react-icons/lib/fa/close';
-import FaCopy from 'react-icons/lib/fa/copy';
+import {FaClose, FaCopy} from 'react-icons/lib/fa';
 
-import type {DeckCard as DeckCardType} from '../../reducers/deckBuild/types';
+import {DeckCard as DeckCardType} from '../../reducers/deckBuild/types';
 import styles from './styles/EncodeString.scss';
 
-type EncodeStringProps = {
+interface EncodeStringProps {
   hero: string,
   deck: DeckCardType[],
 };
 
-type EncodeStringState = {
+interface EncodeStringState {
   isOpen: boolean,
 };
 
@@ -33,8 +31,8 @@ export default class EncodeString extends React.Component<EncodeStringProps, Enc
 
   encodeStringRef: any;
 
-  constructor() {
-    super();
+  constructor(props: EncodeStringProps) {
+    super(props);
 
     this.state = {
       isOpen: false,
