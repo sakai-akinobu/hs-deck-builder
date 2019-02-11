@@ -1,10 +1,9 @@
-// @flow
-import React from 'react';
+import * as React from 'react';
 
 import styles from './styles/ManaCurve.scss';
-import type {DeckCard} from '../../reducers/deckBuild/types';
+import {DeckCard} from '../../reducers/deckBuild/types';
 
-type ManaCurveProps = {
+interface ManaCurveProps {
   deck: DeckCard[],
 };
 
