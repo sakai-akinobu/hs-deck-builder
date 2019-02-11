@@ -1,9 +1,8 @@
-// @flow
-import React from 'react';
+import * as React from 'react';
 
-type CardCounterProps = {
+interface CardCounterProps {
   count: number,
-};
+}
 
 export default function CardCounter({count}: CardCounterProps) {
   return (
