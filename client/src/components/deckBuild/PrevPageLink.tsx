@@ -1,12 +1,11 @@
-// @flow
-import React from 'react';
-import FaArrowLeft from 'react-icons/lib/fa/arrow-left';
+import * as React from 'react';
+import {FaArrowLeft} from 'react-icons/lib/fa';
 
 import styles from './styles/PrevPageLink.scss';
 
-type PrevPageLinkProps = {
+interface PrevPageLinkProps {
   onClick: () => any,
-};
+}
 
 export default function PrevPageLink({onClick}: PrevPageLinkProps) {
   return (
