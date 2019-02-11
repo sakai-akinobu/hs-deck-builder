@@ -1,8 +1,7 @@
-// @flow
-import React from 'react';
+import * as React from 'react';
 import {Component} from 'react';
 
-import type {
+import {
   Card as CardType,
   DeckCard as DeckCardType,
   DeckBuildState as State,
@@ -15,15 +14,15 @@ import NextPageLink from './NextPageLink';
 import Deck from './Deck';
 import styles from './styles/index.scss';
 
-export type IndexProps = {
+export interface IndexProps {
   deckBuild: State,
   actions: {
-    changeHero: (string, string) => any,
-    syncQuery: (string) => any,
-    searchCard: (string, string) => any,
-    changePage: (string, string, number) => any,
-    pickCard: (CardType) => any,
-    unpickCard: (DeckCardType) => any,
+    changeHero: (hero: string, query: string) => any,
+    syncQuery: (query: string) => any,
+    searchCard: (hero: string, query: string) => any,
+    changePage: (hero: string, query: string, page: number) => any,
+    pickCard: (cardType: CardType) => any,
+    unpickCard: (deckCardType: DeckCardType) => any,
   },
 };
 
