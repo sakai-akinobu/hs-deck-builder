@@ -1,16 +1,15 @@
-// @flow
-import React from 'react';
+import * as React from 'react';
 
 import DeckCard from './DeckCard';
 import ManaCurve from './ManaCurve';
 import CardCounter from './CardCounter';
 import EncodeString from './EncodeString';
-import type {DeckCard as DeckCardType} from '../../reducers/deckBuild/types';
+import {DeckCard as DeckCardType} from '../../reducers/deckBuild/types';
 
-type DeckProps = {
+interface DeckProps {
   hero: string,
   deck: DeckCardType[],
-  unpickCard: (DeckCardType) => any,
+  unpickCard: (deckCardType: DeckCardType) => any,
 };
 
 export default function Deck({hero, deck, unpickCard}: DeckProps) {
