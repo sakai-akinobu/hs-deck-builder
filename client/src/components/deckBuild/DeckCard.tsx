@@ -1,10 +1,9 @@
-// @flow
-import React from 'react';
+import * as React from 'react';
 
-import type {DeckCard as DeckCardType} from '../../reducers/deckBuild/types';
+import {DeckCard as DeckCardType} from '../../reducers/deckBuild/types';
 import styles from './styles/DeckCard.scss';
 
-type DeckCardProps = {
+interface DeckCardProps {
   deckCard: DeckCardType,
   onClick: () => any,
 };
