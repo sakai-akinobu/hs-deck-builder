@@ -1,17 +1,16 @@
-// @flow
-import React from 'react';
+import * as React from 'react';
 
 import styles from './styles/SearchForm.scss';
 
-type SearchFormProps = {
+interface SearchFormProps {
   query: string,
-  onChange: (string) => any,
+  onChange: (value: string) => any,
   searchCard: () => any,
-};
+}
 
 export default class SearchForm extends React.Component<SearchFormProps> {
 
-  handleSubmit = (e: SyntheticEvent<>) => {
+  handleSubmit = (e: React.SyntheticEvent<HTMLFormElement>) => {
     e.preventDefault();
     this.props.searchCard();
   }
