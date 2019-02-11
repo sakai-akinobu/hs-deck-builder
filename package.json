@@ -4,6 +4,7 @@
   "description": "hs-deck-builder ---",
   "main": "index.js",
   "scripts": {
+    "compile": "$(npm bin)/tsc --noEmit",
     "dev": "$(npm bin)/babel-node $(npm bin)/webpack-dev-server --config ./client/webpack/dev.config.js",
     "server": "node ./server/src/app.js",
     "test": "echo \"Error: no test specified\" && exit 1",
