@@ -1,6 +1,6 @@
 {
   "presets": [
-    ["env", {
+    ["@babel/preset-env", {
       "targets": {
         "browsers": [
           "chrome 57",
@@ -15,14 +15,15 @@
         ]
       }
     }],
-    "react",
+    "@babel/preset-react",
+    "@babel/preset-flow",
     "babel-preset-power-assert"
   ],
   "plugins": [
-    "syntax-jsx",
-    "transform-runtime",
-    "transform-react-jsx",
-    "transform-class-properties",
-    "transform-object-rest-spread"
+    "@babel/plugin-syntax-jsx",
+    "@babel/plugin-transform-runtime",
+    "@babel/plugin-transform-react-jsx",
+    "@babel/plugin-proposal-class-properties",
+    "@babel/plugin-proposal-object-rest-spread"
   ]
 }
