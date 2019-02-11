@@ -12,8 +12,7 @@
     "lint:fix": "$(npm bin)/eslint 'client/src/**/*.js' --fix",
     "stylelint": "$(npm bin)/stylelint 'client/src/**/*.scss'",
     "stylelint:fix": "$(npm bin)/stylelint 'client/src/**/*.scss' --fix",
-    "stylefmt": "$(npm bin)/stylefmt -r 'client/src/**/*.scss'",
-    "flow": "$(npm bin)/flow"
+    "stylefmt": "$(npm bin)/stylefmt -r 'client/src/**/*.scss'"
   },
   "repository": {
     "type": "git",
@@ -56,8 +55,6 @@
     "eslint-plugin-import": "^2.13.0",
     "eslint-plugin-react": "^7.10.0",
     "extract-text-webpack-plugin": "^4.0.0-beta.0",
-    "flow-bin": "^0.75.0",
-    "flow-typed": "^2.5.1",
     "node-sass": "^4.9.2",
     "postcss-loader": "^2.1.6",
     "sass-loader": "^7.0.3",
