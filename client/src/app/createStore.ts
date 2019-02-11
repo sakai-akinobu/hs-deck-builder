@@ -17,9 +17,9 @@ export default function createStore() {
     if (typeof window === 'object' && window.__REDUX_DEVTOOLS_EXTENSION__) {
       enhancers.push(window.__REDUX_DEVTOOLS_EXTENSION__());
     }
-    finalCreateStore = compose(...enhancers)(_createStore);
+    finalCreateStore = compose<any>(...enhancers)(_createStore);
   } else {
-    finalCreateStore = compose(applyMiddleware(...middlewares))(_createStore);
+    finalCreateStore = compose<any>(applyMiddleware(...middlewares))(_createStore);
   }
 
   return finalCreateStore(reducers, {});
