@@ -1,12 +1,11 @@
-// @flow
-import React from 'react';
+import * as React from 'react';
 
 import styles from './styles/HeroFilter.scss';
 
-type HeroFilterProps = {
+interface HeroFilterProps {
   hero: string,
-  onChange: (string) => any,
-};
+  onChange: (value: string) => any,
+}
 
 const HEROS = [
   'DRUID',
