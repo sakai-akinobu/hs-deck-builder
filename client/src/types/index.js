@@ -17,7 +17,6 @@ export type Store = ReduxStore<State, Dispatch, DispatchAction>;
 
 // Support redux-promise, redux-array
 export type PromiseAction = Promise<DispatchAction>;
-export type ArrayAction = Array<DispatchAction>;
-export type DispatchAction = Actions | ArrayAction | PromiseAction;
+export type DispatchAction = Actions | PromiseAction;
 export type Dispatch = (action: DispatchAction) => Promise<DispatchAction>;
 export type ActionCreatorResult = DispatchAction;
