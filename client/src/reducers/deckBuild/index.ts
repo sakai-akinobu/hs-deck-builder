@@ -1,10 +1,9 @@
-// @flow
 import {createAction, handleActions} from '../../utils/redux';
 import axios from 'axios';
 import immer from 'immer';
 
-import type {ActionCreatorResult} from '../../types';
-import type {
+import {ActionCreatorResult} from '../../types';
+import {
   Card as CardType,
   DeckBuildState as State,
   DeckCard as DeckCardType,
@@ -87,15 +86,15 @@ export function unpickCard(deckCard: DeckCardType): ActionCreatorResult {
   return createAction(UNPICK_CARD)({deckCard});
 }
 
-export default handleActions({
-  [INIT]: (state, {payload}): State => {
+export default handleActions<State>({
+  [INIT]: (state, {payload}: any): State => {
     return {
       ...state,
       page: payload.page,
       cards: payload.cards,
     };
   },
-  [CHANGE_HERO]: (state, {payload}): State => {
+  [CHANGE_HERO]: (state, {payload}: any): State => {
     return {
       ...state,
       hero: payload.hero,
@@ -104,33 +103,33 @@ export default handleActions({
       deck: [],
     };
   },
-  [SYNC_QUERY]: (state, {payload}): State => {
+  [SYNC_QUERY]: (state, {payload}: any): State => {
     return {
       ...state,
       query: payload.query,
     };
   },
-  [SEARCH_CARD]: (state, {payload}): State => {
+  [SEARCH_CARD]: (state, {payload}: any): State => {
     return {
       ...state,
       page: payload.page,
       cards: payload.cards,
     };
   },
-  [CHANGE_PAGE]: (state, {payload}): State => {
+  [CHANGE_PAGE]: (state, {payload}: any): State => {
     return {
       ...state,
       page: payload.page,
       cards: payload.cards,
     };
   },
-  [PICK_CARD]: (state, {payload}): State => {
+  [PICK_CARD]: (state, {payload}: any): State => {
     const MAX_CARD_COUNT_IN_DECK = 30;
     const MAX_CARD_COUNT = 2;
 
     return immer(state, state => {
-      const pickedCard: CardType = payload.card;
-      const pickedDeckCard: ?DeckCardType = state.deck.find((deckCard) => deckCard.card.id === pickedCard.id);
+      const pickedCard: CardType = payload!.card;
+      const pickedDeckCard = state.deck.find((deckCard) => deckCard.card.id === pickedCard.id);
 
       const maxCount = state.deck.reduce((cnt, deckCard) => cnt + deckCard.count, 0);
 
@@ -145,12 +144,14 @@ export default handleActions({
       }
     });
   },
-  [UNPICK_CARD]: (state, {payload}): State => {
+  [UNPICK_CARD]: (state, {payload}: any): State => {
     return immer(state, state => {
-      const pickedDeckCard: DeckCardType = state.deck.find((deckCard) => deckCard.card.id === payload.deckCard.card.id);
-      pickedDeckCard.count--;
-      if (pickedDeckCard.count === 0) {
-        state.deck = state.deck.filter((deckCard) => deckCard.card.id !== payload.deckCard.card.id);
+      const pickedDeckCard = state.deck.find((deckCard) => deckCard.card.id === payload.deckCard.card.id);
+      if (pickedDeckCard) {
+        pickedDeckCard.count--;
+        if (pickedDeckCard.count === 0) {
+          state.deck = state.deck.filter((deckCard) => deckCard.card.id !== payload.deckCard.card.id);
+        }
       }
     });
   },
