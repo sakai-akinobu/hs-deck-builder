@@ -6,13 +6,23 @@ const browsers = babelrc.presets.find(preset => preset[0] === '@babel/preset-env
 
 export const createBaseConfig = () => ({
   entry: {
-    app: ['./client/src/app/index.js'],
+    app: ['./client/src/app/index.tsx'],
   },
   resolve: {
-    extensions: ['.js', '.scss'],
+    extensions: [
+      '.ts',
+      '.tsx',
+      '.js',
+      '.scss',
+    ],
   },
   module: {
     rules: [
+      {
+        test: /\.tsx?$/,
+        exclude: /node_modules/,
+        loader: 'ts-loader',
+      },
       {
         test: /\.js$/,
         exclude: /node_modules/,
