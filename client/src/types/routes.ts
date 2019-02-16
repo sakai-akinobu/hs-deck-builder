@@ -1,5 +1,4 @@
-// @flow
-import type {Store} from './index';
+import {Store} from './index';
 
 export type HistoryProps = {
   action: '' | 'POP' | 'PUSH',
@@ -12,6 +11,6 @@ export type LoaderProps = {
 };
 
 export type Route = {
-  loader: (LoaderProps) => Promise<*> | Array<Promise<*>>,
-  component: React$ComponentType<*>,
+  loader: (loaderProps: LoaderProps) => Promise<any> | Array<Promise<any>>,
+  component: React.Component,
 };
