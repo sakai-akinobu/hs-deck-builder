@@ -8,12 +8,12 @@ import {HeroType, HeroToDbfIdMap} from '../../types/hero';
 import styles from './styles/EncodeString.scss';
 
 interface EncodeStringProps {
-  hero: HeroType,
-  deck: DeckCardType[],
+  hero: HeroType;
+  deck: DeckCardType[];
 }
 
 interface EncodeStringState {
-  isOpen: boolean,
+  isOpen: boolean;
 }
 
 export default class EncodeString extends React.Component<EncodeStringProps, EncodeStringState> {

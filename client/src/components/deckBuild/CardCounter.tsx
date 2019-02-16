@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 interface CardCounterProps {
-  count: number,
+  count: number;
 }
 
 export default function CardCounter({count}: CardCounterProps) {

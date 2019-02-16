@@ -2,9 +2,9 @@ import {Store as ReduxStore} from 'redux';
 
 import {DeckBuildAction, DeckBuildState} from '../reducers/deckBuild/types';
 
-export type State = {
-  deckBuild: DeckBuildState,
-};
+export interface State {
+  deckBuild: DeckBuildState;
+}
 
 export type Actions =
   | DeckBuildAction

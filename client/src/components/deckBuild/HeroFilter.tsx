@@ -4,8 +4,8 @@ import styles from './styles/HeroFilter.scss';
 import {Heros, HeroType} from '../../types/hero';
 
 interface HeroFilterProps {
-  hero: HeroType,
-  onChange: (value: HeroType) => any,
+  hero: HeroType;
+  onChange: (value: HeroType) => any;
 }
 
 export default function HeroFilter({hero, onChange}: HeroFilterProps) {
