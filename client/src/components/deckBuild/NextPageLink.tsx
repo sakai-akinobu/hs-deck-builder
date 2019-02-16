@@ -4,7 +4,7 @@ import {FaArrowRight} from 'react-icons/lib/fa';
 import styles from './styles/NextPageLink.scss';
 
 interface NextPageLinkProps {
-  onClick: () => any,
+  onClick: () => any;
 }
 
 export default function NextPageLink({onClick}: NextPageLinkProps) {

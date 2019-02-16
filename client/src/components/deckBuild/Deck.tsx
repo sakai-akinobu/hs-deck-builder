@@ -8,9 +8,9 @@ import {HeroType} from '../../types/hero';
 import {DeckCard as DeckCardType} from '../../reducers/deckBuild/types';
 
 interface DeckProps {
-  hero: HeroType,
-  deck: DeckCardType[],
-  unpickCard: (deckCardType: DeckCardType) => any,
+  hero: HeroType;
+  deck: DeckCardType[];
+  unpickCard: (deckCardType: DeckCardType) => any;
 };
 
 export default function Deck({hero, deck, unpickCard}: DeckProps) {

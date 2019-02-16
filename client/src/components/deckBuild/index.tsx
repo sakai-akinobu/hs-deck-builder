@@ -16,15 +16,15 @@ import Deck from './Deck';
 import styles from './styles/index.scss';
 
 export interface IndexProps {
-  deckBuild: State,
+  deckBuild: State;
   actions: {
-    changeHero: (hero: HeroType, query: string) => any,
-    syncQuery: (query: string) => any,
-    searchCard: (hero: HeroType, query: string) => any,
-    changePage: (hero: HeroType, query: string, page: number) => any,
-    pickCard: (cardType: CardType) => any,
-    unpickCard: (deckCardType: DeckCardType) => any,
-  },
+    changeHero: (hero: HeroType, query: string) => any;
+    syncQuery: (query: string) => any;
+    searchCard: (hero: HeroType, query: string) => any;
+    changePage: (hero: HeroType, query: string, page: number) => any;
+    pickCard: (cardType: CardType) => any;
+    unpickCard: (deckCardType: DeckCardType) => any;
+  };
 };
 
 export default class Index extends Component<IndexProps> {

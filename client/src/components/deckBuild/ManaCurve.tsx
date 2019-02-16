@@ -4,7 +4,7 @@ import styles from './styles/ManaCurve.scss';
 import {DeckCard} from '../../reducers/deckBuild/types';
 
 interface ManaCurveProps {
-  deck: DeckCard[],
+  deck: DeckCard[];
 };
 
 export default function ManaCurve({deck}: ManaCurveProps) {

@@ -4,8 +4,8 @@ import {DeckCard as DeckCardType} from '../../reducers/deckBuild/types';
 import styles from './styles/DeckCard.scss';
 
 interface DeckCardProps {
-  deckCard: DeckCardType,
-  onClick: () => any,
+  deckCard: DeckCardType;
+  onClick: () => any;
 };
 
 export default function DeckCard({deckCard, onClick}: DeckCardProps) {

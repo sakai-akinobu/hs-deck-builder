@@ -5,8 +5,8 @@ import Card from './Card';
 import styles from './styles/CardList.scss';
 
 interface CardListProps {
-  cards: CardType[],
-  pickCard: (cardType: CardType) => any,
+  cards: CardType[];
+  pickCard: (cardType: CardType) => any;
 };
 
 export default function CardList({cards, pickCard}: CardListProps) {

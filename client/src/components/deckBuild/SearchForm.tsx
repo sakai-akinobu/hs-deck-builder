@@ -3,9 +3,9 @@ import * as React from 'react';
 import styles from './styles/SearchForm.scss';
 
 interface SearchFormProps {
-  query: string,
-  onChange: (value: string) => any,
-  searchCard: () => any,
+  query: string;
+  onChange: (value: string) => any;
+  searchCard: () => any;
 }
 
 export default class SearchForm extends React.Component<SearchFormProps> {
