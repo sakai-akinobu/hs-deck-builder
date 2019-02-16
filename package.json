@@ -42,7 +42,7 @@
     "autoprefixer": "^8.6.5",
     "babel-loader": "^8.0.5",
     "css-loader": "^0.28.11",
-    "eslint": "^5.2.0",
+    "eslint": "^5.14.0",
     "eslint-plugin-flowtype": "^2.50.0",
     "eslint-plugin-import": "^2.13.0",
     "eslint-plugin-react": "^7.10.0",
