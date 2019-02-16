@@ -1,5 +1,4 @@
-// @flow
-import type {Route} from '../types/routes';
+import {Route} from '../types/routes';
 
 import deckBuild from './deckBuild';
 
