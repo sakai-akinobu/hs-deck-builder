@@ -8,6 +8,7 @@ import {
   DeckBuildState as State,
   DeckCard as DeckCardType,
 } from './types';
+import {ActionFunctionAny} from 'redux-actions';
 
 export const INIT = 'hs-deck-builder/deckBuild/INIT';
 export const CHANGE_HERO = 'hs-deck-builder/deckBuild/CHANGE_HERO';
@@ -38,7 +39,7 @@ function createInitialState(): State {
   };
 }
 
-export async function init(): Promise<ActionCreatorResult> {
+export async function init() {
   const params = {
     'class': 'DRUID',
   };
@@ -46,7 +47,7 @@ export async function init(): Promise<ActionCreatorResult> {
   return createAction(INIT)(data);
 }
 
-export async function changeHero(hero: string, query: string): ActionCreatorResult {
+export async function changeHero(hero: string, query: string) {
   const params = {
     'class': hero,
     query,
@@ -55,11 +56,11 @@ export async function changeHero(hero: string, query: string): ActionCreatorResu
   return createAction(CHANGE_HERO)({hero, ...data});
 }
 
-export function syncQuery(query: string): ActionCreatorResult {
+export function syncQuery(query: string) {
   return createAction(SYNC_QUERY)({query});
 }
 
-export async function searchCard(hero: string, query: string): ActionCreatorResult {
+export async function searchCard(hero: string, query: string) {
   const params = {
     'class': hero,
     query,
@@ -68,7 +69,7 @@ export async function searchCard(hero: string, query: string): ActionCreatorResu
   return createAction(SEARCH_CARD)(data);
 }
 
-export async function changePage(hero: string, query: string, page: number): ActionCreatorResult {
+export async function changePage(hero: string, query: string, page: number) {
   const params = {
     'class': hero,
     query,
@@ -78,11 +79,11 @@ export async function changePage(hero: string, query: string, page: number): Act
   return createAction(CHANGE_PAGE)(data);
 }
 
-export function pickCard(card: CardType): ActionCreatorResult {
+export function pickCard(card: CardType) {
   return createAction(PICK_CARD)({card});
 }
 
-export function unpickCard(deckCard: DeckCardType): ActionCreatorResult {
+export function unpickCard(deckCard: DeckCardType) {
   return createAction(UNPICK_CARD)({deckCard});
 }
 
