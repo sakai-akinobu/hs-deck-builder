@@ -1,20 +1,6 @@
 {
   "presets": [
-    ["@babel/preset-env", {
-      "targets": {
-        "browsers": [
-          "chrome 57",
-          "chrome 58",
-          "edge 14",
-          "edge 15",
-          "firefox 52",
-          "firefox 53",
-          "ie 11",
-          "safari 9",
-          "safari 10"
-        ]
-      }
-    }],
+    "@babel/preset-env",
     "@babel/preset-react",
     "@babel/preset-flow",
     "@babel/preset-typescript",
