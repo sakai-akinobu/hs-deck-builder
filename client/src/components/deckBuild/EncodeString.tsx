@@ -7,7 +7,7 @@ import {DeckCard as DeckCardType} from '../../reducers/deckBuild/types';
 import styles from './styles/EncodeString.scss';
 
 interface EncodeStringProps {
-  hero: string,
+  hero: keyof typeof HERO_TO_DBF_ID_MAP,
   deck: DeckCardType[],
 };
 
