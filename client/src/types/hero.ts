@@ -1,3 +1,15 @@
+export const Heros = [
+  'DRUID',
+  'HUNTER',
+  'MAGE',
+  'PALADIN',
+  'PRIEST',
+  'ROGUE',
+  'SHAMAN',
+  'WARLOCK',
+  'WARRIOR',
+];
+
 export const HeroToDbfIdMap = {
   DRUID: 274,
   HUNTER: 31,

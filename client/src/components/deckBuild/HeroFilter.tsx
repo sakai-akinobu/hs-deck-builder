@@ -1,28 +1,17 @@
 import * as React from 'react';
 
 import styles from './styles/HeroFilter.scss';
+import {Heros, HeroType} from '../../types/hero';
 
 interface HeroFilterProps {
-  hero: string,
-  onChange: (value: string) => any,
+  hero: HeroType,
+  onChange: (value: HeroType) => any,
 }
-
-const HEROS = [
-  'DRUID',
-  'HUNTER',
-  'MAGE',
-  'PALADIN',
-  'PRIEST',
-  'ROGUE',
-  'SHAMAN',
-  'WARLOCK',
-  'WARRIOR',
-];
 
 export default function HeroFilter({hero, onChange}: HeroFilterProps) {
   return (
-    <select value={hero} onChange={(e) => onChange(e.target.value)} className={styles.select}>
-      {HEROS.map((_hero, index) => (
+    <select value={hero} onChange={(e) => onChange(e.target.value as HeroType)} className={styles.select}>
+      {Heros.map((_hero, index) => (
         <option key={index} value={_hero}>
           {_hero}
         </option>

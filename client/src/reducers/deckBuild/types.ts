@@ -1,3 +1,5 @@
+import {HeroType} from "../../types/hero";
+
 interface InitAction { type: 'hs-deck-builder/deckBuild/INIT', payload: any };
 interface ChangeHeroAction { type: 'hs-deck-builder/deckBuild/CHANGE_HERO', payload: any };
 interface SyncQueryAction { type: 'hs-deck-builder/deckBuild/SYNC_QUERY', payload: any };
@@ -31,7 +33,7 @@ export interface DeckCard {
 
 export interface DeckBuildState {
   format: string,
-  hero: string,
+  hero: HeroType,
   query: string,
   mana: number | null,
   page: {

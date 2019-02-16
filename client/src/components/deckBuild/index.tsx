@@ -6,6 +6,7 @@ import {
   DeckCard as DeckCardType,
   DeckBuildState as State,
 } from '../../reducers/deckBuild/types';
+import {HeroType} from '../../types/hero';
 import HeroFilter from './HeroFilter';
 import SearchForm from './SearchForm';
 import CardList from './CardList';
@@ -17,10 +18,10 @@ import styles from './styles/index.scss';
 export interface IndexProps {
   deckBuild: State,
   actions: {
-    changeHero: (hero: string, query: string) => any,
+    changeHero: (hero: HeroType, query: string) => any,
     syncQuery: (query: string) => any,
-    searchCard: (hero: string, query: string) => any,
-    changePage: (hero: string, query: string, page: number) => any,
+    searchCard: (hero: HeroType, query: string) => any,
+    changePage: (hero: HeroType, query: string, page: number) => any,
     pickCard: (cardType: CardType) => any,
     unpickCard: (deckCardType: DeckCardType) => any,
   },
