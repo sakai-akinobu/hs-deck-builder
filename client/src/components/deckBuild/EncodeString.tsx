@@ -4,28 +4,17 @@ import {encode} from 'deckstrings';
 import {FaClose, FaCopy} from 'react-icons/lib/fa';
 
 import {DeckCard as DeckCardType} from '../../reducers/deckBuild/types';
+import {HeroType, HeroToDbfIdMap} from '../../types/hero';
 import styles from './styles/EncodeString.scss';
 
 interface EncodeStringProps {
-  hero: keyof typeof HERO_TO_DBF_ID_MAP,
+  hero: HeroType,
   deck: DeckCardType[],
-};
+}
 
 interface EncodeStringState {
   isOpen: boolean,
-};
-
-const HERO_TO_DBF_ID_MAP = {
-  DRUID: 274,
-  HUNTER: 31,
-  MAGE: 637,
-  PALADIN: 671,
-  PRIEST: 813,
-  ROGUE: 930,
-  SHAMAN: 1066,
-  WARLOCK: 893,
-  WARRIOR: 7,
-};
+}
 
 export default class EncodeString extends React.Component<EncodeStringProps, EncodeStringState> {
 
@@ -61,7 +50,7 @@ export default class EncodeString extends React.Component<EncodeStringProps, Enc
     const {hero, deck} = this.props;
     const encodeString: string = encode({
       cards: deck.map<[number, number]>((deckCard) => [Number(deckCard.card.dbfId), deckCard.count]),
-      heroes: [HERO_TO_DBF_ID_MAP[hero]],
+      heroes: [HeroToDbfIdMap[hero]],
       format: 2,
     });
 

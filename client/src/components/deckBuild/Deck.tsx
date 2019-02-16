@@ -4,10 +4,11 @@ import DeckCard from './DeckCard';
 import ManaCurve from './ManaCurve';
 import CardCounter from './CardCounter';
 import EncodeString from './EncodeString';
+import {HeroType} from '../../types/hero';
 import {DeckCard as DeckCardType} from '../../reducers/deckBuild/types';
 
 interface DeckProps {
-  hero: string,
+  hero: HeroType,
   deck: DeckCardType[],
   unpickCard: (deckCardType: DeckCardType) => any,
 };
