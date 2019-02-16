@@ -32,10 +32,10 @@ function mapStateToProps(state: State) {
 function mapDispatchToProps(dispatch: Dispatch) {
   return {
     actions: {
-      changeHero: (hero: string, query: string) => dispatch(changeHero(hero, query)),
+      changeHero: (hero: string, query: string) => dispatch(changeHero(hero, query) as any),
       syncQuery: (query: string) => dispatch(syncQuery(query)),
-      searchCard: (hero: string, query: string) => dispatch(searchCard(hero, query)),
-      changePage: (hero: string, query: string, page: number) => dispatch(changePage(hero, query, page)),
+      searchCard: (hero: string, query: string) => dispatch(searchCard(hero, query) as any),
+      changePage: (hero: string, query: string, page: number) => dispatch(changePage(hero, query, page) as any),
       pickCard: (card: Card) => dispatch(pickCard(card)),
       unpickCard: (deckCard: DeckCard) => dispatch(unpickCard(deckCard)),
     },
