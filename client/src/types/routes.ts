@@ -6,5 +6,5 @@ export type LoaderProps = {
 
 export type Route = {
   loader: (loaderProps: LoaderProps) => Promise<any>,
-  component: React.Component,
+  component: React.ComponentType,
 }
