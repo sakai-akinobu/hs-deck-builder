@@ -2,13 +2,11 @@ import {createAction, handleActions} from '../../utils/redux';
 import axios from 'axios';
 import immer from 'immer';
 
-import {ActionCreatorResult} from '../../types';
 import {
   Card as CardType,
   DeckBuildState as State,
   DeckCard as DeckCardType,
 } from './types';
-import {ActionFunctionAny} from 'redux-actions';
 
 export const INIT = 'hs-deck-builder/deckBuild/INIT';
 export const CHANGE_HERO = 'hs-deck-builder/deckBuild/CHANGE_HERO';
@@ -129,7 +127,7 @@ export default handleActions<State>({
     const MAX_CARD_COUNT = 2;
 
     return immer(state, state => {
-      const pickedCard: CardType = payload!.card;
+      const pickedCard: CardType = payload.card;
       const pickedDeckCard = state.deck.find((deckCard) => deckCard.card.id === pickedCard.id);
 
       const maxCount = state.deck.reduce((cnt, deckCard) => cnt + deckCard.count, 0);
