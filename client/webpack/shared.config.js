@@ -1,8 +1,4 @@
-const fs = require('fs');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-
-const babelrc = JSON.parse(fs.readFileSync('.babelrc', 'utf8'));
-const browsers = babelrc.presets.find(preset => preset[0] === '@babel/preset-env')[1].targets.browsers;
 
 export const createBaseConfig = () => ({
   entry: {
@@ -47,7 +43,7 @@ export const createBaseConfig = () => ({
               options: {
                 sourceMap: true,
                 plugins: [
-                  require('autoprefixer')({browsers: browsers}),
+                  require('autoprefixer')(),
                 ],
               },
             },
