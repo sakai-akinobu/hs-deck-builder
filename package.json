@@ -7,7 +7,6 @@
     "compile": "$(npm bin)/tsc --noEmit",
     "dev": "$(npm bin)/babel-node $(npm bin)/webpack-dev-server --config ./client/webpack/dev.config.js",
     "server": "node ./server/src/app.js",
-    "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "$(npm bin)/eslint client/src/* --ext .ts,.tsx",
     "lint:fix": "$(npm bin)/eslint client/src/* --ext .ts,.tsx --fix",
     "stylelint": "$(npm bin)/stylelint 'client/src/**/*.scss'",
@@ -18,11 +17,16 @@
     "type": "git",
     "url": "git+https://github.com/sakai-akinobu/hs-deck-builder.git"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint && npm run stylelint && npm run compile"
+    }
+  },
   "keywords": [
     "hearthstone"
   ],
   "author": "sakai-akinobu",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/sakai-akinobu/hs-deck-builder/issues"
   },
@@ -48,6 +52,7 @@
     "eslint-plugin-import": "^2.13.0",
     "eslint-plugin-react": "^7.10.0",
     "extract-text-webpack-plugin": "^4.0.0-beta.0",
+    "husky": "^1.3.1",
     "node-sass": "^4.11.0",
     "postcss-loader": "^2.1.6",
     "sass-loader": "^7.0.3",
