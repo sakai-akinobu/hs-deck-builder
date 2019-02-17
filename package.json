@@ -26,7 +26,7 @@
     "hearthstone"
   ],
   "author": "sakai-akinobu",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/sakai-akinobu/hs-deck-builder/issues"
   },
