@@ -1,6 +1,8 @@
 hs-deck-builder
 ---
 
+[![CircleCI](https://circleci.com/gh/sakai-akinobu/hs-deck-builder.svg?style=svg)](https://circleci.com/gh/sakai-akinobu/hs-deck-builder)
+
 ![hs-deck-builder](https://user-images.githubusercontent.com/28243824/48813061-85b6ac80-ed78-11e8-84ca-7612fe39a708.gif)
 
 hs-deck-builder is a deck builder for Hearthstone.  
