@@ -7,7 +7,6 @@
     "compile": "$(npm bin)/tsc --noEmit",
     "dev": "$(npm bin)/babel-node $(npm bin)/webpack-dev-server --config ./client/webpack/dev.config.js",
     "server": "node ./server/src/app.js",
-    "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "$(npm bin)/eslint client/src/* --ext .ts,.tsx",
     "lint:fix": "$(npm bin)/eslint client/src/* --ext .ts,.tsx --fix",
     "stylelint": "$(npm bin)/stylelint 'client/src/**/*.scss'",
