@@ -8,29 +8,26 @@ interface SearchFormProps {
   searchCard: () => any;
 }
 
-export default class SearchForm extends React.Component<SearchFormProps> {
+export default function SearchForm(props: SearchFormProps) {
+  const {
+    query,
+    onChange,
+    searchCard,
+  } = props;
 
-  handleSubmit = (e: React.SyntheticEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    this.props.searchCard();
-  }
+  const handleSubmit = (event: React.SyntheticEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    searchCard();
+  };
 
-  render() {
-    const {
-      query,
-      onChange,
-    } = this.props;
-
-    return (
-      <form onSubmit={this.handleSubmit} className={styles.form}>
-        <input
-          value={query}
-          onChange={(e) => onChange(e.target.value)}
-          placeholder="検索"
-          className={styles.input}
-        />
-      </form>
-    );
-  }
-
+  return (
+    <form onSubmit={handleSubmit} className={styles.form}>
+      <input
+        value={query}
+        onChange={(e) => onChange(e.target.value)}
+        placeholder="検索"
+        className={styles.input}
+      />
+    </form>
+  );
 }
