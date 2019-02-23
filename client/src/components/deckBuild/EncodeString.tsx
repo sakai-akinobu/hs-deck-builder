@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {useState, useRef} from 'react';
 import * as ReactDOM from 'react-dom';
-import {encode} from 'deckstrings';
+import {encode, FormatType, DeckList, DeckDefinition} from 'deckstrings';
 import {FaClose, FaCopy} from 'react-icons/lib/fa';
 
 import {DeckCard as DeckCardType} from '../../reducers/deckBuild/types';
@@ -18,11 +18,16 @@ export default function EncodeString(props: EncodeStringProps) {
   const encodeStringRef = useRef<HTMLTextAreaElement>(null);
 
   const {hero, deck} = props;
-  const encodeString: string = encode({
-    cards: deck.map<[number, number]>((deckCard) => [Number(deckCard.card.dbfId), deckCard.count]),
-    heroes: [HeroToDbfIdMap[hero]],
-    format: 2,
+  const cards: DeckList = deck.map<[number, number]>(deckCard => {
+    return [Number(deckCard.card.dbfId), deckCard.count];
   });
+
+  const deckDefinition: DeckDefinition = {
+    cards: cards,
+    heroes: [HeroToDbfIdMap[hero]],
+    format: 2 as FormatType,
+  };
+  const encodeString = encode(deckDefinition);
 
   const handleCopyEncodeString = () => {
     if (encodeStringRef.current !== null) {
