@@ -42,7 +42,7 @@ export interface Card {
   id: string;
   dbfId: string;
   name: string;
-  cost: string;
+  cost: number;
   rarity: string;
 }
 

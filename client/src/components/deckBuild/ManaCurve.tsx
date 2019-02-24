@@ -22,7 +22,7 @@ export default function ManaCurve({ deck }: ManaCurveProps) {
   deck.forEach(deckCard => {
     const cost = deckCard.card.cost;
     const manaCurve =
-      manaCurves.find(curve => String(curve.value) === cost) ||
+      manaCurves.find(curve => curve.value === cost) ||
       manaCurves[manaCurves.length - 1];
     manaCurve.count += deckCard.count;
   });
