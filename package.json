@@ -75,7 +75,6 @@
     "deckstrings": "^2.1.0",
     "hs-standard-sets": "^2.0.1",
     "immer": "^1.5.0",
-    "normalize.css": "^8.0.0",
     "react": "^16.8.3",
     "react-dom": "^16.8.3",
     "react-icons": "^2.2.7",
