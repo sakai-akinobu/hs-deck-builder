@@ -1,11 +1,7 @@
-import {
-  createStore as _createStore,
-  applyMiddleware,
-  compose,
-} from 'redux';
+import { createStore as _createStore, applyMiddleware, compose } from "redux";
 
-import middlewares from '../middlewares';
-import reducers from '../reducers';
+import middlewares from "../middlewares";
+import reducers from "../reducers";
 
 export default function createStore() {
   let finalCreateStore;
@@ -14,12 +10,14 @@ export default function createStore() {
     const enhancers = [applyMiddleware(...middlewares)];
     // 開発するときはChrome拡張をインストール
     // https://github.com/zalmoxisus/redux-devtools-extension
-    if (typeof window === 'object' && window.__REDUX_DEVTOOLS_EXTENSION__) {
+    if (typeof window === "object" && window.__REDUX_DEVTOOLS_EXTENSION__) {
       enhancers.push(window.__REDUX_DEVTOOLS_EXTENSION__());
     }
     finalCreateStore = compose<any>(...enhancers)(_createStore);
   } else {
-    finalCreateStore = compose<any>(applyMiddleware(...middlewares))(_createStore);
+    finalCreateStore = compose<any>(applyMiddleware(...middlewares))(
+      _createStore
+    );
   }
 
   return finalCreateStore(reducers, {});

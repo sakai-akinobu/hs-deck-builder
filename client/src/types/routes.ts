@@ -1,4 +1,4 @@
-import {Store} from './index';
+import { Store } from "./index";
 
 export interface LoaderProps {
   store: Store;

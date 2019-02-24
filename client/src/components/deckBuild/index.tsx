@@ -1,18 +1,18 @@
-import * as React from 'react';
+import * as React from "react";
 
 import {
   Card as CardType,
   DeckCard as DeckCardType,
-  DeckBuildState as State,
-} from '../../reducers/deckBuild/types';
-import {HeroType} from '../../types/hero';
-import HeroFilter from './HeroFilter';
-import SearchForm from './SearchForm';
-import CardList from './CardList';
-import PrevPageLink from './PrevPageLink';
-import NextPageLink from './NextPageLink';
-import Deck from './Deck';
-import styles from './styles/index.scss';
+  DeckBuildState as State
+} from "../../reducers/deckBuild/types";
+import { HeroType } from "../../types/hero";
+import HeroFilter from "./HeroFilter";
+import SearchForm from "./SearchForm";
+import CardList from "./CardList";
+import PrevPageLink from "./PrevPageLink";
+import NextPageLink from "./NextPageLink";
+import Deck from "./Deck";
+import styles from "./styles/index.scss";
 
 export interface IndexProps {
   deckBuild: State;
@@ -24,34 +24,25 @@ export interface IndexProps {
     pickCard: (cardType: CardType) => any;
     unpickCard: (deckCardType: DeckCardType) => any;
   };
-};
+}
 
 export default function Index(props: IndexProps) {
   const {
-    deckBuild: {
-      hero,
-      query,
-      cards,
-      page,
-      deck,
-    },
+    deckBuild: { hero, query, cards, page, deck },
     actions: {
       changeHero,
       syncQuery,
       searchCard,
       changePage,
       pickCard,
-      unpickCard,
-    },
+      unpickCard
+    }
   } = props;
 
   return (
     <div className={styles.pageContainer}>
       <div className={styles.filterContainer}>
-        <HeroFilter
-          hero={hero}
-          onChange={(hero) => changeHero(hero, query)}
-        />
+        <HeroFilter hero={hero} onChange={hero => changeHero(hero, query)} />
         <SearchForm
           query={query}
           onChange={syncQuery}
@@ -60,15 +51,19 @@ export default function Index(props: IndexProps) {
       </div>
       <div className={styles.cardDeckContainer}>
         <div className={styles.pageLinkContainer}>
-          {page.prev &&
-            <PrevPageLink onClick={() => changePage(hero, query, page.prev || 0)} />
-          }
+          {page.prev && (
+            <PrevPageLink
+              onClick={() => changePage(hero, query, page.prev || 0)}
+            />
+          )}
         </div>
         <CardList cards={cards} pickCard={pickCard} />
         <div className={styles.pageLinkContainer}>
-          {page.next &&
-            <NextPageLink onClick={() => changePage(hero, query, page.next || 0)} />
-          }
+          {page.next && (
+            <NextPageLink
+              onClick={() => changePage(hero, query, page.next || 0)}
+            />
+          )}
         </div>
         <Deck hero={hero} deck={deck} unpickCard={unpickCard} />
       </div>
