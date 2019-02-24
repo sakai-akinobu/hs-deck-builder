@@ -1,28 +1,32 @@
-const express = require('express');
-const url = require('url');
-const axios = require('axios');
-const sets = require('hs-standard-sets').sets;
+import hsStandardSets from 'hs-standard-sets';
 
 const CARD_JSON_URL = 'https://api.hearthstonejson.com/v1/latest/jaJP/cards.collectible.json';
-
-let cards = [];
-axios.get(CARD_JSON_URL).then(({data}) => {
-  cards = data;
-});
-
 const NEUTRAL_CARD_CLASS = 'NEUTRAL';
-const router = express.Router();
 
-router.get('/cards', (req, res) => {
-  const {query} = url.parse(req.url, true);
+let cards = [] as any[];
 
+function fetchJson(): Promise<any[]> {
+  return new Promise(resolve => {
+    if (cards.length !== 0) {
+      return resolve(cards);
+    }
+
+    fetch(CARD_JSON_URL)
+      .then(res => res.json())
+      .then(data => {
+        resolve(data);
+      });
+  });
+}
+
+function filterCards(cards: any[], query: any) {
   let filteredCards = cards;
 
   // exclude HERO type
   filteredCards = filteredCards.filter((card) => card.type !== 'HERO');
 
   // exclude Wild cards
-  const standardSets = sets();
+  const standardSets = hsStandardSets.sets();
   filteredCards = filteredCards.filter((card) => {
     return standardSets.includes(card.set);
   });
@@ -66,7 +70,24 @@ router.get('/cards', (req, res) => {
   const lastPage = Math.floor(filteredCards.length / PAGE_SIZE) + (filteredCards.length % PAGE_SIZE === 0 ? 0 : 1);
   filteredCards = filteredCards.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE);
 
-  res.send({
+  return {
+    filteredCards,
+    page,
+    lastPage,
+  };
+}
+
+const context: Worker = self as any;
+context.addEventListener('message', async event => {
+  cards = await fetchJson();
+  const query = event.data;
+  const {
+    filteredCards,
+    page,
+    lastPage,
+  } = filterCards(cards, query);
+
+  context.postMessage({
     cards: filteredCards,
     page: {
       prev: Math.max(page - 1, 1),
@@ -77,4 +98,3 @@ router.get('/cards', (req, res) => {
   });
 });
 
-module.exports = router;

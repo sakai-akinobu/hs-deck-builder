@@ -19,7 +19,6 @@ The following commands are for getting started development.
 
 ```
 npm install
-npm run server
 npm run dev
 
 # open http://0.0.0.0:9000 in your browser.

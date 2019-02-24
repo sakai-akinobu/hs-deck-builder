@@ -3,6 +3,7 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 export const createBaseConfig = () => ({
   entry: {
     app: ['./client/src/app/index.tsx'],
+    cards: ['./client/src/workers/cards.ts'],
   },
   resolve: {
     extensions: [

@@ -8,7 +8,7 @@ module.exports = Object.assign(createBaseConfig(), {
   mode: 'development',
   output: {
     path: path.resolve(__dirname, 'public/built'),
-    filename: 'bundle.js',
+    filename: '[name].bundle.js',
   },
   devServer: {
     contentBase: 'public/',
@@ -22,6 +22,6 @@ module.exports = Object.assign(createBaseConfig(), {
       __DEVELOPMENT__: true,
       __TEST__: false,
     }),
-    new ExtractTextPlugin('bundle.css'),
+    new ExtractTextPlugin('[name].bundle.css'),
   ],
 });
