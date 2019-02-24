@@ -60,7 +60,6 @@
     "prettier": "^1.16.4",
     "sass-loader": "^7.0.3",
     "style-loader": "^0.21.0",
-    "stylefmt": "^6.0.3",
     "stylelint": "^9.10.1",
     "stylelint-config-idiomatic-order": "^6.2.0",
     "stylelint-config-recess-order": "^2.0.0",
