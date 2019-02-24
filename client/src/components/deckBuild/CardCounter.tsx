@@ -1,11 +1,9 @@
-import * as React from 'react';
+import * as React from "react";
 
 interface CardCounterProps {
   count: number;
 }
 
-export default function CardCounter({count}: CardCounterProps) {
-  return (
-    <div>{count}/30</div>
-  );
+export default function CardCounter({ count }: CardCounterProps) {
+  return <div>{count}/30</div>;
 }

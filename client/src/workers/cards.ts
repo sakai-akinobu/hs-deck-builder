@@ -1,7 +1,8 @@
-import hsStandardSets from 'hs-standard-sets';
+import hsStandardSets from "hs-standard-sets";
 
-const CARD_JSON_URL = 'https://api.hearthstonejson.com/v1/latest/enUS/cards.collectible.json';
-const NEUTRAL_CARD_CLASS = 'NEUTRAL';
+const CARD_JSON_URL =
+  "https://api.hearthstonejson.com/v1/latest/enUS/cards.collectible.json";
+const NEUTRAL_CARD_CLASS = "NEUTRAL";
 
 let cards = [] as any[];
 
@@ -23,36 +24,41 @@ function filterCards(cards: any[], query: any) {
   let filteredCards = cards;
 
   // exclude HERO type
-  filteredCards = filteredCards.filter((card) => card.type !== 'HERO');
+  filteredCards = filteredCards.filter(card => card.type !== "HERO");
 
   // exclude Wild cards
   const standardSets = hsStandardSets.sets();
-  filteredCards = filteredCards.filter((card) => {
+  filteredCards = filteredCards.filter(card => {
     return standardSets.includes(card.set);
   });
 
   // class
   if (query.class) {
-    filteredCards = filteredCards.filter((card) => {
-      return card.cardClass === NEUTRAL_CARD_CLASS || card.cardClass === query.class;
+    filteredCards = filteredCards.filter(card => {
+      return (
+        card.cardClass === NEUTRAL_CARD_CLASS || card.cardClass === query.class
+      );
     });
   }
   // cost
   if (query.cost) {
-    filteredCards = filteredCards.filter((card) => {
+    filteredCards = filteredCards.filter(card => {
       return card.cost === Number(query.cost);
     });
   }
   // query
   if (query.query) {
-    filteredCards = filteredCards.filter((card) => {
+    filteredCards = filteredCards.filter(card => {
       return card.name.includes(query.query);
     });
   }
 
   // order
   filteredCards = filteredCards.sort((a, b) => {
-    if (a.cardClass === NEUTRAL_CARD_CLASS && b.cardClass === NEUTRAL_CARD_CLASS) {
+    if (
+      a.cardClass === NEUTRAL_CARD_CLASS &&
+      b.cardClass === NEUTRAL_CARD_CLASS
+    ) {
       return a.cost < b.cost ? -1 : 1;
     }
     if (a.cardClass === NEUTRAL_CARD_CLASS) {
@@ -67,25 +73,23 @@ function filterCards(cards: any[], query: any) {
   // paging
   const PAGE_SIZE = 8;
   const page = Number(query.page) || 1;
-  const lastPage = Math.floor(filteredCards.length / PAGE_SIZE) + (filteredCards.length % PAGE_SIZE === 0 ? 0 : 1);
+  const lastPage =
+    Math.floor(filteredCards.length / PAGE_SIZE) +
+    (filteredCards.length % PAGE_SIZE === 0 ? 0 : 1);
   filteredCards = filteredCards.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE);
 
   return {
     filteredCards,
     page,
-    lastPage,
+    lastPage
   };
 }
 
 const context: Worker = self as any;
-context.addEventListener('message', async event => {
+context.addEventListener("message", async event => {
   cards = await fetchJson();
   const query = event.data;
-  const {
-    filteredCards,
-    page,
-    lastPage,
-  } = filterCards(cards, query);
+  const { filteredCards, page, lastPage } = filterCards(cards, query);
 
   context.postMessage({
     cards: filteredCards,
@@ -93,8 +97,7 @@ context.addEventListener('message', async event => {
       prev: Math.max(page - 1, 1),
       current: page,
       next: Math.min(page + 1, lastPage),
-      last: lastPage,
-    },
+      last: lastPage
+    }
   });
 });
-

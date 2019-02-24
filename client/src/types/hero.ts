@@ -1,13 +1,13 @@
 export const Heros = [
-  'DRUID',
-  'HUNTER',
-  'MAGE',
-  'PALADIN',
-  'PRIEST',
-  'ROGUE',
-  'SHAMAN',
-  'WARLOCK',
-  'WARRIOR',
+  "DRUID",
+  "HUNTER",
+  "MAGE",
+  "PALADIN",
+  "PRIEST",
+  "ROGUE",
+  "SHAMAN",
+  "WARLOCK",
+  "WARRIOR"
 ];
 
 export const HeroToDbfIdMap = {
@@ -19,7 +19,7 @@ export const HeroToDbfIdMap = {
   ROGUE: 930,
   SHAMAN: 1066,
   WARLOCK: 893,
-  WARRIOR: 7,
+  WARRIOR: 7
 };
 
 export type HeroType = keyof typeof HeroToDbfIdMap;

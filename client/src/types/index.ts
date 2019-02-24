@@ -1,14 +1,12 @@
-import {Store as ReduxStore} from 'redux';
+import { Store as ReduxStore } from "redux";
 
-import {DeckBuildAction, DeckBuildState} from '../reducers/deckBuild/types';
+import { DeckBuildAction, DeckBuildState } from "../reducers/deckBuild/types";
 
 export interface State {
   deckBuild: DeckBuildState;
 }
 
-export type Actions =
-  | DeckBuildAction
-  ;
+export type Actions = DeckBuildAction;
 
 export type Store = ReduxStore<State, any>; // TODO
 
