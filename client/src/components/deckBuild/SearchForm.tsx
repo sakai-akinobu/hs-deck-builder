@@ -25,7 +25,7 @@ export default function SearchForm(props: SearchFormProps) {
       <input
         value={query}
         onChange={(e) => onChange(e.target.value)}
-        placeholder="検索"
+        placeholder="Keyword"
         className={styles.input}
       />
     </form>

@@ -1,6 +1,6 @@
 import hsStandardSets from 'hs-standard-sets';
 
-const CARD_JSON_URL = 'https://api.hearthstonejson.com/v1/latest/jaJP/cards.collectible.json';
+const CARD_JSON_URL = 'https://api.hearthstonejson.com/v1/latest/enUS/cards.collectible.json';
 const NEUTRAL_CARD_CLASS = 'NEUTRAL';
 
 let cards = [] as any[];

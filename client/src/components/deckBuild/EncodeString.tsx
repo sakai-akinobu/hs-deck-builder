@@ -45,7 +45,7 @@ export default function EncodeString(props: EncodeStringProps) {
             <div className={styles.modal}>
               <div className={styles.content}>
                 <div className={styles.header}>
-                  <h2 className={styles.title}>デッキコード</h2>
+                  <h2 className={styles.title}>Deck code</h2>
                   <span className={styles.closeButton}>
                     <FaClose onClick={() => setIsOpen(false)} />
                   </span>
@@ -55,7 +55,7 @@ export default function EncodeString(props: EncodeStringProps) {
                 </div>
                 <div className={styles.footer}>
                   <div className={styles.content}>
-                    <input type="button" value="コピー" onClick={handleCopyEncodeString} className={styles.copyButton} />
+                    <input type="button" value="Copy" onClick={handleCopyEncodeString} className={styles.copyButton} />
                   </div>
                 </div>
               </div>
