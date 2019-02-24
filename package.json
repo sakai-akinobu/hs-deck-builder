@@ -9,8 +9,7 @@
     "lint": "$(npm bin)/eslint client/src/* --ext .ts,.tsx",
     "lint:fix": "$(npm bin)/eslint client/src/* --ext .ts,.tsx --fix",
     "stylelint": "$(npm bin)/stylelint 'client/src/**/*.scss'",
-    "stylelint:fix": "$(npm bin)/stylelint 'client/src/**/*.scss' --fix",
-    "stylefmt": "$(npm bin)/stylefmt -r 'client/src/**/*.scss'"
+    "stylelint:fix": "$(npm bin)/stylelint 'client/src/**/*.scss' --fix"
   },
   "repository": {
     "type": "git",
