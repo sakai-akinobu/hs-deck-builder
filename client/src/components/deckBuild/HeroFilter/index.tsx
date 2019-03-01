@@ -1,7 +1,7 @@
 import * as React from "react";
 
-import styles from "./styles/HeroFilter.scss";
-import { Heros, HeroType } from "../../types/hero";
+import styles from "./index.scss";
+import { Heros, HeroType } from "../../../types/hero";
 
 interface HeroFilterProps {
   hero: HeroType;

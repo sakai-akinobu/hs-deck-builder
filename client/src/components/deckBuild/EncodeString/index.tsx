@@ -4,9 +4,9 @@ import * as ReactDOM from "react-dom";
 import { encode, FormatType, DeckList, DeckDefinition } from "deckstrings";
 import { FaClose, FaCopy } from "react-icons/lib/fa";
 
-import { DeckCard as DeckCardType } from "../../reducers/deckBuild/types";
-import { HeroType, HeroToDbfIdMap } from "../../types/hero";
-import styles from "./styles/EncodeString.scss";
+import { DeckCard as DeckCardType } from "../../../reducers/deckBuild/types";
+import { HeroType, HeroToDbfIdMap } from "../../../types/hero";
+import styles from "./index.scss";
 
 interface EncodeStringProps {
   hero: HeroType;

@@ -5,7 +5,7 @@ import { State } from "../../types";
 import { LoaderProps, Route } from "../../types/routes";
 import { init } from "../../reducers/deckBuild";
 import { Card, DeckCard } from "../../reducers/deckBuild/types";
-import Index from "../../components/deckBuild";
+import Root from "../../components/deckBuild/Root";
 
 import {
   changeHero,
@@ -48,6 +48,6 @@ const connector = connect(
 );
 
 export default (): Route => ({
-  component: connector(Index),
+  component: connector(Root),
   loader
 });

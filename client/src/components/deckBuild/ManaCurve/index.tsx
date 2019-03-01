@@ -1,7 +1,7 @@
 import * as React from "react";
 
-import styles from "./styles/ManaCurve.scss";
-import { DeckCard } from "../../reducers/deckBuild/types";
+import styles from "./index.scss";
+import { DeckCard } from "../../../reducers/deckBuild/types";
 
 interface ManaCurveProps {
   deck: DeckCard[];

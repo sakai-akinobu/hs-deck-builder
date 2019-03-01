@@ -4,15 +4,15 @@ import {
   Card as CardType,
   DeckCard as DeckCardType,
   DeckBuildState as State
-} from "../../reducers/deckBuild/types";
-import { HeroType } from "../../types/hero";
-import HeroFilter from "./HeroFilter";
-import SearchForm from "./SearchForm";
-import CardList from "./CardList";
-import PrevPageLink from "./PrevPageLink";
-import NextPageLink from "./NextPageLink";
-import Deck from "./Deck";
-import styles from "./styles/index.scss";
+} from "../../../reducers/deckBuild/types";
+import { HeroType } from "../../../types/hero";
+import HeroFilter from "../HeroFilter";
+import SearchForm from "../SearchForm";
+import CardList from "../CardList";
+import PrevPageLink from "../PrevPageLink";
+import NextPageLink from "../NextPageLink";
+import Deck from "../Deck";
+import styles from "./index.scss";
 
 export interface IndexProps {
   deckBuild: State;

@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import styles from "./styles/SearchForm.scss";
+import styles from "./index.scss";
 
 interface SearchFormProps {
   query: string;

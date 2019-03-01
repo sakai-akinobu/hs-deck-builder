@@ -1,7 +1,7 @@
 import * as React from "react";
 import { FaArrowRight } from "react-icons/lib/fa";
 
-import styles from "./styles/NextPageLink.scss";
+import styles from "./index.scss";
 
 interface NextPageLinkProps {
   onClick: () => any;
