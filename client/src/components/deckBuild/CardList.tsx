@@ -12,8 +12,8 @@ interface CardListProps {
 export default function CardList({ cards, pickCard }: CardListProps) {
   return (
     <ul className={styles.container}>
-      {cards.map((card, index) => (
-        <li key={index}>
+      {cards.map(card => (
+        <li key={card.id}>
           <Card card={card} onClick={() => pickCard(card)} />
         </li>
       ))}
