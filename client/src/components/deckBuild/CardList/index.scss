@@ -1,0 +1,15 @@
+.container {
+  display: flex;
+  flex: 0 0 720px;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  user-select: none;
+}
+
+.card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 0 0 180px;
+  min-height: 240px;
+}

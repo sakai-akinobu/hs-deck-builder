@@ -1,12 +1,11 @@
 .container {
   display: flex;
+  align-items: center;
 }
 
 .arrow {
-  position: absolute;
-  top: 320px;
   cursor: pointer;
-  font-size: 50px;
+  font-size: 30px;
   transition: color 0.25s;
 
   &:hover {

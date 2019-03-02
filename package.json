@@ -2,6 +2,7 @@
   "name": "hs-deck-builder",
   "version": "1.0.0",
   "description": "hs-deck-builder ---",
+  "private": true,
   "main": "index.js",
   "scripts": {
     "compile": "$(npm bin)/tsc --noEmit",

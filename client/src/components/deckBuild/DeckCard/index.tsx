@@ -1,7 +1,7 @@
 import * as React from "react";
 
-import { DeckCard as DeckCardType } from "../../reducers/deckBuild/types";
-import styles from "./styles/DeckCard.scss";
+import { DeckCard as DeckCardType } from "../../../reducers/deckBuild/types";
+import styles from "./index.scss";
 
 interface DeckCardProps {
   deckCard: DeckCardType;

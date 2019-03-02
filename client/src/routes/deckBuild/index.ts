@@ -5,7 +5,7 @@ import { State } from "../../types";
 import { LoaderProps, Route } from "../../types/routes";
 import { init } from "../../reducers/deckBuild";
 import { Card, DeckCard } from "../../reducers/deckBuild/types";
-import Index from "../../components/deckBuild";
+import Root from "../../components/deckBuild/Root";
 
 import {
   changeHero,
@@ -13,7 +13,8 @@ import {
   searchCard,
   changePage,
   pickCard,
-  unpickCard
+  unpickCard,
+  clearDeckCards
 } from "../../reducers/deckBuild";
 
 function loader({ store }: LoaderProps) {
@@ -37,7 +38,8 @@ function mapDispatchToProps(dispatch: Dispatch) {
       changePage: (hero: string, query: string, page: number) =>
         dispatch(changePage(hero, query, page) as any),
       pickCard: (card: Card) => dispatch(pickCard(card)),
-      unpickCard: (deckCard: DeckCard) => dispatch(unpickCard(deckCard))
+      unpickCard: (deckCard: DeckCard) => dispatch(unpickCard(deckCard)),
+      clearDeckCards: () => dispatch(clearDeckCards())
     }
   };
 }
@@ -48,6 +50,6 @@ const connector = connect(
 );
 
 export default (): Route => ({
-  component: connector(Index),
+  component: connector(Root),
   loader
 });

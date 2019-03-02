@@ -4,9 +4,9 @@ import * as ReactDOM from "react-dom";
 import { encode, FormatType, DeckList, DeckDefinition } from "deckstrings";
 import { FaClose, FaCopy } from "react-icons/lib/fa";
 
-import { DeckCard as DeckCardType } from "../../reducers/deckBuild/types";
-import { HeroType, HeroToDbfIdMap } from "../../types/hero";
-import styles from "./styles/EncodeString.scss";
+import { DeckCard as DeckCardType } from "../../../reducers/deckBuild/types";
+import { HeroType, HeroToDbfIdMap } from "../../../types/hero";
+import styles from "./index.scss";
 
 interface EncodeStringProps {
   hero: HeroType;
@@ -60,6 +60,12 @@ export default function EncodeString(props: EncodeStringProps) {
                 </div>
                 <div className={styles.footer}>
                   <div className={styles.content}>
+                    <a
+                      className={styles.link}
+                      href="https://playhearthstone.com/en-us/blog/20720853/new-features-coming-to-hearthstone-5-16-2017"
+                    >
+                      What is this?
+                    </a>
                     <input
                       type="button"
                       value="Copy"
@@ -73,7 +79,12 @@ export default function EncodeString(props: EncodeStringProps) {
           </div>,
           window.document.body
         )}
-      <FaCopy onClick={() => setIsOpen(true)} className={styles.copyIcon} />
+      <div className={styles.buttonContainer}>
+        <button className={styles.button} onClick={() => setIsOpen(true)}>
+          Create deck code
+          <FaCopy />
+        </button>
+      </div>
     </div>
   );
 }
