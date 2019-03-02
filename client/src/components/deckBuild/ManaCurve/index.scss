@@ -1,3 +1,7 @@
+.title {
+  font-size: 1rem;
+}
+
 .table {
   display: flex;
   font-size: 13px;
@@ -10,6 +14,10 @@
   flex-direction: column;
   align-items: center;
   padding-right: 2px;
+}
+
+.count {
+  font-size: 0.5rem;
 }
 
 .barContainer {

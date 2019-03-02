@@ -28,23 +28,26 @@ export default function ManaCurve({ deck }: ManaCurveProps) {
   });
 
   return (
-    <div className={styles.table}>
-      {manaCurves.map((manaCurve, index) => {
-        let scaleY = manaCurve.count * 0.1;
-        scaleY = Math.min(scaleY, 1.0);
-        return (
-          <div key={index} className={styles.column}>
-            <div className={styles.barContainer}>
-              <div
-                className={styles.bar}
-                style={{ transform: `scaleY(${scaleY})` }}
-              />
+    <div>
+      <h3 className={styles.title}>Mana Curve</h3>
+      <div className={styles.table}>
+        {manaCurves.map((manaCurve, index) => {
+          let scaleY = manaCurve.count * 0.1;
+          scaleY = Math.min(scaleY, 1.0);
+          return (
+            <div key={index} className={styles.column}>
+              <div className={styles.count}>{manaCurve.count}</div>
+              <div className={styles.barContainer}>
+                <div
+                  className={styles.bar}
+                  style={{ transform: `scaleY(${scaleY})` }}
+                />
+              </div>
+              <div>{manaCurve.label}</div>
             </div>
-            <div>{manaCurve.count}</div>
-            <div>{manaCurve.label}</div>
-          </div>
-        );
-      })}
+          );
+        })}
+      </div>
     </div>
   );
 }

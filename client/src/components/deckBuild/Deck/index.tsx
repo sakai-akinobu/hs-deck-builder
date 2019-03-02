@@ -6,6 +6,7 @@ import CardCounter from "../CardCounter";
 import EncodeString from "../EncodeString";
 import { HeroType } from "../../../types/hero";
 import { DeckCard as DeckCardType } from "../../../reducers/deckBuild/types";
+import styles from "./index.scss";
 
 interface DeckProps {
   hero: HeroType;
@@ -20,13 +21,15 @@ export default function Deck({ hero, deck, unpickCard }: DeckProps) {
       <ManaCurve deck={deck} />
       <CardCounter count={cardCount} />
       <EncodeString hero={hero} deck={deck} />
-      {deck.map((deckCard, index) => (
-        <DeckCard
-          key={index}
-          deckCard={deckCard}
-          onClick={() => unpickCard(deckCard)}
-        />
-      ))}
+      <div className={styles.deckCards}>
+        {deck.map((deckCard, index) => (
+          <DeckCard
+            key={index}
+            deckCard={deckCard}
+            onClick={() => unpickCard(deckCard)}
+          />
+        ))}
+      </div>
     </div>
   );
 }
