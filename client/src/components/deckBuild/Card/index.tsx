@@ -23,6 +23,10 @@ export default function Card({ card, onClick }: CardProps) {
     image.onload = () => {
       setLoaded(true);
     };
+
+    return () => {
+      image.onload = null;
+    };
   });
 
   return loaded ? (
