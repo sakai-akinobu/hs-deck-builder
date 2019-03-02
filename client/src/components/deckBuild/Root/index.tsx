@@ -23,6 +23,7 @@ export interface IndexProps {
     changePage: (hero: HeroType, query: string, page: number) => any;
     pickCard: (cardType: CardType) => any;
     unpickCard: (deckCardType: DeckCardType) => any;
+    clearDeckCards: () => any;
   };
 }
 
@@ -35,7 +36,8 @@ export default function Index(props: IndexProps) {
       searchCard,
       changePage,
       pickCard,
-      unpickCard
+      unpickCard,
+      clearDeckCards
     }
   } = props;
 
@@ -67,7 +69,12 @@ export default function Index(props: IndexProps) {
             )}
           </div>
         </div>
-        <Deck hero={hero} deck={deck} unpickCard={unpickCard} />
+        <Deck
+          hero={hero}
+          deck={deck}
+          clearDeckCards={clearDeckCards}
+          unpickCard={unpickCard}
+        />
       </div>
     </div>
   );

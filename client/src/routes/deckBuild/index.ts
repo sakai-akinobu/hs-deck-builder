@@ -13,7 +13,8 @@ import {
   searchCard,
   changePage,
   pickCard,
-  unpickCard
+  unpickCard,
+  clearDeckCards
 } from "../../reducers/deckBuild";
 
 function loader({ store }: LoaderProps) {
@@ -37,7 +38,8 @@ function mapDispatchToProps(dispatch: Dispatch) {
       changePage: (hero: string, query: string, page: number) =>
         dispatch(changePage(hero, query, page) as any),
       pickCard: (card: Card) => dispatch(pickCard(card)),
-      unpickCard: (deckCard: DeckCard) => dispatch(unpickCard(deckCard))
+      unpickCard: (deckCard: DeckCard) => dispatch(unpickCard(deckCard)),
+      clearDeckCards: () => dispatch(clearDeckCards())
     }
   };
 }

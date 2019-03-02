@@ -28,6 +28,10 @@ interface UnpickCardAction {
   type: "hs-deck-builder/deckBuild/UNPICK_CARD";
   payload: any;
 }
+interface ClearDeckCardsAction {
+  type: "hs-deck-builder/deckBuild/CLEAR_DECK_CARDS";
+  payload: any;
+}
 
 export type DeckBuildAction =
   | InitAction
@@ -36,7 +40,8 @@ export type DeckBuildAction =
   | SearchCardAction
   | ChangePageAction
   | PickCardAction
-  | UnpickCardAction;
+  | UnpickCardAction
+  | ClearDeckCardsAction;
 
 export interface Card {
   id: string;

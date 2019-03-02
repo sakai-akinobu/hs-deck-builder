@@ -14,6 +14,7 @@ export const SEARCH_CARD = "hs-deck-builder/deckBuild/SEARCH_CARD";
 export const CHANGE_PAGE = "hs-deck-builder/deckBuild/CHANGE_PAGE";
 export const PICK_CARD = "hs-deck-builder/deckBuild/PICK_CARD";
 export const UNPICK_CARD = "hs-deck-builder/deckBuild/UNPICK_CARD";
+export const CLEAR_DECK_CARDS = "hs-deck-builder/deckBuild/CLEAR_DECK_CARDS";
 
 const worker = new Worker("/cards.bundle.js");
 
@@ -89,6 +90,10 @@ export function pickCard(card: CardType) {
 
 export function unpickCard(deckCard: DeckCardType) {
   return createAction(UNPICK_CARD)({ deckCard });
+}
+
+export function clearDeckCards() {
+  return createAction(CLEAR_DECK_CARDS)();
 }
 
 export default handleActions<State>(
@@ -171,6 +176,11 @@ export default handleActions<State>(
             );
           }
         }
+      });
+    },
+    [CLEAR_DECK_CARDS]: (state): State => {
+      return immer(state, state => {
+        state.deck = [];
       });
     }
   },
