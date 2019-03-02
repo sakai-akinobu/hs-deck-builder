@@ -60,6 +60,12 @@ export default function EncodeString(props: EncodeStringProps) {
                 </div>
                 <div className={styles.footer}>
                   <div className={styles.content}>
+                    <a
+                      className={styles.link}
+                      href="https://playhearthstone.com/en-us/blog/20720853/new-features-coming-to-hearthstone-5-16-2017"
+                    >
+                      What is this?
+                    </a>
                     <input
                       type="button"
                       value="Copy"
