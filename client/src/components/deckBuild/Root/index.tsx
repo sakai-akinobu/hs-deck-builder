@@ -6,6 +6,7 @@ import {
   DeckBuildState as State
 } from "../../../reducers/deckBuild/types";
 import { HeroType } from "../../../types/hero";
+import Header from "../Header";
 import HeroFilter from "../HeroFilter";
 import SearchForm from "../SearchForm";
 import CardList from "../CardList";
@@ -43,6 +44,7 @@ export default function Index(props: IndexProps) {
 
   return (
     <div className={styles.pageContainer}>
+      <Header />
       <div className={styles.grid}>
         <div className={styles.filterContainer}>
           <HeroFilter hero={hero} onChange={hero => changeHero(hero, query)} />
