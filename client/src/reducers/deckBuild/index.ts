@@ -16,7 +16,7 @@ export const PICK_CARD = "hs-deck-builder/deckBuild/PICK_CARD";
 export const UNPICK_CARD = "hs-deck-builder/deckBuild/UNPICK_CARD";
 export const CLEAR_DECK_CARDS = "hs-deck-builder/deckBuild/CLEAR_DECK_CARDS";
 
-const worker = new Worker("/cards.bundle.js");
+const worker = new Worker("/built/cards.bundle.js");
 
 function fetchCards(params: { class: string; query?: string; page?: number }) {
   return new Promise(resolve => {

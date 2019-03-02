@@ -7,6 +7,7 @@
   "scripts": {
     "compile": "$(npm bin)/tsc --noEmit",
     "dev": "$(npm bin)/babel-node $(npm bin)/webpack-dev-server --config ./client/webpack/dev.config.js",
+    "build": "$(npm bin)/babel-node $(npm bin)/webpack --config ./client/webpack/prod.config.js",
     "lint": "$(npm bin)/eslint client/src/* --ext .ts,.tsx",
     "lint:fix": "$(npm bin)/eslint client/src/* --ext .ts,.tsx --fix",
     "stylelint": "$(npm bin)/stylelint 'client/src/**/*.scss'",
