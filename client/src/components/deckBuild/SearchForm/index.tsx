@@ -18,10 +18,11 @@ export default function SearchForm(props: SearchFormProps) {
 
   return (
     <form onSubmit={handleSubmit}>
+      <h3 className={styles.title}>Query</h3>
       <input
         value={query}
         onChange={e => onChange(e.target.value)}
-        placeholder="Keyword"
+        placeholder="Query"
         className={styles.input}
       />
     </form>
