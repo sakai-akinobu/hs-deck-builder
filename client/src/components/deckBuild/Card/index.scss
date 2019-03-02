@@ -7,3 +7,19 @@
     transform: scale(1.05);
   }
 }
+
+.spinner {
+  width: 30px;
+  height: 30px;
+  animation: cardLoadingSpinner 1.2s linear infinite;
+}
+
+@keyframes cardLoadingSpinner {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}

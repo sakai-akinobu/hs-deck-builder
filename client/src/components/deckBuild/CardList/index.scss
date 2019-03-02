@@ -6,3 +6,11 @@
   align-content: flex-start;
   user-select: none;
 }
+
+.card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1 1 200px;
+  min-height: 300px;
+}

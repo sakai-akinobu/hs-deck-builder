@@ -13,7 +13,7 @@ export default function CardList({ cards, pickCard }: CardListProps) {
   return (
     <ul className={styles.container}>
       {cards.map(card => (
-        <li key={card.id}>
+        <li key={card.id} className={styles.card}>
           <Card card={card} onClick={() => pickCard(card)} />
         </li>
       ))}
