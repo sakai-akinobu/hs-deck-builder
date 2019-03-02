@@ -1,0 +1,30 @@
+.title {
+  font-size: 1rem;
+}
+
+.manaCostContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+  > .manaCost {
+    display: flex;
+    flex: 0 0 50px;
+    height: 40px;
+    justify-content: center;
+    align-items: center;
+
+    > span {
+      background: #fff;
+      color: #333;
+      min-width: 30px;
+      text-align: center;
+      cursor: pointer;
+      user-select: none;
+
+      &.chosen {
+        background: #aaa;
+      }
+    }
+  }
+}

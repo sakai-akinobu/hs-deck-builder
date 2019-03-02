@@ -40,10 +40,13 @@ function filterCards(cards: any[], query: any) {
       );
     });
   }
-  // cost
-  if (query.cost) {
+  // mana cost
+  if (query.manaCost) {
     filteredCards = filteredCards.filter(card => {
-      return card.cost === Number(query.cost);
+      if (query.manaCost === "7+") {
+        return card.cost >= 7;
+      }
+      return card.cost === Number(query.manaCost);
     });
   }
   // query

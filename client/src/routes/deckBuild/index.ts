@@ -11,6 +11,8 @@ import {
   changeHero,
   syncQuery,
   searchCard,
+  chooseManaCost,
+  clearManaCost,
   changePage,
   pickCard,
   unpickCard,
@@ -35,8 +37,16 @@ function mapDispatchToProps(dispatch: Dispatch) {
       syncQuery: (query: string) => dispatch(syncQuery(query)),
       searchCard: (hero: string, query: string) =>
         dispatch(searchCard(hero, query) as any),
-      changePage: (hero: string, query: string, page: number) =>
-        dispatch(changePage(hero, query, page) as any),
+      chooseManaCost: (hero: string, query: string, manaCost: string) =>
+        dispatch(chooseManaCost(hero, query, manaCost) as any),
+      clearManaCost: (hero: string, query: string) =>
+        dispatch(clearManaCost(hero, query) as any),
+      changePage: (
+        hero: string,
+        query: string,
+        manaCost: string,
+        page: number
+      ) => dispatch(changePage(hero, query, manaCost, page) as any),
       pickCard: (card: Card) => dispatch(pickCard(card)),
       unpickCard: (deckCard: DeckCard) => dispatch(unpickCard(deckCard)),
       clearDeckCards: () => dispatch(clearDeckCards())

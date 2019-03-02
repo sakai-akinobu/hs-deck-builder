@@ -15,6 +15,8 @@ export const CHANGE_PAGE = "hs-deck-builder/deckBuild/CHANGE_PAGE";
 export const PICK_CARD = "hs-deck-builder/deckBuild/PICK_CARD";
 export const UNPICK_CARD = "hs-deck-builder/deckBuild/UNPICK_CARD";
 export const CLEAR_DECK_CARDS = "hs-deck-builder/deckBuild/CLEAR_DECK_CARDS";
+export const CHOOSE_MANA_COST = "hs-deck-builder/deckBuild/CHOOSE_MANA_COST";
+export const CLEAR_MANA_COST = "hs-deck-builder/deckBuild/CLEAR_MANA_COST";
 
 const worker = new Worker("/built/cards.bundle.js");
 
@@ -32,7 +34,7 @@ function createInitialState(): State {
     format: "standard",
     hero: "DRUID",
     query: "",
-    mana: null,
+    manaCost: "",
     page: {
       prev: 1,
       current: 1,
@@ -58,7 +60,7 @@ export async function changeHero(hero: string, query: string) {
     query
   };
   const data = await fetchCards(params);
-  return createAction(CHANGE_HERO)({ hero, ...data });
+  return createAction(CHANGE_HERO)({ ...data, hero });
 }
 
 export function syncQuery(query: string) {
@@ -74,10 +76,40 @@ export async function searchCard(hero: string, query: string) {
   return createAction(SEARCH_CARD)(data);
 }
 
-export async function changePage(hero: string, query: string, page: number) {
+export async function chooseManaCost(
+  hero: string,
+  query: string,
+  manaCost: string
+) {
   const params = {
     class: hero,
     query,
+    manaCost
+  };
+  const data = await fetchCards(params);
+  return createAction(CHOOSE_MANA_COST)({ ...data, manaCost });
+}
+
+export async function clearManaCost(hero: string, query: string) {
+  const params = {
+    class: hero,
+    query,
+    manaCost: ""
+  };
+  const data = await fetchCards(params);
+  return createAction(CLEAR_MANA_COST)({ ...data, manaCost: "" });
+}
+
+export async function changePage(
+  hero: string,
+  query: string,
+  manaCost: string,
+  page: number
+) {
+  const params = {
+    class: hero,
+    query,
+    manaCost,
     page
   };
   const data = await fetchCards(params);
@@ -109,6 +141,7 @@ export default handleActions<State>(
       return {
         ...state,
         hero: payload.hero,
+        manaCost: "",
         page: payload.page,
         cards: payload.cards,
         deck: []
@@ -123,6 +156,23 @@ export default handleActions<State>(
     [SEARCH_CARD]: (state, { payload }: any): State => {
       return {
         ...state,
+        manaCost: "",
+        page: payload.page,
+        cards: payload.cards
+      };
+    },
+    [CHOOSE_MANA_COST]: (state, { payload }: any): State => {
+      return {
+        ...state,
+        manaCost: payload.manaCost,
+        page: payload.page,
+        cards: payload.cards
+      };
+    },
+    [CLEAR_MANA_COST]: (state, { payload }: any): State => {
+      return {
+        ...state,
+        manaCost: payload.manaCost,
         page: payload.page,
         cards: payload.cards
       };

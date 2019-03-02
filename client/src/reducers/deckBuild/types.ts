@@ -16,6 +16,14 @@ interface SearchCardAction {
   type: "hs-deck-builder/deckBuild/SEARCH_CARD";
   payload: any;
 }
+interface ChooseManaCostAction {
+  type: "hs-deck-builder/deckBuild/CHOOSE_MANA_COST";
+  payload: any;
+}
+interface ClearManaCostAction {
+  type: "hs-deck-builder/deckBuild/CLEAR_MANA_COST";
+  payload: any;
+}
 interface ChangePageAction {
   type: "hs-deck-builder/deckBuild/CHANGE_PAGE";
   payload: any;
@@ -38,6 +46,8 @@ export type DeckBuildAction =
   | ChangeHeroAction
   | SyncQueryAction
   | SearchCardAction
+  | ChooseManaCostAction
+  | ClearManaCostAction
   | ChangePageAction
   | PickCardAction
   | UnpickCardAction
@@ -60,7 +70,7 @@ export interface DeckBuildState {
   format: string;
   hero: HeroType;
   query: string;
-  mana: number | null;
+  manaCost: string;
   page: {
     prev: number | null;
     current: number;

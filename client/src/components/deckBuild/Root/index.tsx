@@ -9,6 +9,7 @@ import { HeroType } from "../../../types/hero";
 import Header from "../Header";
 import HeroFilter from "../HeroFilter";
 import SearchForm from "../SearchForm";
+import ManaCostFilter from "../ManaCostFilter";
 import CardList from "../CardList";
 import PrevPageLink from "../PrevPageLink";
 import NextPageLink from "../NextPageLink";
@@ -21,7 +22,14 @@ export interface IndexProps {
     changeHero: (hero: HeroType, query: string) => any;
     syncQuery: (query: string) => any;
     searchCard: (hero: HeroType, query: string) => any;
-    changePage: (hero: HeroType, query: string, page: number) => any;
+    chooseManaCost: (hero: HeroType, query: string, manaCost: string) => any;
+    clearManaCost: (hero: HeroType, query: string) => any;
+    changePage: (
+      hero: HeroType,
+      query: string,
+      manaCost: string,
+      page: number
+    ) => any;
     pickCard: (cardType: CardType) => any;
     unpickCard: (deckCardType: DeckCardType) => any;
     clearDeckCards: () => any;
@@ -30,11 +38,13 @@ export interface IndexProps {
 
 export default function Index(props: IndexProps) {
   const {
-    deckBuild: { hero, query, cards, page, deck },
+    deckBuild: { hero, query, manaCost, cards, page, deck },
     actions: {
       changeHero,
       syncQuery,
       searchCard,
+      chooseManaCost,
+      clearManaCost,
       changePage,
       pickCard,
       unpickCard,
@@ -53,12 +63,22 @@ export default function Index(props: IndexProps) {
             onChange={syncQuery}
             searchCard={searchCard.bind(null, hero, query)}
           />
+          <ManaCostFilter
+            manaCost={manaCost}
+            onClick={cost => {
+              cost === manaCost
+                ? clearManaCost(hero, query)
+                : chooseManaCost(hero, query, cost);
+            }}
+          />
         </div>
         <div className={styles.cardContainer}>
           <div className={styles.pageLinkContainer}>
             {page.prev && (
               <PrevPageLink
-                onClick={() => changePage(hero, query, page.prev || 0)}
+                onClick={() =>
+                  changePage(hero, query, manaCost, page.prev || 0)
+                }
               />
             )}
           </div>
@@ -66,7 +86,9 @@ export default function Index(props: IndexProps) {
           <div className={styles.pageLinkContainer}>
             {page.next && (
               <NextPageLink
-                onClick={() => changePage(hero, query, page.next || 0)}
+                onClick={() =>
+                  changePage(hero, query, manaCost, page.next || 0)
+                }
               />
             )}
           </div>
