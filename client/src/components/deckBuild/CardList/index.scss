@@ -1,7 +1,6 @@
 .container {
   display: flex;
-  width: 800px;
-  flex: 0 0 800px;
+  flex: 0 0 720px;
   flex-wrap: wrap;
   align-content: flex-start;
   user-select: none;
@@ -11,6 +10,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  flex: 0 0 200px;
-  min-height: 300px;
+  flex: 0 0 180px;
+  min-height: 240px;
 }

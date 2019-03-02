@@ -41,29 +41,31 @@ export default function Index(props: IndexProps) {
 
   return (
     <div className={styles.pageContainer}>
-      <div className={styles.filterContainer}>
-        <HeroFilter hero={hero} onChange={hero => changeHero(hero, query)} />
-        <SearchForm
-          query={query}
-          onChange={syncQuery}
-          searchCard={searchCard.bind(null, hero, query)}
-        />
-      </div>
-      <div className={styles.cardDeckContainer}>
-        <div className={styles.pageLinkContainer}>
-          {page.prev && (
-            <PrevPageLink
-              onClick={() => changePage(hero, query, page.prev || 0)}
-            />
-          )}
+      <div className={styles.grid}>
+        <div className={styles.filterContainer}>
+          <HeroFilter hero={hero} onChange={hero => changeHero(hero, query)} />
+          <SearchForm
+            query={query}
+            onChange={syncQuery}
+            searchCard={searchCard.bind(null, hero, query)}
+          />
         </div>
-        <CardList cards={cards} pickCard={pickCard} />
-        <div className={styles.pageLinkContainer}>
-          {page.next && (
-            <NextPageLink
-              onClick={() => changePage(hero, query, page.next || 0)}
-            />
-          )}
+        <div className={styles.cardContainer}>
+          <div className={styles.pageLinkContainer}>
+            {page.prev && (
+              <PrevPageLink
+                onClick={() => changePage(hero, query, page.prev || 0)}
+              />
+            )}
+          </div>
+          <CardList cards={cards} pickCard={pickCard} />
+          <div className={styles.pageLinkContainer}>
+            {page.next && (
+              <NextPageLink
+                onClick={() => changePage(hero, query, page.next || 0)}
+              />
+            )}
+          </div>
         </div>
         <Deck hero={hero} deck={deck} unpickCard={unpickCard} />
       </div>

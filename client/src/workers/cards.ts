@@ -71,7 +71,7 @@ function filterCards(cards: any[], query: any) {
   });
 
   // paging
-  const PAGE_SIZE = 8;
+  const PAGE_SIZE = 12;
   const page = Number(query.page) || 1;
   const lastPage =
     Math.floor(filteredCards.length / PAGE_SIZE) +

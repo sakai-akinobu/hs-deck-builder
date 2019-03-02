@@ -17,7 +17,7 @@ export default function SearchForm(props: SearchFormProps) {
   };
 
   return (
-    <form onSubmit={handleSubmit} className={styles.form}>
+    <form onSubmit={handleSubmit}>
       <input
         value={query}
         onChange={e => onChange(e.target.value)}

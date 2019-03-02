@@ -13,21 +13,23 @@ interface CardProps {
 export default function Card({ card, onClick }: CardProps) {
   const [loaded, setLoaded] = useState(false);
 
+  const imageUrl = `https://art.hearthstonejson.com/v1/render/latest/enUS/256x/${
+    card.id
+  }.png`;
+
   useEffect(() => {
     const image = new Image();
-    image.src = `https://art.hearthstonejson.com/v1/render/latest/enUS/256x/${
-      card.id
-    }.png`;
+    image.src = imageUrl;
     image.onload = () => {
       setLoaded(true);
     };
   });
 
   return loaded ? (
-    <img
-      src={`https://art.hearthstonejson.com/v1/render/latest/enUS/256x/${
-        card.id
-      }.png`}
+    <div
+      style={{
+        backgroundImage: `url(${imageUrl})`
+      }}
       onClick={onClick}
       className={styles.card}
     />

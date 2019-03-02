@@ -2,15 +2,21 @@
   padding: 20px;
 }
 
+.grid {
+  display: grid;
+  grid-template-columns: 200px 800px 200px;
+}
+
 .filterContainer {
   display: flex;
+  flex-direction: column;
 }
 
-.cardDeckContainer {
+.cardContainer {
   display: flex;
-}
 
-.pageLinkContainer {
-  display: flex;
-  flex: 0 0 60px;
+  .pageLinkContainer {
+    display: flex;
+    flex: 0 0 30px;
+  }
 }
