@@ -10,20 +10,23 @@
   > .manaCost {
     display: flex;
     flex: 0 0 50px;
-    height: 40px;
+    height: 38px;
     justify-content: center;
     align-items: center;
 
     > span {
       background: #fff;
       color: #333;
-      min-width: 30px;
+      min-width: 36px;
       text-align: center;
       cursor: pointer;
       user-select: none;
+      line-height: 1.8;
+      border-radius: 6px;
 
       &.chosen {
-        background: #aaa;
+        color: #fff;
+        background: #666;
       }
     }
   }
