@@ -20,7 +20,7 @@ function fetchJson(): Promise<any[]> {
   });
 }
 
-function filterCards(cards: any[], query: any) {
+function filterCards(cards: any[], conditions: any) {
   let filteredCards = cards;
 
   // exclude HERO type
@@ -33,26 +33,30 @@ function filterCards(cards: any[], query: any) {
   });
 
   // class
-  if (query.class) {
+  if (conditions.class) {
     filteredCards = filteredCards.filter(card => {
       return (
-        card.cardClass === NEUTRAL_CARD_CLASS || card.cardClass === query.class
+        card.cardClass === NEUTRAL_CARD_CLASS ||
+        card.cardClass === conditions.class
       );
     });
   }
   // mana cost
-  if (query.manaCost) {
+  if (conditions.manaCost) {
     filteredCards = filteredCards.filter(card => {
-      if (query.manaCost === "7+") {
+      if (conditions.manaCost === "7+") {
         return card.cost >= 7;
       }
-      return card.cost === Number(query.manaCost);
+      return card.cost === Number(conditions.manaCost);
     });
   }
   // query
-  if (query.query) {
+  if (conditions.query) {
     filteredCards = filteredCards.filter(card => {
-      return card.name.includes(query.query);
+      return (
+        card.name.toLowerCase().includes(conditions.query.toLowerCase()) ||
+        card.type.toLowerCase().includes(conditions.query.toLowerCase())
+      );
     });
   }
 
@@ -75,7 +79,7 @@ function filterCards(cards: any[], query: any) {
 
   // paging
   const PAGE_SIZE = 12;
-  const page = Number(query.page) || 1;
+  const page = Number(conditions.page) || 1;
   const lastPage =
     Math.floor(filteredCards.length / PAGE_SIZE) +
     (filteredCards.length % PAGE_SIZE === 0 ? 0 : 1);
@@ -91,8 +95,8 @@ function filterCards(cards: any[], query: any) {
 const context: Worker = self as any;
 context.addEventListener("message", async event => {
   cards = await fetchJson();
-  const query = event.data;
-  const { filteredCards, page, lastPage } = filterCards(cards, query);
+  const conditions = event.data;
+  const { filteredCards, page, lastPage } = filterCards(cards, conditions);
 
   context.postMessage({
     cards: filteredCards,
