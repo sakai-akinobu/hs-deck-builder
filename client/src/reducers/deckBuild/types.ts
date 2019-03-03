@@ -1,9 +1,5 @@
 import { HeroType } from "../../types/hero";
 
-interface InitAction {
-  type: "hs-deck-builder/deckBuild/INIT";
-  payload: any;
-}
 interface ChangeHeroAction {
   type: "hs-deck-builder/deckBuild/CHANGE_HERO";
   payload: any;
@@ -24,10 +20,6 @@ interface ClearManaCostAction {
   type: "hs-deck-builder/deckBuild/CLEAR_MANA_COST";
   payload: any;
 }
-interface ChangePageAction {
-  type: "hs-deck-builder/deckBuild/CHANGE_PAGE";
-  payload: any;
-}
 interface PickCardAction {
   type: "hs-deck-builder/deckBuild/PICK_CARD";
   payload: any;
@@ -42,13 +34,11 @@ interface ClearDeckCardsAction {
 }
 
 export type DeckBuildAction =
-  | InitAction
   | ChangeHeroAction
   | SyncQueryAction
   | SearchCardAction
   | ChooseManaCostAction
   | ClearManaCostAction
-  | ChangePageAction
   | PickCardAction
   | UnpickCardAction
   | ClearDeckCardsAction;

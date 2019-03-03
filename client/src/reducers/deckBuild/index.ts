@@ -7,11 +7,9 @@ import {
   DeckCard as DeckCardType
 } from "./types";
 
-export const INIT = "hs-deck-builder/deckBuild/INIT";
 export const CHANGE_HERO = "hs-deck-builder/deckBuild/CHANGE_HERO";
 export const SYNC_QUERY = "hs-deck-builder/deckBuild/SYNC_QUERY";
 export const SEARCH_CARD = "hs-deck-builder/deckBuild/SEARCH_CARD";
-export const CHANGE_PAGE = "hs-deck-builder/deckBuild/CHANGE_PAGE";
 export const PICK_CARD = "hs-deck-builder/deckBuild/PICK_CARD";
 export const UNPICK_CARD = "hs-deck-builder/deckBuild/UNPICK_CARD";
 export const CLEAR_DECK_CARDS = "hs-deck-builder/deckBuild/CLEAR_DECK_CARDS";
@@ -51,7 +49,7 @@ export async function init() {
     class: "DRUID"
   };
   const data = await fetchCards(params);
-  return createAction(INIT)(data);
+  return createAction(SEARCH_CARD)(data);
 }
 
 export async function changeHero(hero: string, query: string) {
@@ -60,7 +58,12 @@ export async function changeHero(hero: string, query: string) {
     query
   };
   const data = await fetchCards(params);
-  return createAction(CHANGE_HERO)({ ...data, hero });
+  return [
+    createAction(CHANGE_HERO)({ hero }),
+    createAction(CLEAR_MANA_COST)(),
+    createAction(CLEAR_DECK_CARDS)(),
+    createAction(SEARCH_CARD)(data)
+  ];
 }
 
 export function syncQuery(query: string) {
@@ -87,7 +90,10 @@ export async function chooseManaCost(
     manaCost
   };
   const data = await fetchCards(params);
-  return createAction(CHOOSE_MANA_COST)({ ...data, manaCost });
+  return [
+    createAction(CHOOSE_MANA_COST)({ manaCost }),
+    createAction(SEARCH_CARD)(data)
+  ];
 }
 
 export async function clearManaCost(hero: string, query: string) {
@@ -97,7 +103,7 @@ export async function clearManaCost(hero: string, query: string) {
     manaCost: ""
   };
   const data = await fetchCards(params);
-  return createAction(CLEAR_MANA_COST)(data);
+  return [createAction(CLEAR_MANA_COST)(), createAction(SEARCH_CARD)(data)];
 }
 
 export async function changePage(
@@ -113,7 +119,7 @@ export async function changePage(
     page
   };
   const data = await fetchCards(params);
-  return createAction(CHANGE_PAGE)(data);
+  return createAction(SEARCH_CARD)(data);
 }
 
 export function pickCard(card: CardType) {
@@ -130,19 +136,9 @@ export function clearDeckCards() {
 
 export default handleActions<State>(
   {
-    [INIT]: (state, { payload }: any): State => {
-      return produce(state, draft => {
-        draft.page = payload.page;
-        draft.cards = payload.cards;
-      });
-    },
     [CHANGE_HERO]: (state, { payload }: any): State => {
       return produce(state, draft => {
         draft.hero = payload.hero;
-        draft.manaCost = "";
-        draft.page = payload.page;
-        draft.cards = payload.cards;
-        draft.deck = [];
       });
     },
     [SYNC_QUERY]: (state, { payload }: any): State => {
@@ -152,7 +148,6 @@ export default handleActions<State>(
     },
     [SEARCH_CARD]: (state, { payload }: any): State => {
       return produce(state, draft => {
-        draft.manaCost = "";
         draft.page = payload.page;
         draft.cards = payload.cards;
       });
@@ -160,21 +155,11 @@ export default handleActions<State>(
     [CHOOSE_MANA_COST]: (state, { payload }: any): State => {
       return produce(state, draft => {
         draft.manaCost = payload.manaCost;
-        draft.page = payload.page;
-        draft.cards = payload.cards;
       });
     },
-    [CLEAR_MANA_COST]: (state, { payload }: any): State => {
+    [CLEAR_MANA_COST]: (state): State => {
       return produce(state, draft => {
         draft.manaCost = "";
-        draft.page = payload.page;
-        draft.cards = payload.cards;
-      });
-    },
-    [CHANGE_PAGE]: (state, { payload }: any): State => {
-      return produce(state, draft => {
-        draft.page = payload.page;
-        draft.cards = payload.cards;
       });
     },
     [PICK_CARD]: (state, { payload }: any): State => {
