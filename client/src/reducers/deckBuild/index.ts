@@ -168,16 +168,16 @@ export default handleActions<State>(
 
       return produce(state, draft => {
         const pickedCard: CardType = payload.card;
-        const pickedDeckCard = draft.deck.find(
+        const pickedDeckCard = state.deck.find(
           deckCard => deckCard.card.id === pickedCard.id
         );
 
-        const maxCount = draft.deck.reduce(
+        const cardCount = state.deck.reduce(
           (cnt, deckCard) => cnt + deckCard.count,
           0
         );
 
-        if (maxCount < MAX_CARD_COUNT_IN_DECK) {
+        if (cardCount < MAX_CARD_COUNT_IN_DECK) {
           if (pickedDeckCard) {
             if (
               pickedDeckCard.count < MAX_CARD_COUNT &&
