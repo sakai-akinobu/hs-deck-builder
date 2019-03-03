@@ -97,7 +97,7 @@ export async function clearManaCost(hero: string, query: string) {
     manaCost: ""
   };
   const data = await fetchCards(params);
-  return createAction(CLEAR_MANA_COST)({ ...data, manaCost: "" });
+  return createAction(CLEAR_MANA_COST)(data);
 }
 
 export async function changePage(
@@ -131,58 +131,51 @@ export function clearDeckCards() {
 export default handleActions<State>(
   {
     [INIT]: (state, { payload }: any): State => {
-      return {
-        ...state,
-        page: payload.page,
-        cards: payload.cards
-      };
+      return produce(state, draft => {
+        draft.page = payload.page;
+        draft.cards = payload.cards;
+      });
     },
     [CHANGE_HERO]: (state, { payload }: any): State => {
-      return {
-        ...state,
-        hero: payload.hero,
-        manaCost: "",
-        page: payload.page,
-        cards: payload.cards,
-        deck: []
-      };
+      return produce(state, draft => {
+        draft.hero = payload.hero;
+        draft.manaCost = "";
+        draft.page = payload.page;
+        draft.cards = payload.cards;
+        draft.deck = [];
+      });
     },
     [SYNC_QUERY]: (state, { payload }: any): State => {
-      return {
-        ...state,
-        query: payload.query
-      };
+      return produce(state, draft => {
+        draft.query = payload.query;
+      });
     },
     [SEARCH_CARD]: (state, { payload }: any): State => {
-      return {
-        ...state,
-        manaCost: "",
-        page: payload.page,
-        cards: payload.cards
-      };
+      return produce(state, draft => {
+        draft.manaCost = "";
+        draft.page = payload.page;
+        draft.cards = payload.cards;
+      });
     },
     [CHOOSE_MANA_COST]: (state, { payload }: any): State => {
-      return {
-        ...state,
-        manaCost: payload.manaCost,
-        page: payload.page,
-        cards: payload.cards
-      };
+      return produce(state, draft => {
+        draft.manaCost = payload.manaCost;
+        draft.page = payload.page;
+        draft.cards = payload.cards;
+      });
     },
     [CLEAR_MANA_COST]: (state, { payload }: any): State => {
-      return {
-        ...state,
-        manaCost: payload.manaCost,
-        page: payload.page,
-        cards: payload.cards
-      };
+      return produce(state, draft => {
+        draft.manaCost = "";
+        draft.page = payload.page;
+        draft.cards = payload.cards;
+      });
     },
     [CHANGE_PAGE]: (state, { payload }: any): State => {
-      return {
-        ...state,
-        page: payload.page,
-        cards: payload.cards
-      };
+      return produce(state, draft => {
+        draft.page = payload.page;
+        draft.cards = payload.cards;
+      });
     },
     [PICK_CARD]: (state, { payload }: any): State => {
       const MAX_CARD_COUNT_IN_DECK = 30;
