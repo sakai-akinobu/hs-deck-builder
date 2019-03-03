@@ -164,23 +164,23 @@ export default handleActions<State>(
     },
     [PICK_CARD]: (state, { payload }: any): State => {
       const MAX_CARD_COUNT_IN_DECK = 30;
-      const MAX_CARD_COUNT = 2;
+      const MAX_COUNT_OF_SAME_CARD = 2;
 
       return produce(state, draft => {
-        const pickedCard: CardType = payload.card;
-        const pickedDeckCard = state.deck.find(
-          deckCard => deckCard.card.id === pickedCard.id
-        );
-
-        const cardCount = state.deck.reduce(
-          (cnt, deckCard) => cnt + deckCard.count,
+        const totalCardCount = draft.deck.reduce(
+          (totalCount, deckCard) => totalCount + deckCard.count,
           0
         );
 
-        if (cardCount < MAX_CARD_COUNT_IN_DECK) {
+        if (totalCardCount < MAX_CARD_COUNT_IN_DECK) {
+          const pickedCard: CardType = payload.card;
+          const pickedDeckCard = draft.deck.find(
+            deckCard => deckCard.card.id === pickedCard.id
+          );
+
           if (pickedDeckCard) {
             if (
-              pickedDeckCard.count < MAX_CARD_COUNT &&
+              pickedDeckCard.count < MAX_COUNT_OF_SAME_CARD &&
               pickedDeckCard.card.rarity !== "LEGENDARY"
             ) {
               pickedDeckCard.count++;
