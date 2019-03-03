@@ -1,4 +1,19 @@
-.header {
+.container {
+  display: flex;
+}
+
+.title {
+  flex: 1 1 auto;
   margin: 0;
   font-size: 2rem;
+}
+
+.nav {
+  flex: 0 0 100px;
+  font-size: 1.8rem;
+
+  > a:visited {
+    color: #fff;
+    text-decoration: none;
+  }
 }
