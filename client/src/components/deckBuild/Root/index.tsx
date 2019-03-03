@@ -8,7 +8,7 @@ import {
 import { HeroType } from "../../../types/hero";
 import Header from "../Header";
 import HeroFilter from "../HeroFilter";
-import SearchForm from "../SearchForm";
+import QueryFilter from "../QueryFilter";
 import ManaCostFilter from "../ManaCostFilter";
 import CardList from "../CardList";
 import PrevPageLink from "../PrevPageLink";
@@ -58,7 +58,7 @@ export default function Index(props: IndexProps) {
       <div className={styles.grid}>
         <div className={styles.filterContainer}>
           <HeroFilter hero={hero} onChange={hero => changeHero(hero, query)} />
-          <SearchForm
+          <QueryFilter
             query={query}
             onChange={syncQuery}
             searchCard={searchCard.bind(null, hero, query)}

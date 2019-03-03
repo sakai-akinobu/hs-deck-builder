@@ -2,13 +2,13 @@ import * as React from "react";
 
 import styles from "./index.scss";
 
-interface SearchFormProps {
+interface Props {
   query: string;
   onChange: (value: string) => any;
   searchCard: () => any;
 }
 
-export default function SearchForm(props: SearchFormProps) {
+export default function QueryFilter(props: Props) {
   const { query, onChange, searchCard } = props;
 
   const handleSubmit = (event: React.SyntheticEvent<HTMLFormElement>) => {
