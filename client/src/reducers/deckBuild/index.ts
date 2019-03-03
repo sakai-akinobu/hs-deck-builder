@@ -1,5 +1,5 @@
 import { createAction, handleActions } from "../../utils/redux";
-import immer from "immer";
+import produce from "immer";
 
 import {
   Card as CardType,
@@ -188,13 +188,13 @@ export default handleActions<State>(
       const MAX_CARD_COUNT_IN_DECK = 30;
       const MAX_CARD_COUNT = 2;
 
-      return immer(state, state => {
+      return produce(state, draft => {
         const pickedCard: CardType = payload.card;
-        const pickedDeckCard = state.deck.find(
+        const pickedDeckCard = draft.deck.find(
           deckCard => deckCard.card.id === pickedCard.id
         );
 
-        const maxCount = state.deck.reduce(
+        const maxCount = draft.deck.reduce(
           (cnt, deckCard) => cnt + deckCard.count,
           0
         );
@@ -208,20 +208,20 @@ export default handleActions<State>(
               pickedDeckCard.count++;
             }
           } else {
-            state.deck.push({ card: pickedCard, count: 1 });
+            draft.deck.push({ card: pickedCard, count: 1 });
           }
         }
       });
     },
     [UNPICK_CARD]: (state, { payload }: any): State => {
-      return immer(state, state => {
-        const pickedDeckCard = state.deck.find(
+      return produce(state, draft => {
+        const pickedDeckCard = draft.deck.find(
           deckCard => deckCard.card.id === payload.deckCard.card.id
         );
         if (pickedDeckCard) {
           pickedDeckCard.count--;
           if (pickedDeckCard.count === 0) {
-            state.deck = state.deck.filter(
+            draft.deck = draft.deck.filter(
               deckCard => deckCard.card.id !== payload.deckCard.card.id
             );
           }
@@ -229,8 +229,8 @@ export default handleActions<State>(
       });
     },
     [CLEAR_DECK_CARDS]: (state): State => {
-      return immer(state, state => {
-        state.deck = [];
+      return produce(state, draft => {
+        draft.deck = [];
       });
     }
   },
