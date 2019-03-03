@@ -82,7 +82,7 @@ export default function EncodeString(props: EncodeStringProps) {
       <div className={styles.buttonContainer}>
         <button className={styles.button} onClick={() => setIsOpen(true)}>
           Create deck code
-          <FaCopy />
+          <FaCopy className={styles.copyIcon} />
         </button>
       </div>
     </div>
