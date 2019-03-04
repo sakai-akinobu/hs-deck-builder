@@ -3,12 +3,12 @@ import * as React from "react";
 import { DeckCard as DeckCardType } from "../../../reducers/deckBuild/types";
 import styles from "./index.scss";
 
-interface DeckCardProps {
+interface Props {
   deckCard: DeckCardType;
   onClick: () => any;
 }
 
-export default function DeckCard({ deckCard, onClick }: DeckCardProps) {
+export default function DeckCard({ deckCard, onClick }: Props) {
   return (
     <div
       onClick={onClick}

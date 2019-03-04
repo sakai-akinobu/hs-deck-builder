@@ -8,12 +8,12 @@ import { DeckCard as DeckCardType } from "../../../reducers/deckBuild/types";
 import { HeroType, HeroToDbfIdMap } from "../../../types/hero";
 import styles from "./index.scss";
 
-interface EncodeStringProps {
+interface Props {
   hero: HeroType;
   deck: DeckCardType[];
 }
 
-export default function EncodeString(props: EncodeStringProps) {
+export default function EncodeString(props: Props) {
   const [isOpen, setIsOpen] = useState(false);
   const encodeStringRef = useRef<HTMLTextAreaElement>(null);
 

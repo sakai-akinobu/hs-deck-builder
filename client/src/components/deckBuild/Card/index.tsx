@@ -5,12 +5,12 @@ import { FaSpinner } from "react-icons/lib/fa";
 import { Card as CardType } from "../../../reducers/deckBuild/types";
 import styles from "./index.scss";
 
-interface CardProps {
+interface Props {
   card: CardType;
   onClick: () => any;
 }
 
-export default function Card({ card, onClick }: CardProps) {
+export default function Card({ card, onClick }: Props) {
   const [loaded, setLoaded] = useState(false);
 
   const imageUrl = `https://art.hearthstonejson.com/v1/render/latest/enUS/256x/${

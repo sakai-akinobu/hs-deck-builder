@@ -3,11 +3,11 @@ import { FaArrowRight } from "react-icons/lib/fa";
 
 import styles from "./index.scss";
 
-interface NextPageLinkProps {
+interface Props {
   onClick: () => any;
 }
 
-export default function NextPageLink({ onClick }: NextPageLinkProps) {
+export default function NextPageLink({ onClick }: Props) {
   return (
     <div onClick={onClick} className={styles.container}>
       <FaArrowRight className={styles.arrow} />

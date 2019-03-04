@@ -16,7 +16,7 @@ import NextPageLink from "../NextPageLink";
 import Deck from "../Deck";
 import styles from "./index.scss";
 
-export interface IndexProps {
+interface Props {
   deckBuild: State;
   actions: {
     changeHero: (hero: HeroType, query: string) => any;
@@ -36,7 +36,7 @@ export interface IndexProps {
   };
 }
 
-export default function Index(props: IndexProps) {
+export default function Index(props: Props) {
   const {
     deckBuild: { hero, query, manaCost, cards, page, deck },
     actions: {

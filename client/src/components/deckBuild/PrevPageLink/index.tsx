@@ -3,11 +3,11 @@ import { FaArrowLeft } from "react-icons/lib/fa";
 
 import styles from "./index.scss";
 
-interface PrevPageLinkProps {
+interface Props {
   onClick: () => any;
 }
 
-export default function PrevPageLink({ onClick }: PrevPageLinkProps) {
+export default function PrevPageLink({ onClick }: Props) {
   return (
     <div onClick={onClick} className={styles.container}>
       <FaArrowLeft className={styles.arrow} />

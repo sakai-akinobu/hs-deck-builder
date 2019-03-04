@@ -9,7 +9,7 @@ import { HeroType } from "../../../types/hero";
 import { DeckCard as DeckCardType } from "../../../reducers/deckBuild/types";
 import styles from "./index.scss";
 
-interface DeckProps {
+interface Props {
   hero: HeroType;
   deck: DeckCardType[];
   clearDeckCards: () => any;
@@ -21,7 +21,7 @@ export default function Deck({
   deck,
   clearDeckCards,
   unpickCard
-}: DeckProps) {
+}: Props) {
   const cardCount = deck.reduce((cnt, deckCard) => cnt + deckCard.count, 0);
   return (
     <div>

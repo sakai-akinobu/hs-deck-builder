@@ -3,11 +3,11 @@ import * as React from "react";
 import styles from "./index.scss";
 import { DeckCard } from "../../../reducers/deckBuild/types";
 
-interface ManaCurveProps {
+interface Props {
   deck: DeckCard[];
 }
 
-export default function ManaCurve({ deck }: ManaCurveProps) {
+export default function ManaCurve({ deck }: Props) {
   const manaCurves = [
     { label: "0", value: 0, count: 0 },
     { label: "1", value: 1, count: 0 },

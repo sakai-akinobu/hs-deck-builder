@@ -3,12 +3,12 @@ import * as React from "react";
 import styles from "./index.scss";
 import { Heros, HeroType } from "../../../types/hero";
 
-interface HeroFilterProps {
+interface Props {
   hero: HeroType;
   onChange: (value: HeroType) => any;
 }
 
-export default function HeroFilter({ hero, onChange }: HeroFilterProps) {
+export default function HeroFilter({ hero, onChange }: Props) {
   return (
     <div>
       <h3 className={styles.title}>Hero</h3>
