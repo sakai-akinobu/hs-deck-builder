@@ -6,7 +6,11 @@ import {
   DeckBuildState as State,
   DeckCard as DeckCardType
 } from "./types";
-import { Rarity } from "../../utils/constants/hearthstone";
+import {
+  Rarity,
+  MAX_CARD_COUNT_IN_DECK,
+  MAX_COUNT_OF_SAME_CARD
+} from "../../utils/constants/hearthstone";
 
 export const CHANGE_HERO = "hs-deck-builder/deckBuild/CHANGE_HERO";
 export const SYNC_QUERY = "hs-deck-builder/deckBuild/SYNC_QUERY";
@@ -164,9 +168,6 @@ export default handleActions<State>(
       });
     },
     [PICK_CARD]: (state, { payload }: any): State => {
-      const MAX_CARD_COUNT_IN_DECK = 30;
-      const MAX_COUNT_OF_SAME_CARD = 2;
-
       return produce(state, draft => {
         const totalCardCount = draft.deck.reduce(
           (totalCount, deckCard) => totalCount + deckCard.count,
