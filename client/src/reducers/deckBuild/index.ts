@@ -6,6 +6,7 @@ import {
   DeckBuildState as State,
   DeckCard as DeckCardType
 } from "./types";
+import { Rarity } from "../../utils/constants/hearthstone";
 
 export const CHANGE_HERO = "hs-deck-builder/deckBuild/CHANGE_HERO";
 export const SYNC_QUERY = "hs-deck-builder/deckBuild/SYNC_QUERY";
@@ -181,7 +182,7 @@ export default handleActions<State>(
           if (pickedDeckCard) {
             if (
               pickedDeckCard.count < MAX_COUNT_OF_SAME_CARD &&
-              pickedDeckCard.card.rarity !== "LEGENDARY"
+              pickedDeckCard.card.rarity !== Rarity.legendary
             ) {
               pickedDeckCard.count++;
             }
