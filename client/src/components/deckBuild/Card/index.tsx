@@ -7,7 +7,7 @@ import styles from "./index.scss";
 
 interface Props {
   card: CardType;
-  onClick: () => any;
+  onClick: () => void;
 }
 
 export default function Card({ card, onClick }: Props) {

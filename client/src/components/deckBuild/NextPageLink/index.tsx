@@ -4,7 +4,7 @@ import { FaArrowRight } from "react-icons/lib/fa";
 import styles from "./index.scss";
 
 interface Props {
-  onClick: () => any;
+  onClick: () => void;
 }
 
 export default function NextPageLink({ onClick }: Props) {

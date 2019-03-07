@@ -6,7 +6,7 @@ import styles from "./index.scss";
 
 interface Props {
   cards: CardType[];
-  pickCard: (cardType: CardType) => any;
+  pickCard: (cardType: CardType) => void;
 }
 
 export default function CardList({ cards, pickCard }: Props) {

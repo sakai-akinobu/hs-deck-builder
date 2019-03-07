@@ -12,8 +12,8 @@ import styles from "./index.scss";
 interface Props {
   hero: HeroType;
   deck: DeckCardType[];
-  clearDeckCards: () => any;
-  unpickCard: (deckCardType: DeckCardType) => any;
+  clearDeckCards: () => void;
+  unpickCard: (deckCardType: DeckCardType) => void;
 }
 
 export default function Deck({

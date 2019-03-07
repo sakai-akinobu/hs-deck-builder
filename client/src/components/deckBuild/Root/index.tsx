@@ -19,20 +19,20 @@ import styles from "./index.scss";
 interface Props {
   deckBuild: State;
   actions: {
-    changeHero: (hero: HeroType, query: string) => any;
-    syncQuery: (query: string) => any;
-    searchCard: (hero: HeroType, query: string) => any;
-    chooseManaCost: (hero: HeroType, query: string, manaCost: string) => any;
-    clearManaCost: (hero: HeroType, query: string) => any;
+    changeHero: (hero: HeroType, query: string) => void;
+    syncQuery: (query: string) => void;
+    searchCard: (hero: HeroType, query: string) => void;
+    chooseManaCost: (hero: HeroType, query: string, manaCost: string) => void;
+    clearManaCost: (hero: HeroType, query: string) => void;
     changePage: (
       hero: HeroType,
       query: string,
       manaCost: string,
       page: number
-    ) => any;
-    pickCard: (cardType: CardType) => any;
-    unpickCard: (deckCardType: DeckCardType) => any;
-    clearDeckCards: () => any;
+    ) => void;
+    pickCard: (cardType: CardType) => void;
+    unpickCard: (deckCardType: DeckCardType) => void;
+    clearDeckCards: () => void;
   };
 }
 

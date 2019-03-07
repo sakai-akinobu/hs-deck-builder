@@ -5,7 +5,7 @@ import { Heros, HeroType } from "../../../types/hero";
 
 interface Props {
   hero: HeroType;
-  onChange: (value: HeroType) => any;
+  onChange: (value: HeroType) => void;
 }
 
 export default function HeroFilter({ hero, onChange }: Props) {

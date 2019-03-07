@@ -5,7 +5,7 @@ import styles from "./index.scss";
 
 interface Props {
   deckCard: DeckCardType;
-  onClick: () => any;
+  onClick: () => void;
 }
 
 export default function DeckCard({ deckCard, onClick }: Props) {

@@ -4,8 +4,8 @@ import styles from "./index.scss";
 
 interface Props {
   query: string;
-  onChange: (value: string) => any;
-  searchCard: () => any;
+  onChange: (value: string) => void;
+  searchCard: () => void;
 }
 
 export default function QueryFilter(props: Props) {

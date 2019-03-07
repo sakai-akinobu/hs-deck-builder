@@ -6,7 +6,7 @@ const MANA_COSTS: string[] = ["0", "1", "2", "3", "4", "5", "6", "7+"];
 
 interface Props {
   manaCost: string;
-  onClick: (manaCost: string) => any;
+  onClick: (manaCost: string) => void;
 }
 
 export default function ManaCostFilter(props: Props) {
