@@ -4,6 +4,7 @@ import DeckCard from "../DeckCard";
 import ManaCurve from "../ManaCurve";
 import CardCounter from "../CardCounter";
 import EncodeButton from "../EncodeButton";
+import ImportButton from "../ImportButton";
 import ClearDeckCardsLink from "../ClearDeckCardsLink";
 import { HeroType } from "../../../types/hero";
 import { DeckCard as DeckCardType } from "../../../reducers/deckBuild/types";
@@ -28,6 +29,7 @@ export default function Deck({
       <ManaCurve deck={deck} />
       <CardCounter count={cardCount} />
       <EncodeButton hero={hero} deck={deck} />
+      <ImportButton />
       <div className={styles.deckCards}>
         {deck.length > 0 && <ClearDeckCardsLink onClick={clearDeckCards} />}
         {deck.map((deckCard, index) => (
