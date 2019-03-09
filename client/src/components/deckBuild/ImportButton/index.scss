@@ -1,3 +1,33 @@
+.link {
+  font-size: 0.9rem;
+}
+
+.importButton {
+  display: inline-block;
+  margin-left: 20px;
+  padding: 0.375rem 0.75rem;
+  border: 1px solid transparent;
+  border-color: #6c757d;
+  background-color: #6c757d;
+  border-radius: 0.25rem;
+  color: #fff;
+  font-size: 1rem;
+  line-height: 1.5;
+  text-align: center;
+  user-select: none;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+.deckCode {
+  display: block;
+  width: 100%;
+  margin: 0 auto;
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+  font-size: 1rem;
+}
+
 .buttonContainer {
   margin-top: 30px;
   display: flex;
