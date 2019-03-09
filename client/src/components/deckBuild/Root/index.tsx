@@ -15,6 +15,7 @@ import PrevPageLink from "../PrevPageLink";
 import NextPageLink from "../NextPageLink";
 import Deck from "../Deck";
 import styles from "./index.scss";
+import { importDeckCode } from "../../../reducers/deckBuild";
 
 interface Props {
   deckBuild: State;
@@ -33,6 +34,7 @@ interface Props {
     pickCard: (cardType: CardType) => void;
     unpickCard: (deckCardType: DeckCardType) => void;
     clearDeckCards: () => void;
+    importDeckCode: (deckCode: string) => void;
   };
 }
 
@@ -98,6 +100,7 @@ export default function Index(props: Props) {
           deck={deck}
           clearDeckCards={clearDeckCards}
           unpickCard={unpickCard}
+          importDeckCode={importDeckCode}
         />
       </div>
     </div>

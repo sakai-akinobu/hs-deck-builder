@@ -32,6 +32,10 @@ interface ClearDeckCardsAction {
   type: "hs-deck-builder/deckBuild/CLEAR_DECK_CARDS";
   payload: any;
 }
+interface ImportDeckCodeAction {
+  type: "hs-deck-builder/deckBuild/IMPORT_DECK_CODE";
+  payload: any;
+}
 
 export type DeckBuildAction =
   | ChangeHeroAction
@@ -41,7 +45,8 @@ export type DeckBuildAction =
   | ClearManaCostAction
   | PickCardAction
   | UnpickCardAction
-  | ClearDeckCardsAction;
+  | ClearDeckCardsAction
+  | ImportDeckCodeAction;
 
 export interface Card {
   id: string;

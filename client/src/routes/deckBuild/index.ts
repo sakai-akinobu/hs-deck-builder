@@ -16,7 +16,8 @@ import {
   changePage,
   pickCard,
   unpickCard,
-  clearDeckCards
+  clearDeckCards,
+  importDeckCode
 } from "../../reducers/deckBuild";
 
 function loader({ store }: LoaderProps) {
@@ -49,7 +50,8 @@ function mapDispatchToProps(dispatch: Dispatch) {
       ) => dispatch(changePage(hero, query, manaCost, page) as any),
       pickCard: (card: Card) => dispatch(pickCard(card)),
       unpickCard: (deckCard: DeckCard) => dispatch(unpickCard(deckCard)),
-      clearDeckCards: () => dispatch(clearDeckCards())
+      clearDeckCards: () => dispatch(clearDeckCards()),
+      importDeckCode: (deckCode: string) => dispatch(importDeckCode(deckCode))
     }
   };
 }

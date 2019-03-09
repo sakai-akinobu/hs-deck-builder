@@ -1,5 +1,6 @@
 import { createAction, handleActions } from "../../utils/redux";
 import produce from "immer";
+import { decode } from "deckstrings";
 
 import {
   Card as CardType,
@@ -20,6 +21,7 @@ export const UNPICK_CARD = "hs-deck-builder/deckBuild/UNPICK_CARD";
 export const CLEAR_DECK_CARDS = "hs-deck-builder/deckBuild/CLEAR_DECK_CARDS";
 export const CHOOSE_MANA_COST = "hs-deck-builder/deckBuild/CHOOSE_MANA_COST";
 export const CLEAR_MANA_COST = "hs-deck-builder/deckBuild/CLEAR_MANA_COST";
+export const IMPORT_DECK_CODE = "hs-deck-builder/deckBuild/IMPORT_DECK_CODE";
 
 const worker = new Worker("/built/cards.bundle.js");
 
@@ -139,6 +141,13 @@ export function clearDeckCards() {
   return createAction(CLEAR_DECK_CARDS)();
 }
 
+export function importDeckCode(deckCode: string) {
+  // TODO
+  decode(deckCode);
+
+  return createAction(IMPORT_DECK_CODE)();
+}
+
 export default handleActions<State>(
   {
     [CHANGE_HERO]: (state, { payload }: any): State => {
@@ -209,6 +218,11 @@ export default handleActions<State>(
       });
     },
     [CLEAR_DECK_CARDS]: (state): State => {
+      return produce(state, draft => {
+        draft.deck = [];
+      });
+    },
+    [IMPORT_DECK_CODE]: (state): State => {
       return produce(state, draft => {
         draft.deck = [];
       });

@@ -1,15 +1,23 @@
 import * as React from "react";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { FaUpload } from "react-icons/lib/fa";
 
 import Modal from "../Modal";
 import styles from "./index.scss";
 
-export default function ImportButton() {
+interface Props {
+  onImport: (deckCode: string) => void;
+}
+
+export default function ImportButton(props: Props) {
   const [isOpen, setIsOpen] = useState(false);
+  const deckCodeRef = useRef<HTMLTextAreaElement>(null);
 
   const handleImport = () => {
-    setIsOpen(false);
+    if (deckCodeRef.current !== null) {
+      props.onImport(deckCodeRef.current.value);
+      setIsOpen(false);
+    }
   };
 
   return (
@@ -20,6 +28,7 @@ export default function ImportButton() {
           <textarea
             placeholder="Paste the deck code here."
             className={styles.deckCode}
+            ref={deckCodeRef}
           />
         }
         footer={

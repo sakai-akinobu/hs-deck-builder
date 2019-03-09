@@ -15,13 +15,15 @@ interface Props {
   deck: DeckCardType[];
   clearDeckCards: () => void;
   unpickCard: (deckCardType: DeckCardType) => void;
+  importDeckCode: (deckCode: string) => void;
 }
 
 export default function Deck({
   hero,
   deck,
   clearDeckCards,
-  unpickCard
+  unpickCard,
+  importDeckCode
 }: Props) {
   const cardCount = deck.reduce((cnt, deckCard) => cnt + deckCard.count, 0);
   return (
@@ -29,7 +31,7 @@ export default function Deck({
       <ManaCurve deck={deck} />
       <CardCounter count={cardCount} />
       <EncodeButton hero={hero} deck={deck} />
-      <ImportButton />
+      <ImportButton onImport={importDeckCode} />
       <div className={styles.deckCards}>
         {deck.length > 0 && <ClearDeckCardsLink onClick={clearDeckCards} />}
         {deck.map((deckCard, index) => (
