@@ -13,7 +13,7 @@ interface Props {
   deck: DeckCardType[];
 }
 
-export default function EncodeString(props: Props) {
+export default function EncodeButton(props: Props) {
   const [isOpen, setIsOpen] = useState(false);
   const encodeStringRef = useRef<HTMLTextAreaElement>(null);
 

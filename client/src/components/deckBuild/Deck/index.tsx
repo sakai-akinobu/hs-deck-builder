@@ -3,7 +3,7 @@ import * as React from "react";
 import DeckCard from "../DeckCard";
 import ManaCurve from "../ManaCurve";
 import CardCounter from "../CardCounter";
-import EncodeString from "../EncodeString";
+import EncodeButton from "../EncodeButton";
 import ClearDeckCardsLink from "../ClearDeckCardsLink";
 import { HeroType } from "../../../types/hero";
 import { DeckCard as DeckCardType } from "../../../reducers/deckBuild/types";
@@ -27,7 +27,7 @@ export default function Deck({
     <div>
       <ManaCurve deck={deck} />
       <CardCounter count={cardCount} />
-      <EncodeString hero={hero} deck={deck} />
+      <EncodeButton hero={hero} deck={deck} />
       <div className={styles.deckCards}>
         {deck.length > 0 && <ClearDeckCardsLink onClick={clearDeckCards} />}
         {deck.map((deckCard, index) => (
