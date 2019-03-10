@@ -5,13 +5,15 @@ import { decode } from "deckstrings";
 import {
   Card as CardType,
   DeckBuildState as State,
-  DeckCard as DeckCardType
+  DeckCard as DeckCardType,
+  DeckCard
 } from "./types";
 import {
   Rarity,
   MAX_CARD_COUNT_IN_DECK,
   MAX_COUNT_OF_SAME_CARD
 } from "../../utils/constants/hearthstone";
+import { HeroToDbfIdMap } from "../../types/hero";
 
 export const CHANGE_HERO = "hs-deck-builder/deckBuild/CHANGE_HERO";
 export const SYNC_QUERY = "hs-deck-builder/deckBuild/SYNC_QUERY";
@@ -30,7 +32,22 @@ function fetchCards(params: { class: string; query?: string; page?: number }) {
     worker.addEventListener("message", message => {
       resolve(message.data);
     });
-    worker.postMessage(params);
+    worker.postMessage({
+      method: "findByConditions",
+      conditions: params
+    });
+  });
+}
+
+function fetchCardByDbfIds(dbfIds: number[]): Promise<any[]> {
+  return new Promise(resolve => {
+    worker.addEventListener("message", message => {
+      resolve(message.data.cards);
+    });
+    worker.postMessage({
+      method: "findByDbfIds",
+      dbfIds
+    });
   });
 }
 
@@ -141,11 +158,41 @@ export function clearDeckCards() {
   return createAction(CLEAR_DECK_CARDS)();
 }
 
-export function importDeckCode(deckCode: string) {
-  // TODO
-  decode(deckCode);
+export async function importDeckCode(deckCode: string) {
+  const decodedObject = decode(deckCode);
 
-  return createAction(IMPORT_DECK_CODE)();
+  const dbfIds = decodedObject.cards.map(([dbfId]) => dbfId);
+  const fetchedCards = await fetchCardByDbfIds(dbfIds);
+
+  const dbfIdToFetchedCardMap = fetchedCards.reduce((memo, fetchedCard) => {
+    memo[fetchedCard.dbfId] = fetchedCard;
+    return memo;
+  }, {});
+
+  const heroEntry = Object.entries(HeroToDbfIdMap).find(([, dbfId]) => {
+    return decodedObject.heroes[0] === dbfId;
+  });
+  if (heroEntry === undefined) {
+    throw new Error(
+      `Unexpected hero dbfId was found. dbfId:${decodedObject.heroes[0]}`
+    );
+  }
+  const hero = heroEntry[0];
+
+  const cards: DeckCard[] = decodedObject.cards.map(([dbfId, count]) => {
+    const card = dbfIdToFetchedCardMap[dbfId];
+    return {
+      card,
+      count
+    };
+  });
+
+  const data = await fetchCards({ class: hero });
+
+  return [
+    createAction(IMPORT_DECK_CODE)({ hero, cards }),
+    createAction(SEARCH_CARD)(data)
+  ];
 }
 
 export default handleActions<State>(
@@ -222,9 +269,12 @@ export default handleActions<State>(
         draft.deck = [];
       });
     },
-    [IMPORT_DECK_CODE]: (state): State => {
+    [IMPORT_DECK_CODE]: (state, { payload }: any): State => {
       return produce(state, draft => {
-        draft.deck = [];
+        draft.hero = payload.hero;
+        draft.query = "";
+        draft.manaCost = "";
+        draft.deck = payload.cards;
       });
     }
   },

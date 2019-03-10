@@ -15,7 +15,6 @@ import PrevPageLink from "../PrevPageLink";
 import NextPageLink from "../NextPageLink";
 import Deck from "../Deck";
 import styles from "./index.scss";
-import { importDeckCode } from "../../../reducers/deckBuild";
 
 interface Props {
   deckBuild: State;
@@ -50,7 +49,8 @@ export default function Index(props: Props) {
       changePage,
       pickCard,
       unpickCard,
-      clearDeckCards
+      clearDeckCards,
+      importDeckCode
     }
   } = props;
 

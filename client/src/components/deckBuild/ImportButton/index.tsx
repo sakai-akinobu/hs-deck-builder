@@ -6,7 +6,7 @@ import Modal from "../Modal";
 import styles from "./index.scss";
 
 interface Props {
-  onImport: (deckCode: string) => void;
+  onImport: (deckCode: string) => any;
 }
 
 export default function ImportButton(props: Props) {
@@ -15,8 +15,8 @@ export default function ImportButton(props: Props) {
 
   const handleImport = () => {
     if (deckCodeRef.current !== null) {
-      props.onImport(deckCodeRef.current.value);
       setIsOpen(false);
+      props.onImport(deckCodeRef.current.value);
     }
   };
 

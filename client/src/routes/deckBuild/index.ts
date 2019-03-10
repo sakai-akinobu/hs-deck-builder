@@ -51,7 +51,8 @@ function mapDispatchToProps(dispatch: Dispatch) {
       pickCard: (card: Card) => dispatch(pickCard(card)),
       unpickCard: (deckCard: DeckCard) => dispatch(unpickCard(deckCard)),
       clearDeckCards: () => dispatch(clearDeckCards()),
-      importDeckCode: (deckCode: string) => dispatch(importDeckCode(deckCode))
+      importDeckCode: (deckCode: string) =>
+        dispatch(importDeckCode(deckCode) as any)
     }
   };
 }

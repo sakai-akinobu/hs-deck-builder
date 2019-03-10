@@ -20,7 +20,7 @@ function fetchJson(): Promise<any[]> {
   });
 }
 
-function filterCards(cards: any[], conditions: any) {
+function filterCardsByConditions(cards: any[], conditions: any) {
   let filteredCards = cards;
 
   // exclude HERO type
@@ -92,19 +92,45 @@ function filterCards(cards: any[], conditions: any) {
   };
 }
 
+function filterCardsByDbfIds(cards: any[], dbfIds: string[]) {
+  // dbfIds
+  let filteredCards = cards.filter(card => {
+    return dbfIds.includes(card.dbfId);
+  });
+
+  return filteredCards;
+}
+
 const context: Worker = self as any;
 context.addEventListener("message", async event => {
-  cards = await fetchJson();
-  const conditions = event.data;
-  const { filteredCards, page, lastPage } = filterCards(cards, conditions);
+  const cards = await fetchJson();
 
-  context.postMessage({
-    cards: filteredCards,
-    page: {
-      prev: Math.max(page - 1, 1),
-      current: page,
-      next: Math.min(page + 1, lastPage),
-      last: lastPage
-    }
-  });
+  switch (event.data.method) {
+    case "findByConditions":
+      const conditions = event.data.conditions;
+      const { filteredCards, page, lastPage } = filterCardsByConditions(
+        cards,
+        conditions
+      );
+      context.postMessage({
+        cards: filteredCards,
+        page: {
+          prev: Math.max(page - 1, 1),
+          current: page,
+          next: Math.min(page + 1, lastPage),
+          last: lastPage
+        }
+      });
+      break;
+    case "findByDbfIds":
+      const dbfIds = event.data.dbfIds;
+      context.postMessage({
+        cards: filterCardsByDbfIds(cards, dbfIds)
+      });
+      break;
+    default:
+      throw new Error(
+        `Unexpected method parameter was found. method: ${event.data.method}`
+      );
+  }
 });
