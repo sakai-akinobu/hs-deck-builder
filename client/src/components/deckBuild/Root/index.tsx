@@ -76,23 +76,27 @@ export default function Index(props: Props) {
         </div>
         <div className={styles.cardContainer}>
           <div className={styles.pageLinkContainer}>
-            {page.prev && (
+            {page.current > 1 ? (
               <PrevPageLink
                 onClick={() =>
                   changePage(hero, query, manaCost, page.prev || 0)
                 }
               />
-            )}
+            ) : null}
           </div>
-          <CardList cards={cards} pickCard={pickCard} />
+          {cards.length > 0 ? (
+            <CardList cards={cards} pickCard={pickCard} />
+          ) : (
+            <div className={styles.noResult}>There is no search result.</div>
+          )}
           <div className={styles.pageLinkContainer}>
-            {page.next && (
+            {page.next < page.last ? (
               <NextPageLink
                 onClick={() =>
                   changePage(hero, query, manaCost, page.next || 0)
                 }
               />
-            )}
+            ) : null}
           </div>
         </div>
         <Deck

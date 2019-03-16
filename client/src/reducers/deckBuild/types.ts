@@ -67,9 +67,9 @@ export interface DeckBuildState {
   query: string;
   manaCost: string;
   page: {
-    prev: number | null;
+    prev: number;
     current: number;
-    next: number | null;
+    next: number;
     last: number;
   };
   cards: Card[];

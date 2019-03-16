@@ -19,4 +19,11 @@
     display: flex;
     flex: 0 0 30px;
   }
+
+  .noResult {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: auto;
+  }
 }
