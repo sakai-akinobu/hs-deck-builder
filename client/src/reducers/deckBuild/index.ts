@@ -159,7 +159,14 @@ export function clearDeckCards() {
 }
 
 export async function importDeckCode(deckCode: string) {
-  const decodedObject = decode(deckCode);
+  const normalizedDeckCode = deckCode
+    .split(/\n/)
+    .filter(line => {
+      return !line.startsWith("#");
+    })
+    .join("");
+
+  const decodedObject = decode(normalizedDeckCode);
 
   const dbfIds = decodedObject.cards.map(([dbfId]) => dbfId);
   const fetchedCards = await fetchCardByDbfIds(dbfIds);
