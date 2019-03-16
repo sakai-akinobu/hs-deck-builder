@@ -1,6 +1,6 @@
 import * as React from "react";
 import { useState, useRef } from "react";
-import { FaUpload } from "react-icons/lib/fa";
+import { FaDownload } from "react-icons/lib/fa";
 
 import Modal from "../Modal";
 import styles from "./index.scss";
@@ -53,7 +53,7 @@ export default function ImportButton(props: Props) {
       <div className={styles.buttonContainer}>
         <button className={styles.button} onClick={() => setIsOpen(true)}>
           Import deck code
-          <FaUpload className={styles.importIcon} />
+          <FaDownload className={styles.importIcon} />
         </button>
       </div>
     </div>

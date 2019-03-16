@@ -1,7 +1,7 @@
 import * as React from "react";
 import { useState, useRef } from "react";
 import { encode, FormatType, DeckList, DeckDefinition } from "deckstrings";
-import { FaCopy } from "react-icons/lib/fa";
+import { FaUpload } from "react-icons/lib/fa";
 
 import { DeckCard as DeckCardType } from "../../../reducers/deckBuild/types";
 import { HeroType, HeroToDbfIdMap } from "../../../types/hero";
@@ -71,7 +71,7 @@ export default function EncodeButton(props: Props) {
       <div className={styles.buttonContainer}>
         <button className={styles.button} onClick={() => setIsOpen(true)}>
           Create deck code
-          <FaCopy className={styles.copyIcon} />
+          <FaUpload className={styles.copyIcon} />
         </button>
       </div>
     </div>
