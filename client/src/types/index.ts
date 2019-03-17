@@ -1,6 +1,6 @@
 import { Store as ReduxStore } from "redux";
 
-import { DeckBuildAction, DeckBuildState } from "../reducers/deckBuild/types";
+import { DeckBuildAction, DeckBuildState } from "../ducks/deckBuild/types";
 
 export interface State {
   deckBuild: DeckBuildState;

@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import { DeckCard as DeckCardType } from "../../../reducers/deckBuild/types";
+import { DeckCard as DeckCardType } from "../../../ducks/deckBuild/types";
 import styles from "./index.scss";
 
 interface Props {

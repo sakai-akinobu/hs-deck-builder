@@ -1,7 +1,7 @@
 import { createStore as _createStore, applyMiddleware, compose } from "redux";
 
 import middlewares from "../middlewares";
-import reducers from "../reducers";
+import reducers from "../ducks/reducers";
 
 export default function createStore() {
   let finalCreateStore;

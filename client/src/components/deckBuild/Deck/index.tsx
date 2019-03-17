@@ -7,7 +7,7 @@ import EncodeButton from "../EncodeButton";
 import ImportButton from "../ImportButton";
 import ClearDeckCardsLink from "../ClearDeckCardsLink";
 import { HeroType } from "../../../types/hero";
-import { DeckCard as DeckCardType } from "../../../reducers/deckBuild/types";
+import { DeckCard as DeckCardType } from "../../../ducks/deckBuild/types";
 import styles from "./index.scss";
 
 interface Props {

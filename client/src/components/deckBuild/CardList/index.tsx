@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import { Card as CardType } from "../../../reducers/deckBuild/types";
+import { Card as CardType } from "../../../ducks/deckBuild/types";
 import Card from "../Card";
 import styles from "./index.scss";
 

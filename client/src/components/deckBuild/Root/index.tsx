@@ -4,7 +4,7 @@ import {
   Card as CardType,
   DeckCard as DeckCardType,
   DeckBuildState as State
-} from "../../../reducers/deckBuild/types";
+} from "../../../ducks/deckBuild/types";
 import { HeroType } from "../../../types/hero";
 import Header from "../Header";
 import HeroFilter from "../HeroFilter";

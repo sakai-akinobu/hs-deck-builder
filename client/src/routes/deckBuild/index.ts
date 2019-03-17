@@ -3,8 +3,8 @@ import { connect } from "react-redux";
 
 import { State } from "../../types";
 import { LoaderProps, Route } from "../../types/routes";
-import { init } from "../../reducers/deckBuild";
-import { Card, DeckCard } from "../../reducers/deckBuild/types";
+import { init } from "../../ducks/deckBuild/actions";
+import { Card, DeckCard } from "../../ducks/deckBuild/types";
 import Root from "../../components/deckBuild/Root";
 
 import {
@@ -18,7 +18,7 @@ import {
   unpickCard,
   clearDeckCards,
   importDeckCode
-} from "../../reducers/deckBuild";
+} from "../../ducks/deckBuild/actions";
 
 function loader({ store }: LoaderProps) {
   return init().then(store.dispatch);
