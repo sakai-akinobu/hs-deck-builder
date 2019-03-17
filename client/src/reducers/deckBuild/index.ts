@@ -171,7 +171,9 @@ export async function importDeckCode(deckCode: string) {
   const dbfIds = decodedObject.cards.map(([dbfId]) => dbfId);
   const fetchedCards = await fetchCardByDbfIds(dbfIds);
 
-  const dbfIdToFetchedCardMap = fetchedCards.reduce((memo, fetchedCard) => {
+  const dbfIdToFetchedCardMap: {
+    [dbfId: number]: CardType;
+  } = fetchedCards.reduce((memo, fetchedCard) => {
     memo[fetchedCard.dbfId] = fetchedCard;
     return memo;
   }, {});
@@ -186,13 +188,29 @@ export async function importDeckCode(deckCode: string) {
   }
   const hero = heroEntry[0];
 
-  const cards: DeckCard[] = decodedObject.cards.map(([dbfId, count]) => {
-    const card = dbfIdToFetchedCardMap[dbfId];
-    return {
-      card,
-      count
-    };
-  });
+  const cards: DeckCard[] = decodedObject.cards
+    .map(([dbfId, count]) => {
+      const card = dbfIdToFetchedCardMap[dbfId];
+      return {
+        card,
+        count
+      };
+    })
+    .sort((a, b) => {
+      if (a.card.cost < b.card.cost) {
+        return -1;
+      }
+      if (a.card.cost > b.card.cost) {
+        return 1;
+      }
+      if (a.card.dbfId < b.card.dbfId) {
+        return -1;
+      }
+      if (a.card.dbfId > b.card.dbfId) {
+        return 1;
+      }
+      return 0;
+    });
 
   const data = await fetchCards({ class: hero });
 
@@ -254,6 +272,22 @@ export default handleActions<State>(
             draft.deck.push({ card: pickedCard, count: 1 });
           }
         }
+
+        draft.deck = draft.deck.sort((a, b) => {
+          if (a.card.cost < b.card.cost) {
+            return -1;
+          }
+          if (a.card.cost > b.card.cost) {
+            return 1;
+          }
+          if (a.card.dbfId < b.card.dbfId) {
+            return -1;
+          }
+          if (a.card.dbfId > b.card.dbfId) {
+            return 1;
+          }
+          return 0;
+        });
       });
     },
     [UNPICK_CARD]: (state, { payload }: any): State => {
