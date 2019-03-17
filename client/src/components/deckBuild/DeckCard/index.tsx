@@ -19,6 +19,7 @@ export default function DeckCard({ deckCard, onClick }: Props) {
         }.png)`
       }}
     >
+      <div className={styles.cost}>{deckCard.card.cost}</div>
       <div className={styles.name}>{deckCard.card.name}</div>
       {deckCard.count > 1 && (
         <div className={styles.count}>
