@@ -30,9 +30,13 @@
 }
 
 .count {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   flex: 0 0 10px;
   padding: 0 2px;
-  background: #000;
+  background: #333;
   color: yellow;
   text-align: center;
+  height: 100%;
 }
