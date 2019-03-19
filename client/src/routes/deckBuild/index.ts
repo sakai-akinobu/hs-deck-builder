@@ -36,8 +36,8 @@ function mapDispatchToProps(dispatch: Dispatch) {
       changeHero: (hero: string, query: string) =>
         dispatch(changeHero(hero, query) as any),
       syncQuery: (query: string) => dispatch(syncQuery(query)),
-      searchCard: (hero: string, query: string) =>
-        dispatch(searchCard(hero, query) as any),
+      searchCard: (hero: string, query: string, manaCost: string) =>
+        dispatch(searchCard(hero, query, manaCost) as any),
       chooseManaCost: (hero: string, query: string, manaCost: string) =>
         dispatch(chooseManaCost(hero, query, manaCost) as any),
       clearManaCost: (hero: string, query: string) =>

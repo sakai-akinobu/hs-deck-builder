@@ -21,7 +21,7 @@ interface Props {
   actions: {
     changeHero: (hero: HeroType, query: string) => void;
     syncQuery: (query: string) => void;
-    searchCard: (hero: HeroType, query: string) => void;
+    searchCard: (hero: HeroType, query: string, manaCost: string) => void;
     chooseManaCost: (hero: HeroType, query: string, manaCost: string) => void;
     clearManaCost: (hero: HeroType, query: string) => void;
     changePage: (
@@ -63,7 +63,7 @@ export default function Index(props: Props) {
           <QueryFilter
             query={query}
             onChange={syncQuery}
-            searchCard={searchCard.bind(null, hero, query)}
+            searchCard={searchCard.bind(null, hero, query, manaCost)}
           />
           <ManaCostFilter
             manaCost={manaCost}

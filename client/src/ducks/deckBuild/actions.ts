@@ -67,10 +67,15 @@ export function syncQuery(query: string) {
   return createAction(SYNC_QUERY)({ query });
 }
 
-export async function searchCard(hero: string, query: string) {
+export async function searchCard(
+  hero: string,
+  query: string,
+  manaCost: string
+) {
   const params = {
     class: hero,
-    query
+    query,
+    manaCost
   };
   const data = await fetchCards(params);
   return createAction(SEARCH_CARD)(data);
