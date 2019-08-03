@@ -11,7 +11,8 @@
     "lint": "npx eslint client/src/* --ext .ts,.tsx",
     "lint:fix": "npx eslint client/src/* --ext .ts,.tsx --fix",
     "stylelint": "npx stylelint 'client/src/**/*.scss'",
-    "stylelint:fix": "npx stylelint 'client/src/**/*.scss' --fix"
+    "stylelint:fix": "npx stylelint 'client/src/**/*.scss' --fix",
+    "analyze-bundle": "npx webpack --config ./client/webpack/analyze.config.js"
   },
   "repository": {
     "type": "git",
