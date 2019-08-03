@@ -1,6 +1,7 @@
 import * as React from "react";
 import { useState, useEffect } from "react";
-import { FaSpinner } from "react-icons/fa";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSpinner } from "@fortawesome/free-solid-svg-icons/faSpinner";
 
 import { Card as CardType } from "../../../ducks/deckBuild/types";
 import styles from "./index.scss";
@@ -38,6 +39,6 @@ export default function Card({ card, onClick }: Props) {
       className={styles.card}
     />
   ) : (
-    <FaSpinner className={styles.spinner} />
+    <FontAwesomeIcon icon={faSpinner} className={styles.spinner} />
   );
 }

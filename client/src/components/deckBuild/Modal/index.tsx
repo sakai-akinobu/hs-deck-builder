@@ -1,6 +1,7 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-import { FaRegTimesCircle } from "react-icons/fa";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTimesCircle } from "@fortawesome/free-solid-svg-icons/faTimesCircle";
 
 import styles from "./index.scss";
 
@@ -20,8 +21,8 @@ export default function Modal(props: Props) {
         <div className={styles.content}>
           <div className={styles.header}>
             <h2 className={styles.title}>{props.title}</h2>
-            <span className={styles.closeButton}>
-              <FaRegTimesCircle onClick={props.onRequestClose} />
+            <span className={styles.closeButton} onClick={props.onRequestClose}>
+              <FontAwesomeIcon icon={faTimesCircle} />
             </span>
           </div>
           <div className={styles.body}>{props.body}</div>

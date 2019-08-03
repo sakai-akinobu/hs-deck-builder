@@ -1,5 +1,6 @@
 import * as React from "react";
-import { FaArrowLeft } from "react-icons/fa";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowLeft } from "@fortawesome/free-solid-svg-icons/faArrowLeft";
 
 import styles from "./index.scss";
 
@@ -10,7 +11,7 @@ interface Props {
 export default function PrevPageLink({ onClick }: Props) {
   return (
     <div onClick={onClick} className={styles.container}>
-      <FaArrowLeft className={styles.arrow} />
+      <FontAwesomeIcon icon={faArrowLeft} className={styles.arrow} />
     </div>
   );
 }
