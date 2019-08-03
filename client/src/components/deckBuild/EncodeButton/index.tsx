@@ -1,7 +1,8 @@
 import * as React from "react";
 import { useState, useRef } from "react";
 import { encode, FormatType, DeckList, DeckDefinition } from "deckstrings";
-import { FaUpload } from "react-icons/lib/fa";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUpload } from "@fortawesome/free-solid-svg-icons/faUpload";
 
 import { DeckCard as DeckCardType } from "../../../ducks/deckBuild/types";
 import { HeroType, HeroToDbfIdMap } from "../../../types/hero";
@@ -71,7 +72,7 @@ export default function EncodeButton(props: Props) {
       <div className={styles.buttonContainer}>
         <button className={styles.button} onClick={() => setIsOpen(true)}>
           Create deck code
-          <FaUpload className={styles.copyIcon} />
+          <FontAwesomeIcon icon={faUpload} className={styles.copyIcon} />
         </button>
       </div>
     </div>

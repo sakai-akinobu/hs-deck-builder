@@ -1,6 +1,7 @@
 import * as React from "react";
 import { useState, useRef } from "react";
-import { FaDownload } from "react-icons/lib/fa";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faDownload } from "@fortawesome/free-solid-svg-icons/faDownload";
 
 import Modal from "../Modal";
 import styles from "./index.scss";
@@ -53,7 +54,7 @@ export default function ImportButton(props: Props) {
       <div className={styles.buttonContainer}>
         <button className={styles.button} onClick={() => setIsOpen(true)}>
           Import deck code
-          <FaDownload className={styles.importIcon} />
+          <FontAwesomeIcon icon={faDownload} className={styles.importIcon} />
         </button>
       </div>
     </div>
