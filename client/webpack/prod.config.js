@@ -1,4 +1,4 @@
-import {createBaseConfig} from './shared.config';
+const createBaseConfig = require('./shared.config').createBaseConfig;
 
 const path = require('path');
 const webpack = require('webpack');

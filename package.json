@@ -6,8 +6,8 @@
   "main": "index.js",
   "scripts": {
     "compile": "npx tsc --noEmit",
-    "dev": "npx babel-node $(npm bin)/webpack-dev-server --config ./client/webpack/dev.config.js",
-    "build": "npx babel-node $(npm bin)/webpack --config ./client/webpack/prod.config.js",
+    "dev": "npx webpack-dev-server --config ./client/webpack/dev.config.js",
+    "build": "npx webpack --config ./client/webpack/prod.config.js",
     "lint": "npx eslint client/src/* --ext .ts,.tsx",
     "lint:fix": "npx eslint client/src/* --ext .ts,.tsx --fix",
     "stylelint": "npx stylelint 'client/src/**/*.scss'",

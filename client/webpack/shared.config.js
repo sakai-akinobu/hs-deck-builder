@@ -1,6 +1,6 @@
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
-export const createBaseConfig = () => ({
+module.exports.createBaseConfig = () => ({
   entry: {
     app: ['./client/src/app/index.tsx'],
     cards: ['./client/src/workers/cards.ts'],
