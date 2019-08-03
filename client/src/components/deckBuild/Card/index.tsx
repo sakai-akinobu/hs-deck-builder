@@ -1,6 +1,6 @@
 import * as React from "react";
 import { useState, useEffect } from "react";
-import { FaSpinner } from "react-icons/lib/fa";
+import { FaSpinner } from "react-icons/fa";
 
 import { Card as CardType } from "../../../ducks/deckBuild/types";
 import styles from "./index.scss";

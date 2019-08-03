@@ -1,5 +1,5 @@
 import * as React from "react";
-import { FaGithub } from "react-icons/lib/fa";
+import { FaGithub } from "react-icons/fa";
 
 import styles from "./index.scss";
 

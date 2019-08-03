@@ -1,6 +1,6 @@
 import * as React from "react";
 import { useState, useRef } from "react";
-import { FaDownload } from "react-icons/lib/fa";
+import { FaDownload } from "react-icons/fa";
 
 import Modal from "../Modal";
 import styles from "./index.scss";

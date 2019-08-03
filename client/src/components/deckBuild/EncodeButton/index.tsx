@@ -1,7 +1,7 @@
 import * as React from "react";
 import { useState, useRef } from "react";
 import { encode, FormatType, DeckList, DeckDefinition } from "deckstrings";
-import { FaUpload } from "react-icons/lib/fa";
+import { FaUpload } from "react-icons/fa";
 
 import { DeckCard as DeckCardType } from "../../../ducks/deckBuild/types";
 import { HeroType, HeroToDbfIdMap } from "../../../types/hero";

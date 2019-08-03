@@ -1,5 +1,5 @@
 import * as React from "react";
-import { FaArrowRight } from "react-icons/lib/fa";
+import { FaArrowRight } from "react-icons/fa";
 
 import styles from "./index.scss";
 
