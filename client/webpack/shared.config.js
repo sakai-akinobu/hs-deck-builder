@@ -21,11 +21,6 @@ export const createBaseConfig = () => ({
         loader: 'ts-loader',
       },
       {
-        test: /\.js$/,
-        exclude: /node_modules/,
-        loader: 'babel-loader',
-      },
-      {
         test: /\.scss$/,
         use: ExtractTextPlugin.extract({
           fallback: 'style-loader',
