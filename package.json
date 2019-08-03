@@ -76,7 +76,6 @@
     "immer": "^1.5.0",
     "react": "^16.8.3",
     "react-dom": "^16.8.3",
-    "react-icons": "^3.7.0",
     "react-redux": "^6.0.0",
     "redux": "^4.0.0",
     "redux-actions": "^2.4.0",
